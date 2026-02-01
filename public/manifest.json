@@ -1,0 +1,26 @@
+{
+  "name": "Hisaab - Split bills, not friendships",
+  "short_name": "Hisaab",
+  "description": "Simple, beautiful expense tracker for India. Split bills with friends, track shared expenses, settle debts easily. 100% free forever.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#f97316",
+  "orientation": "portrait-primary",
+  "categories": ["finance", "productivity", "utilities"],
+  "lang": "en-IN",
+  "icons": [
+    {
+      "src": "/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
