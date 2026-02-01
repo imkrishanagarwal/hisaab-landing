@@ -45,8 +45,7 @@ export default function Home() {
             <motion.a
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
-              href="/hisaab.apk"
-              download
+              href="/download"
               className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-2 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 transform hover:scale-105 flex items-center space-x-2"
             >
               <Download size={20} />
@@ -92,8 +91,7 @@ export default function Home() {
                   Contact
                 </Link>
                 <a
-                  href="/hisaab.apk"
-                  download
+                  href="/download"
                   className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-6 py-3 rounded-full font-semibold hover:from-orange-600 hover:to-orange-700 transition-all duration-300 flex items-center justify-center space-x-2 mt-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -138,8 +136,7 @@ export default function Home() {
               <motion.a
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                href="/hisaab.apk"
-                download
+                href="/download"
                 className="bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 flex items-center justify-center space-x-2"
               >
                 <Download size={24} />
@@ -403,8 +400,7 @@ export default function Home() {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="/hisaab.apk"
-              download
+              href="/download"
               className="inline-flex items-center bg-gradient-to-r from-orange-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:from-orange-600 hover:to-orange-700 transition-all duration-300 space-x-2"
             >
               <Download size={24} />
@@ -446,7 +442,7 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Download</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="/hisaab.apk" download className="hover:text-white transition-colors">Android APK</a></li>
+                <li><a href="/download" className="hover:text-white transition-colors">Android APK</a></li>
                 <li><span className="text-gray-500">iOS (Coming Soon)</span></li>
               </ul>
             </div>
