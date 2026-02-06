@@ -93,7 +93,7 @@ function ExpensePage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'expens
                   <div className="text-[13px] font-semibold text-[#F98C2F]">owes {formatAmount(s.amount)}</div>
                 </div>
               </div>
-              {creator_upi_id && Math.abs(s.amount) > 0 ? (
+              {s.name !== creator_name && creator_upi_id && Math.abs(s.amount) > 0 ? (
                 <UpiButton
                   upiId={creator_upi_id}
                   payeeName={creator_name}
@@ -101,7 +101,7 @@ function ExpensePage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'expens
                   currency={currency}
                   note={`Hisaab-${expense_description}`}
                 />
-              ) : !creator_upi_id && Math.abs(s.amount) > 0 ? (
+              ) : s.name !== creator_name && !creator_upi_id && Math.abs(s.amount) > 0 ? (
                 <span className="block text-gray-400 text-xs ml-12 italic">Ask {creator_name} for their UPI ID</span>
               ) : null}
             </div>
@@ -138,7 +138,7 @@ function GroupPage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'group' }
                       <div className={`text-[13px] font-semibold ${color}`}>{label} {formatAmount(b.amount)}</div>
                     </div>
                   </div>
-                  {!isPositive && creator_upi_id && absAmount > 0 ? (
+                  {b.name !== creator_name && !isPositive && creator_upi_id && absAmount > 0 ? (
                     <UpiButton
                       upiId={creator_upi_id}
                       payeeName={creator_name}
@@ -146,7 +146,7 @@ function GroupPage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'group' }
                       currency={currency}
                       note={`Hisaab-${group_name}`}
                     />
-                  ) : !isPositive && !creator_upi_id && absAmount > 0 ? (
+                  ) : b.name !== creator_name && !isPositive && !creator_upi_id && absAmount > 0 ? (
                     <span className="block text-gray-400 text-xs ml-12 italic">Ask {creator_name} for their UPI ID</span>
                   ) : null}
                 </div>
