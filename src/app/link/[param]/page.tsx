@@ -2,11 +2,11 @@
 
 import { useParams } from 'next/navigation'
 import { useEffect, useState, useCallback } from 'react'
+import DownloadButtons from '@/components/DownloadButtons'
 
 const DEEP_LINK_SCHEME = 'hisaab'
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab'
 const APP_STORE_URL = 'https://testflight.apple.com/join/tVKCjPRu'
-const APK_FALLBACK_URL = 'https://github.com/imkrishanagarwal/hisaab-v2/releases/download/v0.1/hisaab.apk'
 
 type VisitorInfo = {
   ip: string
@@ -79,8 +79,8 @@ function getPlatform(ua: string): 'android' | 'ios' | 'other' {
 
 function InfoRow({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex justify-between items-start py-3 border-b border-[#374151] last:border-b-0">
-      <span className="text-gray-400 text-sm">{label}</span>
+    <div className="flex justify-between items-start py-3 border-b border-gray-800 last:border-b-0">
+      <span className="text-gray-500 text-sm">{label}</span>
       <span className="text-white text-sm font-medium text-right max-w-[60%] break-all">{value || 'N/A'}</span>
     </div>
   )
@@ -101,8 +101,6 @@ export default function LinkPage() {
 
   const openApp = useCallback(() => {
     if (platform === 'android') {
-      // Android Intent URL — Chrome handles this natively
-      // Falls back to Play Store if app not installed
       const intentUrl =
         `intent://open#Intent;` +
         `scheme=${DEEP_LINK_SCHEME};` +
@@ -111,11 +109,9 @@ export default function LinkPage() {
         `end`
       window.location.assign(intentUrl)
     } else if (platform === 'ios') {
-      // iOS — custom scheme, triggered by user tap so Safari won't block it
       setStatus('trying')
       window.location.assign(`${DEEP_LINK_SCHEME}://`)
 
-      // If still on page after 1.5s, app isn't installed → show fallback
       const timer = setTimeout(() => {
         if (!document.hidden) {
           setStatus('fallback')
@@ -130,7 +126,6 @@ export default function LinkPage() {
       }
       document.addEventListener('visibilitychange', onVisibilityChange)
 
-      // Cleanup after 5s regardless
       setTimeout(() => {
         document.removeEventListener('visibilitychange', onVisibilityChange)
       }, 5000)
@@ -162,88 +157,75 @@ export default function LinkPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#1A1A1A] text-white font-sans">
+    <div className="min-h-screen bg-[#0B0B0B] text-white font-sans">
       <div className="max-w-[480px] mx-auto px-4 py-6">
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="text-[28px] font-extrabold text-[#F98C2F] tracking-tight">Hisaab</div>
-          <p className="text-gray-400 text-sm mt-1">Link: {param}</p>
+          <div className="text-[28px] font-extrabold text-white tracking-tight">The Hisaab</div>
+          <p className="text-gray-500 text-sm mt-1">Link: {param}</p>
         </div>
 
         {/* Open in App CTA — mobile only */}
         {platform !== 'other' && status === 'idle' && (
-          <div className="bg-[#2C2C2E] rounded-2xl p-6 border border-[#374151] mb-4 text-center">
-            <p className="text-gray-300 text-sm mb-4">Open this link in the Hisaab app</p>
+          <div className="bg-[#121212] rounded-2xl p-6 border border-gray-800 mb-4 text-center">
+            <p className="text-gray-400 text-sm mb-4">Open this link in The Hisaab app</p>
             <button
               onClick={openApp}
-              className="bg-[#F98C2F] text-black py-3 px-8 rounded-xl font-bold text-sm cursor-pointer border-none"
+              className="bg-[#2563EB] text-white py-3 px-8 rounded-xl font-bold text-sm cursor-pointer border-none active:opacity-90"
             >
-              Open in Hisaab
+              Open in The Hisaab
             </button>
           </div>
         )}
 
         {/* Trying to open — iOS only */}
         {status === 'trying' && (
-          <div className="bg-[#2C2C2E] rounded-2xl p-6 border border-[#374151] mb-4 text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F98C2F] mx-auto mb-3" />
-            <p className="text-gray-300 text-sm">Opening Hisaab app...</p>
+          <div className="bg-[#121212] rounded-2xl p-6 border border-gray-800 mb-4 text-center">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#2563EB] mx-auto mb-3" />
+            <p className="text-gray-400 text-sm">Opening The Hisaab app...</p>
           </div>
         )}
 
         {/* Fallback — app not installed (iOS) */}
         {status === 'fallback' && (
-          <div className="bg-[#2C2C2E] rounded-2xl p-6 border border-[#374151] mb-4 text-center">
-            <p className="text-gray-300 text-sm mb-4">App not installed? Get it here:</p>
+          <div className="bg-[#121212] rounded-2xl p-6 border border-gray-800 mb-4 text-center">
+            <p className="text-gray-400 text-sm mb-4">App not installed? Get it here:</p>
             <a
               href={APP_STORE_URL}
-              className="inline-block bg-[#F98C2F] text-black py-3 px-8 rounded-xl font-bold text-sm no-underline"
+              className="inline-block bg-[#2563EB] text-white py-3 px-8 rounded-xl font-bold text-sm no-underline active:opacity-90"
             >
               Join TestFlight
             </a>
             <button
               onClick={() => { setStatus('idle') }}
-              className="block mx-auto text-gray-400 text-xs mt-3 underline bg-transparent border-none cursor-pointer"
+              className="block mx-auto text-gray-500 text-xs mt-3 underline bg-transparent border-none cursor-pointer"
             >
               Try again
             </button>
           </div>
         )}
 
-        {/* Download links — desktop or always-visible on mobile */}
+        {/* Download links — desktop */}
         {platform === 'other' && (
-          <div className="bg-[#2C2C2E] rounded-2xl p-5 border border-[#374151] mb-4 text-center">
-            <p className="text-gray-400 text-sm mb-4">Download the app</p>
-            <div className="flex flex-col gap-3">
-              <a
-                href={PLAY_STORE_URL}
-                className="inline-block bg-[#F98C2F] text-black py-3 px-8 rounded-xl font-bold text-sm no-underline"
-              >
-                Get it on Play Store
-              </a>
-              <a
-                href={APP_STORE_URL}
-                className="inline-block bg-white text-black py-3 px-8 rounded-xl font-bold text-sm no-underline"
-              >
-                Join TestFlight (iOS)
-              </a>
-            </div>
+          <div className="bg-[#121212] rounded-2xl p-5 border border-gray-800 mb-4 text-center">
+            <p className="text-gray-500 text-sm mb-4">Download the app</p>
+            <DownloadButtons variant="dark" />
           </div>
         )}
 
         {/* Visitor info */}
         {loading ? (
-          <div className="bg-[#2C2C2E] rounded-2xl p-5 border border-[#374151] animate-pulse">
-            <div className="h-6 bg-[#374151] rounded w-1/2 mb-4" />
+          <div className="bg-[#121212] rounded-2xl p-5 border border-gray-800 animate-pulse">
+            <div className="h-6 bg-white/5 rounded w-1/2 mb-4" />
             {[1, 2, 3].map(i => (
               <div key={i} className="flex justify-between py-3">
-                <div className="h-4 bg-[#374151] rounded w-24" />
-                <div className="h-4 bg-[#374151] rounded w-32" />
+                <div className="h-4 bg-white/5 rounded w-24" />
+                <div className="h-4 bg-white/5 rounded w-32" />
               </div>
             ))}
           </div>
         ) : info && (
-          <div className="bg-[#2C2C2E] rounded-2xl p-5 border border-[#374151]">
+          <div className="bg-[#121212] rounded-2xl p-5 border border-gray-800">
             <div className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-2">Visitor Info</div>
             <InfoRow label="IP Address" value={info.ip} />
             <InfoRow label="Device" value={info.deviceType} />

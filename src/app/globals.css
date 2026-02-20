@@ -3,14 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-  --primary: #f97316;
+  --background: #0B0B0B;
+  --foreground: #FFFFFF;
+  --primary: #2563EB;
   --secondary: #22c55e;
-  --accent: #3b82f6;
+  --accent: #2563EB;
+  --card-bg: #121212;
+  --surface: #000000;
+  --text-secondary: #9CA3AF;
+  --border: #1f2937;
 }
-
-/* Tailwind v3 compatible configuration */
 
 * {
   box-sizing: border-box;
@@ -37,16 +39,16 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: #121212;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #f97316;
+  background: #2563EB;
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #ea580c;
+  background: #1D4ED8;
 }
 
 /* Gradient text utilities */
@@ -76,10 +78,10 @@ body {
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.3);
   }
   50% {
-    box-shadow: 0 0 30px rgba(249, 115, 22, 0.5);
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.5);
   }
 }
 
@@ -93,13 +95,13 @@ body {
 
 /* Focus states */
 .focus-visible:focus-visible {
-  outline: 2px solid #f97316;
+  outline: 2px solid #2563EB;
   outline-offset: 2px;
 }
 
 /* Selection colors */
 ::selection {
-  background-color: rgba(249, 115, 22, 0.2);
+  background-color: rgba(37, 99, 235, 0.3);
 }
 
 /* India flag colors for special elements */

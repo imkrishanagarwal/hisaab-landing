@@ -4,12 +4,14 @@ import { useEffect } from 'react'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { Download, ArrowRight } from 'lucide-react'
+import Image from 'next/image'
+
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab'
 
 export default function DownloadPage() {
   useEffect(() => {
-    // Redirect to GitHub releases after a brief delay
     const timer = setTimeout(() => {
-      window.location.href = 'https://github.com/imkrishanagarwal/hisaab-v2/releases/download/v0.1/hisaab.apk'
+      window.location.href = PLAY_STORE_URL
     }, 2000)
 
     return () => clearTimeout(timer)
@@ -29,78 +31,50 @@ export default function DownloadPage() {
   return (
     <>
       <Head>
-        <title>Download Hisaab App - Free Finance Management | Made in India</title>
-        <meta name="description" content="Download Hisaab - The best finance management app made in India. Track expenses, manage budgets, and take control of your money. Free download!" />
-
-        {/* Open Graph / Facebook */}
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://thehisaab.com/download" />
-        <meta property="og:title" content="Download Hisaab App - Free Finance Management" />
-        <meta property="og:description" content="Download Hisaab - The best finance management app made in India. Track expenses, manage budgets, and take control of your money. Free download!" />
-        <meta property="og:image" content="https://thehisaab.com/hisaab-social-card.svg" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:site_name" content="Hisaab" />
-        <meta property="og:locale" content="en_IN" />
-
-        {/* Twitter */}
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta property="twitter:url" content="https://thehisaab.com/download" />
-        <meta property="twitter:title" content="Download Hisaab App - Free Finance Management" />
-        <meta property="twitter:description" content="Download Hisaab - The best finance management app made in India. Track expenses, manage budgets, and take control of your money. Free download!" />
-        <meta property="twitter:image" content="https://thehisaab.com/hisaab-social-card.svg" />
-
-        {/* WhatsApp specific */}
-        <meta property="og:image:alt" content="Hisaab App - Finance Management Made Simple" />
-
-        {/* Additional meta tags */}
-        <meta name="keywords" content="hisaab, finance app, expense tracker, budget management, india, free app, money management" />
-        <meta name="author" content="Hisaab Team" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://thehisaab.com/download" />
+        <title>Download The Hisaab App - Free Finance Management | Made in India</title>
+        <meta name="description" content="Download The Hisaab - The best finance management app made in India. Track expenses, manage budgets, and take control of your money. Free download!" />
       </Head>
 
-      <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-green-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#0B0B0B] flex items-center justify-center p-4">
       <motion.div
         className="max-w-md w-full text-center"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <div className="bg-white rounded-2xl shadow-xl border border-orange-100 p-8">
-          {/* Animated Download Icon */}
+        <div className="bg-[#121212] rounded-2xl border border-gray-800 p-8">
+          {/* Logo */}
           <motion.div
-            className="w-20 h-20 mx-auto mb-6 rounded-full bg-gradient-to-r from-primary-500 to-secondary-500 flex items-center justify-center"
+            className="mx-auto mb-6"
             animate={{
-              scale: [1, 1.1, 1],
-              rotate: [0, 5, -5, 0]
+              scale: [1, 1.05, 1],
             }}
             transition={{
               duration: 2,
               repeat: Infinity,
             }}
           >
-            <Download className="w-10 h-10 text-white" />
+            <Image src="/logo.png" alt="The Hisaab" width={80} height={80} className="rounded-2xl mx-auto" />
           </motion.div>
 
           {/* Title */}
           <motion.h1
-            className="text-3xl font-bold mb-4 gradient-text-orange-green"
+            className="text-3xl font-bold mb-4 text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            Downloading Hisaab
+            Downloading The Hisaab
           </motion.h1>
 
           {/* Description */}
           <motion.p
-            className="text-muted-foreground mb-8 text-lg"
+            className="text-gray-400 mb-8 text-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            Thanks for choosing Hisaab! Your download will start automatically...
+            Thanks for choosing The Hisaab! Your download will start automatically...
           </motion.p>
 
           {/* Loading Animation */}
@@ -111,42 +85,21 @@ export default function DownloadPage() {
             transition={{ delay: 0.6 }}
           >
             <div className="flex space-x-2">
-              <motion.div
-                className="w-3 h-3 bg-primary-500 rounded-full"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  delay: 0
-                }}
-              />
-              <motion.div
-                className="w-3 h-3 bg-primary-500 rounded-full"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  delay: 0.2
-                }}
-              />
-              <motion.div
-                className="w-3 h-3 bg-primary-500 rounded-full"
-                animate={{
-                  scale: [1, 1.2, 1],
-                  opacity: [0.7, 1, 0.7]
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  delay: 0.4
-                }}
-              />
+              {[0, 0.2, 0.4].map((delay, i) => (
+                <motion.div
+                  key={i}
+                  className="w-3 h-3 bg-[#2563EB] rounded-full"
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.7, 1, 0.7]
+                  }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    delay
+                  }}
+                />
+              ))}
             </div>
           </motion.div>
 
@@ -157,12 +110,14 @@ export default function DownloadPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8 }}
           >
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-500">
               Download not starting automatically?
             </p>
             <a
-              href="https://github.com/imkrishanagarwal/hisaab-v2/releases/download/v0.1/hisaab.apk"
-              className="inline-flex items-center gap-2 bg-primary-600 text-white px-6 py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors"
+              href={PLAY_STORE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-[#2563EB] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#1D4ED8] transition-colors"
             >
               <Download className="w-5 h-5" />
               Download Now
@@ -171,14 +126,14 @@ export default function DownloadPage() {
 
           {/* Back to Home */}
           <motion.div
-            className="mt-6 pt-6 border-t border-orange-100"
+            className="mt-6 pt-6 border-t border-gray-800"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
           >
             <a
               href="/"
-              className="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700 font-medium text-sm transition-colors"
+              className="inline-flex items-center gap-2 text-[#2563EB] hover:text-[#1D4ED8] font-medium text-sm transition-colors"
             >
               Back to Home
               <ArrowRight className="w-4 h-4" />
@@ -193,11 +148,8 @@ export default function DownloadPage() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}
         >
-          <p className="text-sm text-muted-foreground">
-            🇮🇳 Made in India with ❤️
-          </p>
-          <p className="text-xs text-muted-foreground mt-2">
-            Share this link with friends: <span className="font-mono bg-orange-50 px-2 py-1 rounded text-primary-600">thehisaab.com/download</span>
+          <p className="text-sm text-gray-500">
+            Made in India with love
           </p>
         </motion.div>
       </motion.div>

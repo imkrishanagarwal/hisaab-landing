@@ -2,7 +2,7 @@
 
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState, Suspense } from 'react';
-import Link from 'next/link';
+import DownloadButtons from '@/components/DownloadButtons';
 
 const API_URL = 'https://svcdqdtokeifognfxeim.supabase.co/functions/v1/share-page';
 
@@ -33,7 +33,7 @@ function formatAmount(amount: number): string {
 
 function Avatar({ name }: { name: string }) {
   return (
-    <div className="w-9 h-9 rounded-full bg-[#374151] flex items-center justify-center font-bold text-sm text-gray-300 shrink-0">
+    <div className="w-10 h-10 rounded-full bg-gray-700 border border-gray-600 flex items-center justify-center font-bold text-sm text-white shrink-0">
       {(name || '?').charAt(0).toUpperCase()}
     </div>
   );
@@ -50,7 +50,7 @@ function UpiButton({ upiId, payeeName, amount, currency, note }: {
   return (
     <a
       href={href}
-      className="block bg-[#F98C2F] text-black text-center py-3 px-4 rounded-xl font-bold text-sm ml-12 no-underline active:opacity-90"
+      className="block bg-[#2563EB] text-white text-center py-3 px-4 rounded-xl font-bold text-sm ml-[52px] no-underline active:opacity-90"
     >
       Pay {formatAmount(amount)} via UPI
     </a>
@@ -62,11 +62,11 @@ function ExpensePage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'expens
 
   return (
     <>
-      <div className="bg-[#2C2C2E] rounded-2xl p-5 border border-[#374151]">
+      <div className="bg-[#121212] rounded-2xl p-5 border border-gray-800">
         <h2 className="text-[22px] font-bold mb-1">{expense_description}</h2>
         <div className="text-center my-3 mb-5">
           <div className="text-4xl font-extrabold text-white">{formatAmount(total_amount)}</div>
-          <div className="text-gray-400 text-[13px] mt-1">Total Amount</div>
+          <div className="text-gray-500 text-[13px] mt-1">Total Amount</div>
         </div>
 
         <div className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-4">Paid By</div>
@@ -76,7 +76,7 @@ function ExpensePage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'expens
               <Avatar name={p.name} />
               <div>
                 <div className="text-[15px] font-semibold">{p.name}</div>
-                <div className="text-[13px] font-semibold text-emerald-500">paid {formatAmount(p.amount)}</div>
+                <div className="text-[13px] font-semibold text-emerald-400">paid {formatAmount(p.amount)}</div>
               </div>
             </div>
           ))}
@@ -90,7 +90,7 @@ function ExpensePage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'expens
                 <Avatar name={s.name} />
                 <div>
                   <div className="text-[15px] font-semibold">{s.name}</div>
-                  <div className="text-[13px] font-semibold text-[#F98C2F]">owes {formatAmount(s.amount)}</div>
+                  <div className="text-[13px] font-semibold text-orange-400">owes {formatAmount(s.amount)}</div>
                 </div>
               </div>
               {s.name !== creator_name && creator_upi_id && Math.abs(s.amount) > 0 ? (
@@ -102,7 +102,7 @@ function ExpensePage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'expens
                   note={`Hisaab-${expense_description}`}
                 />
               ) : s.name !== creator_name && !creator_upi_id && Math.abs(s.amount) > 0 ? (
-                <span className="block text-gray-400 text-xs ml-12 italic">Ask {creator_name} for their UPI ID</span>
+                <span className="block text-gray-500 text-xs ml-[52px] italic">Ask {creator_name} for their UPI ID</span>
               ) : null}
             </div>
           ))}
@@ -117,17 +117,17 @@ function GroupPage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'group' }
 
   return (
     <>
-      <div className="bg-[#2C2C2E] rounded-2xl p-5 border border-[#374151]">
+      <div className="bg-[#121212] rounded-2xl p-5 border border-gray-800">
         <h2 className="text-[22px] font-bold mb-1">{group_name}</h2>
         <div className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-4">Net Balances</div>
         <div className="flex flex-col gap-4">
           {balances.length === 0 ? (
-            <div className="text-center text-gray-400 py-5">Everyone is settled up!</div>
+            <div className="text-center text-gray-500 py-5">Everyone is settled up!</div>
           ) : (
             balances.map((b, i) => {
               const isPositive = b.amount >= 0;
               const label = isPositive ? 'gets back' : 'owes';
-              const color = isPositive ? 'text-emerald-500' : 'text-[#F98C2F]';
+              const color = isPositive ? 'text-emerald-400' : 'text-orange-400';
               const absAmount = Math.round(Math.abs(b.amount));
               return (
                 <div key={i} className="flex flex-col gap-2">
@@ -147,7 +147,7 @@ function GroupPage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'group' }
                       note={`Hisaab-${group_name}`}
                     />
                   ) : b.name !== creator_name && !isPositive && !creator_upi_id && absAmount > 0 ? (
-                    <span className="block text-gray-400 text-xs ml-12 italic">Ask {creator_name} for their UPI ID</span>
+                    <span className="block text-gray-500 text-xs ml-[52px] italic">Ask {creator_name} for their UPI ID</span>
                   ) : null}
                 </div>
               );
@@ -157,14 +157,14 @@ function GroupPage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'group' }
       </div>
 
       {expenses && expenses.length > 0 && (
-        <div className="bg-[#2C2C2E] rounded-2xl p-5 border border-[#374151] mt-4">
+        <div className="bg-[#121212] rounded-2xl p-5 border border-gray-800 mt-4">
           <div className="text-gray-400 text-xs uppercase tracking-widest font-semibold mb-4">Recent Expenses</div>
           <div className="flex flex-col gap-3">
             {expenses.map((e, i) => (
-              <div key={i} className="flex justify-between items-center py-2.5 border-b border-[#374151] last:border-b-0">
+              <div key={i} className="flex justify-between items-center py-2.5 border-b border-gray-800 last:border-b-0">
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-semibold text-white truncate">{e.description}</div>
-                  <div className="text-xs text-gray-400 mt-0.5">
+                  <div className="text-xs text-gray-500 mt-0.5">
                     Paid by {e.paid_by}{e.date ? ` \u00B7 ${e.date}` : ''}
                   </div>
                 </div>
@@ -182,26 +182,26 @@ function GroupPage({ snapshot }: { snapshot: Extract<Snapshot, { type: 'group' }
 
 function ErrorCard({ title, message }: { title: string; message: string }) {
   return (
-    <div className="bg-[#2C2C2E] rounded-2xl p-10 border border-[#374151] text-center">
+    <div className="bg-[#121212] rounded-2xl p-10 border border-gray-800 text-center">
       <div className="text-5xl mb-4">&#128533;</div>
       <h2 className="text-white text-xl font-bold mb-2">{title}</h2>
-      <p className="text-gray-400">{message}</p>
+      <p className="text-gray-500">{message}</p>
     </div>
   );
 }
 
 function LoadingSkeleton() {
   return (
-    <div className="bg-[#2C2C2E] rounded-2xl p-5 border border-[#374151] animate-pulse">
-      <div className="h-6 bg-[#374151] rounded w-1/2 mb-4" />
-      <div className="h-10 bg-[#374151] rounded w-1/3 mx-auto mb-6" />
+    <div className="bg-[#121212] rounded-2xl p-5 border border-gray-800 animate-pulse">
+      <div className="h-6 bg-white/5 rounded w-1/2 mb-4" />
+      <div className="h-10 bg-white/5 rounded w-1/3 mx-auto mb-6" />
       <div className="space-y-4">
         {[1, 2, 3].map(i => (
           <div key={i} className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-full bg-[#374151]" />
+            <div className="w-10 h-10 rounded-full bg-gray-700" />
             <div className="flex-1">
-              <div className="h-4 bg-[#374151] rounded w-24 mb-1" />
-              <div className="h-3 bg-[#374151] rounded w-16" />
+              <div className="h-4 bg-white/5 rounded w-24 mb-1" />
+              <div className="h-3 bg-white/5 rounded w-16" />
             </div>
           </div>
         ))}
@@ -259,13 +259,13 @@ function ShareContent() {
     : null;
 
   return (
-    <div className="min-h-screen bg-[#1A1A1A] text-white font-sans">
+    <div className="min-h-screen bg-[#0B0B0B] text-white font-sans">
       <div className="max-w-[480px] mx-auto px-4 py-6">
         {/* Header */}
         <div className="text-center mb-6">
-          <div className="text-[28px] font-extrabold text-[#F98C2F] tracking-tight">Hisaab</div>
+          <div className="text-[28px] font-extrabold text-white tracking-tight">The Hisaab</div>
           {creatorName && (
-            <div className="text-gray-400 text-sm mt-1">Shared by {creatorName}</div>
+            <div className="text-gray-500 text-sm mt-1">Shared by {creatorName}</div>
           )}
         </div>
 
@@ -282,22 +282,17 @@ function ShareContent() {
 
         {/* Expiry notice */}
         {snapshot && !error && (
-          <div className="text-center text-gray-500 text-xs mt-4">
+          <div className="text-center text-gray-600 text-xs mt-4">
             This link expires in 72 hours from when it was created.
           </div>
         )}
 
         {/* Footer */}
-        <div className="text-center mt-8 pt-6 border-t border-[#374151]">
-          <p className="text-gray-400 text-sm mb-3">
-            Split expenses effortlessly with <strong>Hisaab</strong>
+        <div className="text-center mt-8 pt-6 border-t border-gray-800">
+          <p className="text-gray-500 text-sm mb-4">
+            Split expenses effortlessly with <strong className="text-white">The Hisaab</strong>
           </p>
-          <Link
-            href="/"
-            className="inline-block bg-[#F98C2F] text-black py-3 px-8 rounded-full font-bold text-[15px] no-underline"
-          >
-            Download Hisaab
-          </Link>
+          <DownloadButtons variant="dark" />
         </div>
       </div>
     </div>
@@ -307,10 +302,10 @@ function ShareContent() {
 export default function SharePage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen bg-[#1A1A1A] text-white font-sans">
+      <div className="min-h-screen bg-[#0B0B0B] text-white font-sans">
         <div className="max-w-[480px] mx-auto px-4 py-6">
           <div className="text-center mb-6">
-            <div className="text-[28px] font-extrabold text-[#F98C2F] tracking-tight">Hisaab</div>
+            <div className="text-[28px] font-extrabold text-white tracking-tight">The Hisaab</div>
           </div>
           <LoadingSkeleton />
         </div>
