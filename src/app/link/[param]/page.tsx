@@ -102,7 +102,7 @@ export default function LinkPage() {
   const openApp = useCallback(() => {
     if (platform === 'android') {
       const intentUrl =
-        `intent://open#Intent;` +
+        `intent://#Intent;` +
         `scheme=${DEEP_LINK_SCHEME};` +
         `package=com.krishanblr.hisaab;` +
         `S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};` +

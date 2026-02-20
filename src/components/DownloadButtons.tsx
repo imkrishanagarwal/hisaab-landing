@@ -34,7 +34,7 @@ export default function DownloadButton({ variant = 'hero', className = '' }: Dow
     if (platform === 'android') {
       // Android Intent URL — opens app or falls back to Play Store
       const intentUrl =
-        `intent://open#Intent;` +
+        `intent://#Intent;` +
         `scheme=${DEEP_LINK_SCHEME};` +
         `package=com.krishanblr.hisaab;` +
         `S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};` +
