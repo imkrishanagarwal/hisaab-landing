@@ -1,7 +1,7 @@
 'use client'
 
 import { useParams } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 
 const DEEP_LINK_SCHEME = 'hisaab'
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab'
@@ -90,58 +90,52 @@ export default function LinkPage() {
   const { param } = useParams<{ param: string }>()
   const [info, setInfo] = useState<VisitorInfo | null>(null)
   const [loading, setLoading] = useState(true)
-  const [status, setStatus] = useState<'trying' | 'redirecting' | 'fallback'>('trying')
+  const [status, setStatus] = useState<'idle' | 'trying' | 'fallback'>('idle')
+  const [platform, setPlatform] = useState<'android' | 'ios' | 'other'>('other')
 
   useEffect(() => {
     const ua = navigator.userAgent
-    const platform = getPlatform(ua)
-
-    // Desktop — skip deep link, show info directly
-    if (platform === 'other') {
-      setStatus('fallback')
-      collectInfo()
-      return
-    }
-
-    // Mobile — attempt deep link
-    if (platform === 'android') {
-      // Android Chrome blocks custom schemes via window.location.href
-      // Use Android Intent URL which falls back to Play Store automatically
-      const intentUrl = `intent://#Intent;scheme=${DEEP_LINK_SCHEME};package=com.krishanblr.hisaab;S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};end`
-      window.location.href = intentUrl
-    } else {
-      // iOS — use custom scheme
-      const deepLink = `${DEEP_LINK_SCHEME}://`
-      window.location.href = deepLink
-    }
-
-    const start = Date.now()
-
-    // If the app opened, the page will be hidden/blurred.
-    // If still visible after 2s, the app isn't installed → redirect to store.
-    const timer = setTimeout(() => {
-      if (document.hidden || Date.now() - start > 3000) return
-
-      setStatus('redirecting')
-
-      if (platform === 'ios') {
-        window.location.href = APP_STORE_URL
-      }
-      // Android intent URL already handles fallback to Play Store
-    }, 2000)
-
-    const onVisibilityChange = () => {
-      if (document.hidden) clearTimeout(timer)
-    }
-    document.addEventListener('visibilitychange', onVisibilityChange)
-
+    setPlatform(getPlatform(ua))
     collectInfo()
+  }, [])
 
-    return () => {
-      clearTimeout(timer)
-      document.removeEventListener('visibilitychange', onVisibilityChange)
+  const openApp = useCallback(() => {
+    if (platform === 'android') {
+      // Android Intent URL — Chrome handles this natively
+      // Falls back to Play Store if app not installed
+      const intentUrl =
+        `intent://open#Intent;` +
+        `scheme=${DEEP_LINK_SCHEME};` +
+        `package=com.krishanblr.hisaab;` +
+        `S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};` +
+        `end`
+      window.location.assign(intentUrl)
+    } else if (platform === 'ios') {
+      // iOS — custom scheme, triggered by user tap so Safari won't block it
+      setStatus('trying')
+      window.location.assign(`${DEEP_LINK_SCHEME}://`)
+
+      // If still on page after 1.5s, app isn't installed → show fallback
+      const timer = setTimeout(() => {
+        if (!document.hidden) {
+          setStatus('fallback')
+        }
+      }, 1500)
+
+      const onVisibilityChange = () => {
+        if (document.hidden) {
+          clearTimeout(timer)
+          setStatus('idle')
+        }
+      }
+      document.addEventListener('visibilitychange', onVisibilityChange)
+
+      // Cleanup after 5s regardless
+      setTimeout(() => {
+        document.removeEventListener('visibilitychange', onVisibilityChange)
+      }, 5000)
     }
-  }, [param])
+  }, [platform])
 
   async function collectInfo() {
     const ua = navigator.userAgent
@@ -167,8 +161,6 @@ export default function LinkPage() {
     setLoading(false)
   }
 
-  const platform = typeof navigator !== 'undefined' ? getPlatform(navigator.userAgent) : 'other'
-
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white font-sans">
       <div className="max-w-[480px] mx-auto px-4 py-6">
@@ -178,41 +170,64 @@ export default function LinkPage() {
           <p className="text-gray-400 text-sm mt-1">Link: {param}</p>
         </div>
 
-        {/* Deep link status for mobile */}
-        {status === 'trying' && platform !== 'other' && (
+        {/* Open in App CTA — mobile only */}
+        {platform !== 'other' && status === 'idle' && (
+          <div className="bg-[#2C2C2E] rounded-2xl p-6 border border-[#374151] mb-4 text-center">
+            <p className="text-gray-300 text-sm mb-4">Open this link in the Hisaab app</p>
+            <button
+              onClick={openApp}
+              className="bg-[#F98C2F] text-black py-3 px-8 rounded-xl font-bold text-sm cursor-pointer border-none"
+            >
+              Open in Hisaab
+            </button>
+          </div>
+        )}
+
+        {/* Trying to open — iOS only */}
+        {status === 'trying' && (
           <div className="bg-[#2C2C2E] rounded-2xl p-6 border border-[#374151] mb-4 text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F98C2F] mx-auto mb-3" />
             <p className="text-gray-300 text-sm">Opening Hisaab app...</p>
           </div>
         )}
 
-        {status === 'redirecting' && (
+        {/* Fallback — app not installed (iOS) */}
+        {status === 'fallback' && (
           <div className="bg-[#2C2C2E] rounded-2xl p-6 border border-[#374151] mb-4 text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F98C2F] mx-auto mb-3" />
-            <p className="text-gray-300 text-sm">
-              App not found. Redirecting to {platform === 'android' ? 'Play Store' : 'TestFlight'}...
-            </p>
+            <p className="text-gray-300 text-sm mb-4">App not installed? Get it here:</p>
+            <a
+              href={APP_STORE_URL}
+              className="inline-block bg-[#F98C2F] text-black py-3 px-8 rounded-xl font-bold text-sm no-underline"
+            >
+              Join TestFlight
+            </a>
+            <button
+              onClick={() => { setStatus('idle') }}
+              className="block mx-auto text-gray-400 text-xs mt-3 underline bg-transparent border-none cursor-pointer"
+            >
+              Try again
+            </button>
           </div>
         )}
 
-        {/* Manual store button (visible after redirect attempt) */}
-        {status !== 'trying' && platform !== 'other' && (
+        {/* Download links — desktop or always-visible on mobile */}
+        {platform === 'other' && (
           <div className="bg-[#2C2C2E] rounded-2xl p-5 border border-[#374151] mb-4 text-center">
-            <p className="text-gray-400 text-sm mb-4">Don&apos;t have the app yet?</p>
-            <a
-              href={platform === 'android' ? PLAY_STORE_URL : APP_STORE_URL}
-              className="inline-block bg-[#F98C2F] text-black py-3 px-8 rounded-xl font-bold text-sm no-underline"
-            >
-              {platform === 'android' ? 'Get it on Play Store' : 'Join TestFlight'}
-            </a>
-            {platform === 'android' && (
+            <p className="text-gray-400 text-sm mb-4">Download the app</p>
+            <div className="flex flex-col gap-3">
               <a
-                href={APK_FALLBACK_URL}
-                className="block text-gray-400 text-xs mt-3 underline"
+                href={PLAY_STORE_URL}
+                className="inline-block bg-[#F98C2F] text-black py-3 px-8 rounded-xl font-bold text-sm no-underline"
               >
-                Or download APK directly
+                Get it on Play Store
               </a>
-            )}
+              <a
+                href={APP_STORE_URL}
+                className="inline-block bg-white text-black py-3 px-8 rounded-xl font-bold text-sm no-underline"
+              >
+                Join TestFlight (iOS)
+              </a>
+            </div>
           </div>
         )}
 
