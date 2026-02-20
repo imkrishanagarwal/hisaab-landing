@@ -104,7 +104,7 @@ export default function LinkPage() {
     }
 
     // Mobile — attempt deep link
-    const deepLink = `${DEEP_LINK_SCHEME}://link/${param}`
+    const deepLink = `${DEEP_LINK_SCHEME}://`
     const start = Date.now()
 
     window.location.href = deepLink
