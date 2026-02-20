@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.krishanblr.hisaab",
+      "sha256_cert_fingerprints": [
+        "AD:0B:ED:04:99:C3:AB:3B:A7:11:44:E4:E0:94:1A:28:15:E0:E0:40:3D:51:5D:99:14:A3:DA:A7:58:63:E0:AC"
+      ]
+    }
+  }
+]
