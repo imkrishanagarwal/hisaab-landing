@@ -104,24 +104,30 @@ export default function LinkPage() {
     }
 
     // Mobile — attempt deep link
-    const deepLink = `${DEEP_LINK_SCHEME}://`
-    const start = Date.now()
+    if (platform === 'android') {
+      // Android Chrome blocks custom schemes via window.location.href
+      // Use Android Intent URL which falls back to Play Store automatically
+      const intentUrl = `intent://#Intent;scheme=${DEEP_LINK_SCHEME};package=com.krishanblr.hisaab;S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};end`
+      window.location.href = intentUrl
+    } else {
+      // iOS — use custom scheme
+      const deepLink = `${DEEP_LINK_SCHEME}://`
+      window.location.href = deepLink
+    }
 
-    window.location.href = deepLink
+    const start = Date.now()
 
     // If the app opened, the page will be hidden/blurred.
     // If still visible after 2s, the app isn't installed → redirect to store.
     const timer = setTimeout(() => {
-      // If the user left the page (app opened), skip redirect
       if (document.hidden || Date.now() - start > 3000) return
 
       setStatus('redirecting')
 
-      if (platform === 'android') {
-        window.location.href = PLAY_STORE_URL
-      } else {
+      if (platform === 'ios') {
         window.location.href = APP_STORE_URL
       }
+      // Android intent URL already handles fallback to Play Store
     }, 2000)
 
     const onVisibilityChange = () => {
@@ -129,7 +135,6 @@ export default function LinkPage() {
     }
     document.addEventListener('visibilitychange', onVisibilityChange)
 
-    // Also collect info for mobile in case store redirect fails
     collectInfo()
 
     return () => {
