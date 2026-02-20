@@ -4,8 +4,8 @@ import { useParams } from 'next/navigation'
 import { useEffect, useState } from 'react'
 
 const DEEP_LINK_SCHEME = 'hisaab'
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.hisaab.app'
-const APP_STORE_URL = 'https://apps.apple.com/app/hisaab/id0000000000'
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab'
+const APP_STORE_URL = 'https://testflight.apple.com/join/tVKCjPRu'
 const APK_FALLBACK_URL = 'https://github.com/imkrishanagarwal/hisaab-v2/releases/download/v0.1/hisaab.apk'
 
 type VisitorInfo = {
@@ -185,7 +185,7 @@ export default function LinkPage() {
           <div className="bg-[#2C2C2E] rounded-2xl p-6 border border-[#374151] mb-4 text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F98C2F] mx-auto mb-3" />
             <p className="text-gray-300 text-sm">
-              App not found. Redirecting to {platform === 'android' ? 'Play Store' : 'App Store'}...
+              App not found. Redirecting to {platform === 'android' ? 'Play Store' : 'TestFlight'}...
             </p>
           </div>
         )}
@@ -198,7 +198,7 @@ export default function LinkPage() {
               href={platform === 'android' ? PLAY_STORE_URL : APP_STORE_URL}
               className="inline-block bg-[#F98C2F] text-black py-3 px-8 rounded-xl font-bold text-sm no-underline"
             >
-              {platform === 'android' ? 'Get it on Play Store' : 'Download on App Store'}
+              {platform === 'android' ? 'Get it on Play Store' : 'Join TestFlight'}
             </a>
             {platform === 'android' && (
               <a
