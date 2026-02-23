@@ -46,14 +46,40 @@ function UpiButton({ upiId, payeeName, amount, currency, note }: {
   currency: string;
   note: string;
 }) {
-  const href = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${amount}&cu=${encodeURIComponent(currency)}&tn=${encodeURIComponent(note)}`;
+  const [copied, setCopied] = useState(false);
+  const [isAndroid, setIsAndroid] = useState(false);
+
+  useEffect(() => {
+    setIsAndroid(/android/i.test(navigator.userAgent));
+  }, []);
+
+  const intentUrl = `intent://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${amount}&cu=${encodeURIComponent(currency)}&tn=${encodeURIComponent(note)}#Intent;scheme=upi;end`;
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(upiId).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
   return (
-    <a
-      href={href}
-      className="block bg-[#2563EB] text-white text-center py-3 px-4 rounded-xl font-bold text-sm ml-[52px] no-underline active:opacity-90"
-    >
-      Pay {formatAmount(amount)} via UPI
-    </a>
+    <div className="flex flex-col gap-2 ml-[52px]">
+      {isAndroid && (
+        <a
+          href={intentUrl}
+          className="block bg-[#2563EB] text-white text-center py-3 px-4 rounded-xl font-bold text-sm no-underline active:opacity-90"
+        >
+          Pay {formatAmount(amount)} via UPI
+        </a>
+      )}
+      <button
+        onClick={handleCopy}
+        className="flex items-center justify-center gap-2 bg-gray-800 text-gray-300 py-2.5 px-4 rounded-xl text-sm border border-gray-700 active:opacity-90"
+      >
+        <span className="font-mono text-xs truncate">{upiId}</span>
+        <span className="shrink-0 text-xs font-semibold">{copied ? 'Copied!' : 'Copy'}</span>
+      </button>
+    </div>
   );
 }
 
