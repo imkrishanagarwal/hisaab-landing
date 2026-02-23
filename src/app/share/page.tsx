@@ -47,13 +47,18 @@ function UpiButton({ upiId, payeeName, amount, currency, note }: {
   note: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const [isAndroid, setIsAndroid] = useState(false);
+  const [platform, setPlatform] = useState<'android' | 'ios' | 'other'>('other');
+  const [gpayFailed, setGpayFailed] = useState(false);
 
   useEffect(() => {
-    setIsAndroid(/android/i.test(navigator.userAgent));
+    const ua = navigator.userAgent;
+    if (/android/i.test(ua)) setPlatform('android');
+    else if (/iphone|ipad|ipod/i.test(ua)) setPlatform('ios');
   }, []);
 
-  const intentUrl = `intent://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${amount}&cu=${encodeURIComponent(currency)}&tn=${encodeURIComponent(note)}#Intent;scheme=upi;end`;
+  const params = `pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(payeeName)}&am=${amount}&cu=${encodeURIComponent(currency)}&tn=${encodeURIComponent(note)}`;
+  const intentUrl = `intent://pay?${params}#Intent;scheme=upi;end`;
+  const gpayUrl = `gpay://upi/pay?${params}`;
 
   const handleCopy = () => {
     navigator.clipboard.writeText(upiId).then(() => {
@@ -62,9 +67,15 @@ function UpiButton({ upiId, payeeName, amount, currency, note }: {
     });
   };
 
+  const handleGpay = () => {
+    window.location.href = gpayUrl;
+    // If GPay isn't installed, the page stays — show fallback after a delay
+    setTimeout(() => setGpayFailed(true), 1500);
+  };
+
   return (
     <div className="flex flex-col gap-2 ml-[52px]">
-      {isAndroid && (
+      {platform === 'android' && (
         <a
           href={intentUrl}
           className="block bg-[#2563EB] text-white text-center py-3 px-4 rounded-xl font-bold text-sm no-underline active:opacity-90"
@@ -72,13 +83,23 @@ function UpiButton({ upiId, payeeName, amount, currency, note }: {
           Pay {formatAmount(amount)} via UPI
         </a>
       )}
-      <button
-        onClick={handleCopy}
-        className="flex items-center justify-center gap-2 bg-gray-800 text-gray-300 py-2.5 px-4 rounded-xl text-sm border border-gray-700 active:opacity-90"
-      >
-        <span className="font-mono text-xs truncate">{upiId}</span>
-        <span className="shrink-0 text-xs font-semibold">{copied ? 'Copied!' : 'Copy'}</span>
-      </button>
+      {platform === 'ios' && !gpayFailed && (
+        <button
+          onClick={handleGpay}
+          className="bg-[#2563EB] text-white text-center py-3 px-4 rounded-xl font-bold text-sm active:opacity-90"
+        >
+          Pay {formatAmount(amount)} via GPay
+        </button>
+      )}
+      {(platform === 'other' || platform === 'ios') && (
+        <button
+          onClick={handleCopy}
+          className="flex items-center justify-center gap-2 bg-gray-800 text-gray-300 py-2.5 px-4 rounded-xl text-sm border border-gray-700 active:opacity-90"
+        >
+          <span className="font-mono text-xs truncate">{upiId}</span>
+          <span className="shrink-0 text-xs font-semibold">{copied ? 'Copied!' : 'Copy UPI ID'}</span>
+        </button>
+      )}
     </div>
   );
 }
