@@ -6,7 +6,7 @@ import DownloadButtons from '@/components/DownloadButtons'
 
 const DEEP_LINK_SCHEME = 'hisaab'
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab'
-const APP_STORE_URL = 'https://testflight.apple.com/join/tVKCjPRu'
+const APP_STORE_URL = 'https://apps.apple.com/in/app/the-hisaab/id6759067047'
 
 type VisitorInfo = {
   ip: string
@@ -194,7 +194,7 @@ export default function LinkPage() {
               href={APP_STORE_URL}
               className="inline-block bg-[#2563EB] text-white py-3 px-8 rounded-xl font-bold text-sm no-underline active:opacity-90"
             >
-              Join TestFlight
+              Download on App Store
             </a>
             <button
               onClick={() => { setStatus('idle') }}

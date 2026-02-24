@@ -5,7 +5,7 @@ import { Download } from 'lucide-react';
 
 const DEEP_LINK_SCHEME = 'hisaab';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab';
-const APP_STORE_URL = 'https://testflight.apple.com/join/tVKCjPRu';
+const APP_STORE_URL = 'https://apps.apple.com/in/app/the-hisaab/id6759067047';
 
 function getPlatform(): 'android' | 'ios' | 'other' {
   if (typeof navigator === 'undefined') return 'other';
@@ -41,13 +41,13 @@ export default function DownloadButton({ variant = 'hero', className = '' }: Dow
         `end`;
       window.location.assign(intentUrl);
     } else if (platform === 'ios') {
-      // iOS — try custom scheme first, fallback to TestFlight
+      // iOS — try custom scheme first, fallback to App Store
       setTrying(true);
       window.location.assign(`${DEEP_LINK_SCHEME}://`);
 
       const timer = setTimeout(() => {
         if (!document.hidden) {
-          // App not installed — redirect to TestFlight
+          // App not installed — redirect to App Store
           window.location.assign(APP_STORE_URL);
           setTrying(false);
         }
