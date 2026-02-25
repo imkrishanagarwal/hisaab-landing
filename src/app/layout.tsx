@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     siteName: "The Hisaab",
     images: [
       {
-        url: "/og-image.png",
+        url: "/image.png",
         width: 1200,
         height: 630,
         alt: "The Hisaab - Split bills, not friendships",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Hisaab - Split bills, not friendships",
     description: "Simple, beautiful expense tracker for India. 100% free forever. Made in India for India.",
-    images: ["/twitter-image.png"],
+    images: ["/image.png"],
   },
   manifest: "/manifest.json",
   icons: {
