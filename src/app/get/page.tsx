@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect } from 'react'
 import { useSearchParams } from 'next/navigation'
+import { initMixpanel, trackEvent } from '@/lib/mixpanel'
 
 const PLAY_STORE_BASE = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab'
 const APP_STORE_URL = 'https://apps.apple.com/in/app/the-hisaab/id6759067047'
@@ -16,7 +17,16 @@ function GetRedirect() {
   useEffect(() => {
     const ref = searchParams.get('ref')
 
-    if (isIOS()) {
+    const ios = isIOS()
+    initMixpanel()
+    trackEvent('store_redirect', {
+      store: ios ? 'app_store' : 'play_store',
+      ref: ref || undefined,
+      platform: ios ? 'ios' : 'android',
+      page: '/get',
+    })
+
+    if (ios) {
       // Copy referral code to clipboard before redirecting to App Store
       if (ref) {
         navigator.clipboard.writeText(`hisaab-ref:${ref}`).catch(() => {})

@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { initMixpanel, trackEvent } from '@/lib/mixpanel'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { Download, ArrowRight } from 'lucide-react'
@@ -10,6 +11,13 @@ const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krisha
 
 export default function DownloadPage() {
   useEffect(() => {
+    initMixpanel()
+    trackEvent('store_redirect', {
+      store: 'play_store',
+      platform: 'android',
+      page: '/download',
+    })
+
     const timer = setTimeout(() => {
       window.location.href = PLAY_STORE_URL
     }, 2000)

@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { Download } from 'lucide-react';
+import { trackEvent } from '@/lib/mixpanel';
 
 const DEEP_LINK_SCHEME = 'hisaab';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab';
@@ -31,6 +32,12 @@ export default function DownloadButton({ variant = 'hero', className = '' }: Dow
   }, []);
 
   const handleDownload = useCallback(() => {
+    trackEvent('store_redirect', {
+      store: platform === 'ios' ? 'app_store' : 'play_store',
+      platform,
+      page: window.location.pathname,
+    });
+
     if (platform === 'android') {
       // Android Intent URL — opens app or falls back to Play Store
       const intentUrl =
