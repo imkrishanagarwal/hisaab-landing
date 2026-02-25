@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   creator: "The Hisaab",
   publisher: "The Hisaab",
   robots: "index, follow",
+  facebook: {
+    appId: "799277515879208",
+  },
   openGraph: {
     type: "website",
     title: "The Hisaab - Split bills, not friendships",
