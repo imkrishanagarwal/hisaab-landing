@@ -2,7 +2,8 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Mail, ArrowRight, Check, X as XIcon, Smartphone, WifiOff, Users, Clock, Shield, IndianRupee } from 'lucide-react';
+import { Menu, X, Mail, ArrowRight, Check, X as XIcon, Smartphone, WifiOff, Users, Clock, Shield, IndianRupee, ChevronDown } from 'lucide-react';
+import { createFaqSchema } from '@/lib/schema';
 import Link from 'next/link';
 import Image from 'next/image';
 import DownloadButtons from '@/components/DownloadButtons';
@@ -17,25 +18,90 @@ const stagger = {
   visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
 };
 
+const faqs = [
+  {
+    question: 'Is Hisaab really free forever?',
+    answer: 'Yes, Hisaab is 100% free with no ads, no paywalls, and no hidden fees. All features including unlimited groups, unequal splits, and offline mode are available to everyone.',
+  },
+  {
+    question: 'How is Hisaab different from Splitwise?',
+    answer: 'Hisaab offers everything Splitwise now charges for — unlimited groups, multiple payers, unequal splits — completely free. Plus, Hisaab works fully offline, has no ads, and is designed specifically for Indian users with INR-first support.',
+  },
+  {
+    question: 'Does Hisaab work without internet?',
+    answer: 'Yes, Hisaab works fully offline. You can add expenses, create groups, and view balances without any internet connection. Everything syncs automatically when you\'re back online.',
+  },
+  {
+    question: 'Can I use Hisaab for splitting rent with roommates?',
+    answer: 'Absolutely. Hisaab is perfect for roommates. Track rent, groceries, utilities, WiFi, and every shared expense. See exactly who owes whom at a glance.',
+  },
+  {
+    question: 'Is my financial data safe with Hisaab?',
+    answer: 'Yes. Hisaab never sells or shares your data with third parties. Your expense data stays private and you can delete your account and all data at any time.',
+  },
+  {
+    question: 'Can I split expenses unequally?',
+    answer: 'Yes. Hisaab supports equal splits, custom amount splits, and even multiple payers for a single expense — all for free, no premium plan needed.',
+  },
+];
+
+function FaqItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <motion.div variants={fadeUp} className="border border-white/5 rounded-xl overflow-hidden">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors"
+      >
+        <span className="text-white font-medium pr-4">{question}</span>
+        <ChevronDown size={18} className={`text-gray-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      {isOpen && (
+        <div className="px-5 pb-5 text-gray-400 text-sm leading-relaxed">
+          {answer}
+        </div>
+      )}
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="min-h-screen bg-[#0B0B0B] text-white overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(createFaqSchema(faqs)) }}
+      />
       {/* ===== HEADER ===== */}
       <header className="fixed w-full top-0 z-50 bg-[#0B0B0B]/80 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3.5">
             <Link href="/" className="flex items-center space-x-2.5">
-              <Image src="/logo.webp" alt="Hisaab" width={36} height={36} className="rounded-xl" />
+              <Image src="/logo.webp" alt="Hisaab - Free expense splitting app" width={36} height={36} className="rounded-xl" />
               <span className="text-xl font-bold text-white tracking-tight">Hisaab</span>
             </Link>
 
             <nav className="hidden md:flex items-center space-x-8">
               <Link href="#how-it-works" className="text-sm text-gray-400 hover:text-white transition-colors">How it works</Link>
               <Link href="#features" className="text-sm text-gray-400 hover:text-white transition-colors">Features</Link>
-              <Link href="#compare" className="text-sm text-gray-400 hover:text-white transition-colors">Why Hisaab</Link>
-              <Link href="/privacy" className="text-sm text-gray-400 hover:text-white transition-colors">Privacy</Link>
+              <Link href="/splitwise-alternative" className="text-sm text-gray-400 hover:text-white transition-colors">Splitwise Alternative</Link>
+              <div className="relative group">
+                <button className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                  Use Cases <ChevronDown size={14} />
+                </button>
+                <div className="absolute top-full left-0 pt-2 hidden group-hover:block">
+                  <div className="bg-[#121212] border border-white/10 rounded-xl p-2 min-w-[180px] shadow-xl">
+                    <Link href="/for/trips" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Trip Expenses</Link>
+                    <Link href="/for/roommates" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Roommate Bills</Link>
+                    <Link href="/for/couples" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Couples</Link>
+                    <div className="border-t border-white/5 my-1" />
+                    <Link href="/compare/splitwise" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Hisaab vs Splitwise</Link>
+                  </div>
+                </div>
+              </div>
+              <Link href="#faq" className="text-sm text-gray-400 hover:text-white transition-colors">FAQ</Link>
             </nav>
 
             <div className="flex items-center gap-3">
@@ -62,8 +128,25 @@ export default function Home() {
                 {[
                   { href: '#how-it-works', label: 'How it works' },
                   { href: '#features', label: 'Features' },
-                  { href: '#compare', label: 'Why Hisaab' },
-                  { href: '/privacy', label: 'Privacy' },
+                  { href: '/splitwise-alternative', label: 'Splitwise Alternative' },
+                  { href: '/compare/splitwise', label: 'Hisaab vs Splitwise' },
+                ].map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="text-gray-400 hover:text-white transition-colors py-2.5 px-3 rounded-lg hover:bg-white/5"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {label}
+                  </Link>
+                ))}
+                <div className="pl-3 pt-1 pb-1">
+                  <p className="text-xs text-gray-600 uppercase tracking-wider mb-1">Use Cases</p>
+                </div>
+                {[
+                  { href: '/for/trips', label: 'Trip Expenses' },
+                  { href: '/for/roommates', label: 'Roommate Bills' },
+                  { href: '/for/couples', label: 'Couples' },
                 ].map(({ href, label }) => (
                   <Link
                     key={href}
@@ -246,9 +329,9 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             {[
-              { step: 1, img: '/ss/grouplist.webp', alt: 'Create groups', title: 'Create a group', desc: 'Trip, home, couple \u2014 any scenario. Add friends from your contacts instantly.' },
-              { step: 2, img: '/ss/add-exp.webp', alt: 'Add expenses', title: 'Add expenses', desc: 'Split equally or set custom amounts. Single or multiple payers. Takes 5 seconds.' },
-              { step: 3, img: '/ss/group-details.webp', alt: 'Settle up', title: 'Settle up', desc: 'See every balance at a glance. One-tap settlements with smart recommendations.' },
+              { step: 1, img: '/ss/grouplist.webp', alt: 'Create expense groups in Hisaab - free Splitwise alternative', title: 'Create a group', desc: 'Trip, home, couple \u2014 any scenario. Add friends from your contacts instantly.' },
+              { step: 2, img: '/ss/add-exp.webp', alt: 'Add and split expenses in Hisaab app', title: 'Add expenses', desc: 'Split equally or set custom amounts. Single or multiple payers. Takes 5 seconds.' },
+              { step: 3, img: '/ss/group-details.webp', alt: 'View balances and settle up in Hisaab', title: 'Settle up', desc: 'See every balance at a glance. One-tap settlements with smart recommendations.' },
             ].map((item) => (
               <motion.div
                 key={item.step}
@@ -311,7 +394,7 @@ export default function Home() {
                 Settled groups auto-hide so you focus on what matters.
               </p>
               <div className="screenshot-phone rounded-xl overflow-hidden max-w-[260px] mx-auto">
-                <Image src="/ss/grouplist.webp" alt="Groups list" width={260} height={520} className="w-full h-auto" />
+                <Image src="/ss/grouplist.webp" alt="Hisaab groups list showing expense balances" width={260} height={520} className="w-full h-auto" />
               </div>
             </motion.div>
 
@@ -333,7 +416,7 @@ export default function Home() {
                 Filter by group, type, or date. Never miss a transaction.
               </p>
               <div className="screenshot-phone rounded-xl overflow-hidden max-w-[260px] mx-auto">
-                <Image src="/ss/activities.webp" alt="Activity feed" width={260} height={520} className="w-full h-auto" />
+                <Image src="/ss/activities.webp" alt="Real-time expense activity feed in Hisaab" width={260} height={520} className="w-full h-auto" />
               </div>
             </motion.div>
           </div>
@@ -408,7 +491,7 @@ export default function Home() {
 
             <motion.div variants={fadeUp} className="flex justify-center">
               <div className="screenshot-phone w-64 rounded-2xl overflow-hidden animate-float-slow">
-                <Image src="/ss/expense-detail.webp" alt="Expense details" width={260} height={520} className="w-full h-auto" />
+                <Image src="/ss/expense-detail.webp" alt="Detailed expense breakdown showing who paid and who owes" width={260} height={520} className="w-full h-auto" />
               </div>
             </motion.div>
           </motion.div>
@@ -499,6 +582,38 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== FAQ ===== */}
+      <section id="faq" className="py-16 sm:py-24 bg-[#121212]">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="text-center mb-12"
+          >
+            <motion.p variants={fadeUp} className="text-sm font-medium text-[#2563EB] mb-3 tracking-wide uppercase">
+              Questions?
+            </motion.p>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Frequently Asked Questions
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="space-y-3"
+          >
+            {faqs.map((faq, index) => (
+              <FaqItem key={index} question={faq.question} answer={faq.answer} />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ===== FINAL CTA ===== */}
       <section className="py-20 sm:py-28 bg-[#0B0B0B]">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -530,7 +645,7 @@ export default function Home() {
       {/* ===== FOOTER ===== */}
       <footer id="contact" className="bg-[#121212] border-t border-white/5 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-8">
             <div>
               <div className="flex items-center space-x-2.5 mb-4">
                 <Image src="/logo.webp" alt="Hisaab" width={28} height={28} className="rounded-lg" />
@@ -546,6 +661,8 @@ export default function Home() {
               <ul className="space-y-2.5 text-sm text-gray-500">
                 <li><Link href="#how-it-works" className="hover:text-white transition-colors">How it works</Link></li>
                 <li><Link href="#features" className="hover:text-white transition-colors">Features</Link></li>
+                <li><Link href="/splitwise-alternative" className="hover:text-white transition-colors">Splitwise Alternative</Link></li>
+                <li><Link href="/compare/splitwise" className="hover:text-white transition-colors">Hisaab vs Splitwise</Link></li>
                 <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
               </ul>
@@ -554,6 +671,15 @@ export default function Home() {
             <div>
               <h4 className="font-semibold text-sm mb-4 text-gray-300">Download</h4>
               <DownloadButtons variant="footer-links" />
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-sm mb-4 text-gray-300">Use Cases</h4>
+              <ul className="space-y-2.5 text-sm text-gray-500">
+                <li><Link href="/for/trips" className="hover:text-white transition-colors">Trip Expenses</Link></li>
+                <li><Link href="/for/roommates" className="hover:text-white transition-colors">Roommate Bills</Link></li>
+                <li><Link href="/for/couples" className="hover:text-white transition-colors">Couples</Link></li>
+              </ul>
             </div>
 
             <div>

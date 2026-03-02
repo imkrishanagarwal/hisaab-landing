@@ -1,0 +1,50 @@
+# Hisaab - thehisaab.com
+# LLM-friendly site description
+
+## About
+Hisaab is a free expense splitting and bill tracking app made for India. It is the best free alternative to Splitwise. Available on Android (Google Play) and iOS (App Store).
+
+## Key Facts
+- 100% free forever, no ads, no paywalls
+- Works offline with real-time sync
+- Supports multiple payers and unequal splits
+- Made in India, INR-first
+- Available on Android and iOS
+- Privacy-first: no data selling, no tracking
+
+## App Links
+- Website: https://thehisaab.com
+- Google Play: https://play.google.com/store/apps/details?id=com.krishanblr.hisaab
+- App Store: https://apps.apple.com/in/app/the-hisaab/id6759067047
+
+## Use Cases
+- Trip expense splitting (Goa trips, vacations, group travel)
+- Roommate/flatmate bill splitting (rent, groceries, utilities)
+- Couple shared expenses
+- Group dinners and outings
+- Office expense sharing
+
+## Features
+- Create unlimited groups
+- Add expenses with multiple payers
+- Split equally or unequally
+- Real-time activity feed
+- Smart settlement suggestions
+- Works fully offline
+- Instant sync when online
+- Privacy-first design
+
+## Comparison with Splitwise
+- Splitwise: Free trial then paid (Rs 200+/month), ads on free tier, limited offline, paywalled features after 3 expenses/day
+- Hisaab: Free forever, no ads, full offline support, all features included, made for India, INR-first
+
+## Pages
+- /: Homepage - main landing page with app overview
+- /splitwise-alternative: Why Hisaab is the best free Splitwise alternative
+- /compare/splitwise: Detailed feature comparison between Hisaab and Splitwise
+- /for/trips: Expense splitting for group trips and vacations
+- /for/roommates: Bill splitting for roommates and flatmates
+- /for/couples: Shared expense tracking for couples
+- /download: Direct download redirect
+- /privacy: Privacy policy
+- /terms: Terms of service

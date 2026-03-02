@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import MixpanelProvider from "@/components/MixpanelProvider";
+import JsonLd from "@/components/JsonLd";
+import { organizationSchema, softwareApplicationSchema } from "@/lib/schema";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -17,13 +19,19 @@ const jakarta = Plus_Jakarta_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://thehisaab.com'),
-  title: "Hisaab - Split bills, not friendships | Free expense tracker for India",
-  description: "Your friends owe you money. Now they know it too. Hisaab tracks shared expenses, splits bills fairly, and shows who owes whom. 100% free forever. Made in India.",
-  keywords: ["expense tracker", "bill splitting", "split expenses", "shared expenses", "money tracker", "group expenses", "india", "free app", "expense sharing", "splitwise alternative", "hisaab"],
+  title: {
+    default: "Hisaab - Free Splitwise Alternative | Split Bills & Track Expenses in India",
+    template: "%s | Hisaab",
+  },
+  description: "The best free Splitwise alternative made for India. Split bills with friends, track shared expenses, settle debts. Works offline, no ads, free forever. Download on Android & iOS.",
+  keywords: ["splitwise alternative", "splitwise alternative free", "expense tracker", "bill splitting app", "split expenses", "shared expenses", "expense splitter", "group expenses india", "free expense tracker", "hisaab", "roommate expense tracker", "trip expense splitter", "bill splitting", "money tracker", "group expenses", "india", "free app", "expense sharing"],
   authors: [{ name: "Hisaab Team" }],
   creator: "Hisaab",
   publisher: "Hisaab",
-  robots: "index, follow",
+  robots: { index: true, follow: true },
+  alternates: {
+    canonical: 'https://thehisaab.com',
+  },
   facebook: {
     appId: "799277515879208",
   },
@@ -67,6 +75,8 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jakarta.variable} font-sans antialiased`}
       >
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={softwareApplicationSchema} />
         <MixpanelProvider />
         {children}
       </body>
