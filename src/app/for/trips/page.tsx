@@ -20,10 +20,10 @@ const stagger = {
 };
 
 const faqs = [
-  { question: 'How do I split trip expenses with friends?', answer: 'Download Hisaab, create a group for your trip, and add expenses as they happen. Hisaab automatically calculates who owes whom. Works offline too — perfect for remote destinations.' },
-  { question: 'Can I add expenses without internet during a trip?', answer: 'Yes. Hisaab works fully offline. Add all your expenses during the trip and they sync automatically when you get internet access.' },
-  { question: 'How do I handle unequal splitting on trips?', answer: 'Hisaab supports custom amounts for each person. If someone didn\'t join dinner or someone paid more, you can set exact amounts per person — all for free.' },
-  { question: 'What if multiple people paid for one expense?', answer: 'Hisaab supports multiple payers. If two people split a hotel bill, you can record both as payers with their exact amounts.' },
+  { question: 'How do I split trip expenses with friends?', answer: 'Download The Hisaab, create a group for your trip, and add expenses as they happen. The Hisaab automatically calculates who owes whom. Works offline too — perfect for remote destinations.' },
+  { question: 'Can I add expenses without internet during a trip?', answer: 'Yes. The Hisaab works fully offline. Add all your expenses during the trip and they sync automatically when you get internet access.' },
+  { question: 'How do I handle unequal splitting on trips?', answer: 'The Hisaab supports custom amounts for each person. If someone didn\'t join dinner or someone paid more, you can set exact amounts per person — all for free.' },
+  { question: 'What if multiple people paid for one expense?', answer: 'The Hisaab supports multiple payers. If two people split a hotel bill, you can record both as payers with their exact amounts.' },
 ];
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
@@ -58,7 +58,7 @@ export default function TripsPage() {
                 <span className="bg-gradient-to-r from-[#2563EB] to-[#60a5fa] bg-clip-text text-transparent">without the drama.</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Goa with the squad? Family vacation? Weekend road trip? Add expenses as they happen and Hisaab handles the math &mdash; even without internet.
+                Goa with the squad? Family vacation? Weekend road trip? Add expenses as they happen and The Hisaab handles the math &mdash; even without internet.
               </motion.p>
               <motion.div variants={fadeUp}>
                 <DownloadButtons variant="hero" />
@@ -67,7 +67,7 @@ export default function TripsPage() {
 
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex justify-center">
               <div className="screenshot-phone animate-float-slow w-full max-w-xs mx-auto">
-                <Image src="/ss/group-details.webp" alt="Trip expense tracking in Hisaab - see who owes whom" width={400} height={800} className="w-full h-auto" priority />
+                <Image src="/ss/group-details.webp" alt="Trip expense tracking in The Hisaab - see who owes whom" width={400} height={800} className="w-full h-auto" priority />
               </div>
             </motion.div>
           </div>
@@ -100,7 +100,7 @@ export default function TripsPage() {
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center">
-            <p className="text-white text-lg font-medium">With Hisaab, none of this happens.</p>
+            <p className="text-white text-lg font-medium">With The Hisaab, none of this happens.</p>
           </motion.div>
         </div>
       </section>
@@ -110,7 +110,7 @@ export default function TripsPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} variants={stagger} className="text-center mb-14">
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Why Hisaab is perfect for trips
+              Why The Hisaab is perfect for trips
             </motion.h2>
           </motion.div>
 
@@ -147,7 +147,7 @@ export default function TripsPage() {
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-3 gap-8">
             {[
-              { step: '1', img: '/ss/grouplist.webp', alt: 'Create a trip group in Hisaab', title: 'Create a trip group', desc: 'Name it "Goa 2026" and add your friends.' },
+              { step: '1', img: '/ss/grouplist.webp', alt: 'Create a trip group in The Hisaab', title: 'Create a trip group', desc: 'Name it "Goa 2026" and add your friends.' },
               { step: '2', img: '/ss/add-exp.webp', alt: 'Add trip expenses as they happen', title: 'Add expenses on the go', desc: 'Hotel, dinner, cab — add each expense in 5 seconds.' },
               { step: '3', img: '/ss/expense-detail.webp', alt: 'See who owes whom after the trip', title: 'Settle after the trip', desc: 'See exact balances and settle with minimum transfers.' },
             ].map((item) => (
@@ -194,7 +194,7 @@ export default function TripsPage() {
         </div>
       </section>
 
-      <SeoPageFooter heading="Your next trip, sorted." subheading="Download Hisaab and never fight over trip expenses again." />
+      <SeoPageFooter heading="Your next trip, sorted." subheading="Download The Hisaab and never fight over trip expenses again." />
     </div>
   );
 }

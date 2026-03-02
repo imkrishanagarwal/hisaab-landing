@@ -21,28 +21,28 @@ const stagger = {
 
 const faqs = [
   {
-    question: 'Is Hisaab really free forever?',
-    answer: 'Yes, Hisaab is 100% free with no ads, no paywalls, and no hidden fees. All features including unlimited groups, unequal splits, and offline mode are available to everyone.',
+    question: 'Is The Hisaab really free forever?',
+    answer: 'Yes, The Hisaab is 100% free with no ads, no paywalls, and no hidden fees. All features including unlimited groups, unequal splits, and offline mode are available to everyone.',
   },
   {
-    question: 'How is Hisaab different from Splitwise?',
-    answer: 'Hisaab offers everything Splitwise now charges for — unlimited groups, multiple payers, unequal splits — completely free. Plus, Hisaab works fully offline, has no ads, and is designed specifically for Indian users with INR-first support.',
+    question: 'How is The Hisaab different from Splitwise?',
+    answer: 'The Hisaab offers everything Splitwise now charges for — unlimited groups, multiple payers, unequal splits — completely free. Plus, The Hisaab works fully offline, has no ads, and is designed specifically for Indian users with INR-first support.',
   },
   {
-    question: 'Does Hisaab work without internet?',
-    answer: 'Yes, Hisaab works fully offline. You can add expenses, create groups, and view balances without any internet connection. Everything syncs automatically when you\'re back online.',
+    question: 'Does The Hisaab work without internet?',
+    answer: 'Yes, The Hisaab works fully offline. You can add expenses, create groups, and view balances without any internet connection. Everything syncs automatically when you\'re back online.',
   },
   {
-    question: 'Can I use Hisaab for splitting rent with roommates?',
-    answer: 'Absolutely. Hisaab is perfect for roommates. Track rent, groceries, utilities, WiFi, and every shared expense. See exactly who owes whom at a glance.',
+    question: 'Can I use The Hisaab for splitting rent with roommates?',
+    answer: 'Absolutely. The Hisaab is perfect for roommates. Track rent, groceries, utilities, WiFi, and every shared expense. See exactly who owes whom at a glance.',
   },
   {
-    question: 'Is my financial data safe with Hisaab?',
-    answer: 'Yes. Hisaab never sells or shares your data with third parties. Your expense data stays private and you can delete your account and all data at any time.',
+    question: 'Is my financial data safe with The Hisaab?',
+    answer: 'Yes. The Hisaab never sells or shares your data with third parties. Your expense data stays private and you can delete your account and all data at any time.',
   },
   {
     question: 'Can I split expenses unequally?',
-    answer: 'Yes. Hisaab supports equal splits, custom amount splits, and even multiple payers for a single expense — all for free, no premium plan needed.',
+    answer: 'Yes. The Hisaab supports equal splits, custom amount splits, and even multiple payers for a single expense — all for free, no premium plan needed.',
   },
 ];
 
@@ -80,8 +80,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-3.5">
             <Link href="/" className="flex items-center space-x-2.5">
-              <Image src="/logo.webp" alt="Hisaab - Free expense splitting app" width={36} height={36} className="rounded-xl" />
-              <span className="text-xl font-bold text-white tracking-tight">Hisaab</span>
+              <Image src="/logo.webp" alt="The Hisaab - Free expense splitting app" width={36} height={36} className="rounded-xl" />
+              <span className="text-xl font-bold text-white tracking-tight">The Hisaab</span>
             </Link>
 
             <nav className="hidden md:flex items-center space-x-8">
@@ -98,7 +98,7 @@ export default function Home() {
                     <Link href="/for/roommates" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Roommate Bills</Link>
                     <Link href="/for/couples" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Couples</Link>
                     <div className="border-t border-white/5 my-1" />
-                    <Link href="/compare/splitwise" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Hisaab vs Splitwise</Link>
+                    <Link href="/compare/splitwise" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">The Hisaab vs Splitwise</Link>
                   </div>
                 </div>
               </div>
@@ -130,7 +130,7 @@ export default function Home() {
                   { href: '#how-it-works', label: 'How it works' },
                   { href: '#features', label: 'Features' },
                   { href: '/splitwise-alternative', label: 'Splitwise Alternative' },
-                  { href: '/compare/splitwise', label: 'Hisaab vs Splitwise' },
+                  { href: '/compare/splitwise', label: 'The Hisaab vs Splitwise' },
                 ].map(({ href, label }) => (
                   <Link
                     key={href}
@@ -188,7 +188,7 @@ export default function Home() {
               </motion.h1>
 
               <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Hisaab tracks every shared expense, splits bills fairly, and
+                The Hisaab tracks every shared expense, splits bills fairly, and
                 shows who owes whom &mdash; so you never have to ask.
               </motion.p>
 
@@ -315,15 +315,15 @@ export default function Home() {
               Splitting expenses shouldn&apos;t be hard
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-gray-400 max-w-2xl mx-auto">
-              Create a group, add an expense, and Hisaab instantly calculates who owes whom. No spreadsheets required.
+              Create a group, add an expense, and The Hisaab instantly calculates who owes whom. No spreadsheets required.
             </motion.p>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             {[
-              { step: 1, img: '/ss/grouplist.webp', alt: 'Create expense groups in Hisaab - free Splitwise alternative', title: 'Create a group', desc: 'Trip, home, couple \u2014 any scenario. Add friends from your contacts instantly.' },
-              { step: 2, img: '/ss/add-exp.webp', alt: 'Add and split expenses in Hisaab app', title: 'Add expenses', desc: 'Split equally or set custom amounts. Single or multiple payers. Takes 5 seconds.' },
-              { step: 3, img: '/ss/group-details.webp', alt: 'View balances and settle up in Hisaab', title: 'Settle up', desc: 'See every balance at a glance. One-tap settlements with smart recommendations.' },
+              { step: 1, img: '/ss/grouplist.webp', alt: 'Create expense groups in The Hisaab - free Splitwise alternative', title: 'Create a group', desc: 'Trip, home, couple \u2014 any scenario. Add friends from your contacts instantly.' },
+              { step: 2, img: '/ss/add-exp.webp', alt: 'Add and split expenses in The Hisaab app', title: 'Add expenses', desc: 'Split equally or set custom amounts. Single or multiple payers. Takes 5 seconds.' },
+              { step: 3, img: '/ss/group-details.webp', alt: 'View balances and settle up in The Hisaab', title: 'Settle up', desc: 'See every balance at a glance. One-tap settlements with smart recommendations.' },
             ].map((item) => (
               <motion.div
                 key={item.step}
@@ -386,7 +386,7 @@ export default function Home() {
                 Settled groups auto-hide so you focus on what matters.
               </p>
               <div className="screenshot-phone rounded-xl overflow-hidden max-w-[260px] mx-auto">
-                <Image src="/ss/grouplist.webp" alt="Hisaab groups list showing expense balances" width={260} height={520} className="w-full h-auto" />
+                <Image src="/ss/grouplist.webp" alt="The Hisaab groups list showing expense balances" width={260} height={520} className="w-full h-auto" />
               </div>
             </motion.div>
 
@@ -408,7 +408,7 @@ export default function Home() {
                 Filter by group, type, or date. Never miss a transaction.
               </p>
               <div className="screenshot-phone rounded-xl overflow-hidden max-w-[260px] mx-auto">
-                <Image src="/ss/activities.webp" alt="Real-time expense activity feed in Hisaab" width={260} height={520} className="w-full h-auto" />
+                <Image src="/ss/activities.webp" alt="Real-time expense activity feed in The Hisaab" width={260} height={520} className="w-full h-auto" />
               </div>
             </motion.div>
           </div>
@@ -508,7 +508,7 @@ export default function Home() {
             </motion.h2>
             <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-2xl mx-auto">
               Other apps started free, then locked features behind paywalls.
-              Hisaab is built different &mdash; free forever, no catch.
+              The Hisaab is built different &mdash; free forever, no catch.
             </motion.p>
           </motion.div>
 
@@ -522,7 +522,7 @@ export default function Home() {
             <div className="grid grid-cols-3 text-center text-sm font-semibold border-b border-white/5">
               <div className="p-4 text-gray-400"></div>
               <div className="p-4 text-gray-400">Other apps</div>
-              <div className="p-4 text-[#2563EB] bg-[#2563EB]/5">Hisaab</div>
+              <div className="p-4 text-[#2563EB] bg-[#2563EB]/5">The Hisaab</div>
             </div>
             {[
               { feature: 'Price', others: 'Free trial \u2192 \u20b9200+/mo', hisaab: 'Free forever', highlight: true },
@@ -622,7 +622,7 @@ export default function Home() {
             </motion.h2>
             <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
               Join thousands of Indians who stopped fighting over money
-              and started using Hisaab.
+              and started using The Hisaab.
             </motion.p>
             <motion.div variants={fadeUp}>
               <DownloadButtons variant="cta" />
@@ -640,8 +640,8 @@ export default function Home() {
           <div className="grid sm:grid-cols-2 md:grid-cols-5 gap-8">
             <div>
               <div className="flex items-center space-x-2.5 mb-4">
-                <Image src="/logo.webp" alt="Hisaab" width={28} height={28} className="rounded-lg" />
-                <span className="text-lg font-bold">Hisaab</span>
+                <Image src="/logo.webp" alt="The Hisaab" width={28} height={28} className="rounded-lg" />
+                <span className="text-lg font-bold">The Hisaab</span>
               </div>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Split bills, not friendships. The free expense tracker made for India.
@@ -654,7 +654,7 @@ export default function Home() {
                 <li><Link href="#how-it-works" className="hover:text-white transition-colors">How it works</Link></li>
                 <li><Link href="#features" className="hover:text-white transition-colors">Features</Link></li>
                 <li><Link href="/splitwise-alternative" className="hover:text-white transition-colors">Splitwise Alternative</Link></li>
-                <li><Link href="/compare/splitwise" className="hover:text-white transition-colors">Hisaab vs Splitwise</Link></li>
+                <li><Link href="/compare/splitwise" className="hover:text-white transition-colors">The Hisaab vs Splitwise</Link></li>
                 <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
               </ul>
@@ -689,7 +689,7 @@ export default function Home() {
 
           <div className="border-t border-white/5 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-2">
             <p className="text-gray-600 text-sm">
-              &copy; 2026 Hisaab. Made with love in India.
+              &copy; 2026 The Hisaab. Made with love in India.
             </p>
             <p className="text-gray-600 text-sm">
               Free forever &bull; No ads &bull; Privacy first

@@ -12,7 +12,7 @@ export default function SeoPageFooter({ heading, subheading }: { heading?: strin
             {heading || 'Ready to switch?'}
           </h2>
           <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
-            {subheading || 'Download Hisaab for free. No ads. No paywalls. All features included.'}
+            {subheading || 'Download The Hisaab for free. No ads. No paywalls. All features included.'}
           </p>
           <DownloadButtons variant="cta" />
           <p className="text-sm text-gray-600 mt-5">
@@ -24,7 +24,7 @@ export default function SeoPageFooter({ heading, subheading }: { heading?: strin
       <footer className="bg-[#121212] border-t border-white/5 py-8">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-gray-600 text-sm">
-            &copy; 2026 Hisaab. Made with love in India.
+            &copy; 2026 The Hisaab. Made with love in India.
           </p>
           <nav className="flex items-center gap-6 text-sm text-gray-500">
             <Link href="/" className="hover:text-white transition-colors">Home</Link>

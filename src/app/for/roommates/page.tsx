@@ -20,10 +20,10 @@ const stagger = {
 };
 
 const faqs = [
-  { question: 'How do I split rent and bills with my roommates?', answer: 'Create a group in Hisaab for your flat, add all roommates, then log every shared expense — rent, electricity, WiFi, groceries. Hisaab calculates running balances automatically.' },
-  { question: 'Can I track recurring expenses like rent?', answer: 'Yes. Add rent or any recurring bill each month. Hisaab keeps a running total so you can settle up weekly or monthly — whatever works for your flat.' },
+  { question: 'How do I split rent and bills with my roommates?', answer: 'Create a group in The Hisaab for your flat, add all roommates, then log every shared expense — rent, electricity, WiFi, groceries. The Hisaab calculates running balances automatically.' },
+  { question: 'Can I track recurring expenses like rent?', answer: 'Yes. Add rent or any recurring bill each month. The Hisaab keeps a running total so you can settle up weekly or monthly — whatever works for your flat.' },
   { question: 'What if not all roommates share every expense?', answer: 'You can choose which roommates to include in each expense. If only two of you ordered Swiggy, split it between just those two.' },
-  { question: 'Is Hisaab better than a shared spreadsheet?', answer: 'Much better. Spreadsheets get outdated, cause confusion, and nobody wants to maintain them. Hisaab updates in real-time and everyone can see their balance instantly.' },
+  { question: 'Is The Hisaab better than a shared spreadsheet?', answer: 'Much better. Spreadsheets get outdated, cause confusion, and nobody wants to maintain them. The Hisaab updates in real-time and everyone can see their balance instantly.' },
 ];
 
 function FaqItem({ question, answer }: { question: string; answer: string }) {
@@ -58,7 +58,7 @@ export default function RoommatesPage() {
                 <span className="bg-gradient-to-r from-[#2563EB] to-[#60a5fa] bg-clip-text text-transparent">Sorted.</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Track every shared expense with your flatmates. Hisaab keeps a running balance so you always know who owes whom &mdash; no spreadsheets needed.
+                Track every shared expense with your flatmates. The Hisaab keeps a running balance so you always know who owes whom &mdash; no spreadsheets needed.
               </motion.p>
               <motion.div variants={fadeUp}>
                 <DownloadButtons variant="hero" />
@@ -67,7 +67,7 @@ export default function RoommatesPage() {
 
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex justify-center">
               <div className="screenshot-phone animate-float-slow w-full max-w-xs mx-auto">
-                <Image src="/ss/activities.webp" alt="Roommate expense tracking in Hisaab - track all shared bills" width={400} height={800} className="w-full h-auto" priority />
+                <Image src="/ss/activities.webp" alt="Roommate expense tracking in The Hisaab - track all shared bills" width={400} height={800} className="w-full h-auto" priority />
               </div>
             </motion.div>
           </div>
@@ -196,7 +196,7 @@ export default function RoommatesPage() {
         </div>
       </section>
 
-      <SeoPageFooter heading="Flat expenses, finally fair." subheading="Download Hisaab and split bills with your roommates the easy way." />
+      <SeoPageFooter heading="Flat expenses, finally fair." subheading="Download The Hisaab and split bills with your roommates the easy way." />
     </div>
   );
 }

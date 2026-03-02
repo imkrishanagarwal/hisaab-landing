@@ -20,14 +20,14 @@ const jakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL('https://thehisaab.com'),
   title: {
-    default: "Hisaab - Free Splitwise Alternative | Split Bills & Track Expenses in India",
-    template: "%s | Hisaab",
+    default: "The Hisaab - Free Splitwise Alternative | Split Bills & Track Expenses in India",
+    template: "%s | The Hisaab",
   },
   description: "The best free Splitwise alternative made for India. Split bills with friends, track shared expenses, settle debts. Works offline, no ads, free forever. Download on Android & iOS.",
   keywords: ["splitwise alternative", "splitwise alternative free", "expense tracker", "bill splitting app", "split expenses", "shared expenses", "expense splitter", "group expenses india", "free expense tracker", "hisaab", "roommate expense tracker", "trip expense splitter", "bill splitting", "money tracker", "group expenses", "india", "free app", "expense sharing"],
-  authors: [{ name: "Hisaab Team" }],
-  creator: "Hisaab",
-  publisher: "Hisaab",
+  authors: [{ name: "The Hisaab Team" }],
+  creator: "The Hisaab",
+  publisher: "The Hisaab",
   robots: { index: true, follow: true },
   alternates: {
     canonical: 'https://thehisaab.com',
@@ -37,23 +37,23 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    title: "Hisaab - Split bills, not friendships",
+    title: "The Hisaab - Split bills, not friendships",
     description: "Your friends owe you money. Now they know it too. Track shared expenses, split bills, settle debts. 100% free forever.",
     url: "https://thehisaab.com",
-    siteName: "Hisaab",
+    siteName: "The Hisaab",
     images: [
       {
         url: "/image.jpg",
         width: 1200,
         height: 630,
-        alt: "Hisaab - Split bills, not friendships",
+        alt: "The Hisaab - Split bills, not friendships",
       },
     ],
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hisaab - Split bills, not friendships",
+    title: "The Hisaab - Split bills, not friendships",
     description: "Track shared expenses, split bills, settle debts. 100% free forever. Made in India.",
     images: ["/image.jpg"],
   },

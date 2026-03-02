@@ -20,8 +20,8 @@ const stagger = {
 };
 
 const faqs = [
-  { question: 'How do couples use Hisaab?', answer: 'Create a private group for just the two of you. Log shared expenses like dinners, rent, groceries, and vacations. Hisaab tracks the running balance so things stay fair — without awkward conversations.' },
-  { question: 'Is my data private?', answer: 'Yes. Only people in your group can see the expenses. Hisaab never shares or sells your data. Your financial information stays between you and your partner.' },
+  { question: 'How do couples use The Hisaab?', answer: 'Create a private group for just the two of you. Log shared expenses like dinners, rent, groceries, and vacations. The Hisaab tracks the running balance so things stay fair — without awkward conversations.' },
+  { question: 'Is my data private?', answer: 'Yes. Only people in your group can see the expenses. The Hisaab never shares or sells your data. Your financial information stays between you and your partner.' },
   { question: 'Do we both need to download the app?', answer: 'Ideally yes — both partners can then add expenses and see balances in real-time. But one person can track everything solo too.' },
   { question: 'Can we split things unevenly?', answer: 'Yes. If one person earns more or you want to split by percentage, you can set custom amounts for each expense.' },
 ];
@@ -58,7 +58,7 @@ export default function CouplesPage() {
                 <span className="bg-gradient-to-r from-[#2563EB] to-[#60a5fa] bg-clip-text text-transparent">not arguments.</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Track shared expenses with your partner without awkward money conversations. Hisaab keeps things fair, transparent, and private.
+                Track shared expenses with your partner without awkward money conversations. The Hisaab keeps things fair, transparent, and private.
               </motion.p>
               <motion.div variants={fadeUp}>
                 <DownloadButtons variant="hero" />
@@ -67,7 +67,7 @@ export default function CouplesPage() {
 
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="flex justify-center">
               <div className="screenshot-phone animate-float-slow w-full max-w-xs mx-auto">
-                <Image src="/ss/expense-detail.webp" alt="Couple expense tracking in Hisaab - fair and transparent" width={400} height={800} className="w-full h-auto" priority />
+                <Image src="/ss/expense-detail.webp" alt="Couple expense tracking in The Hisaab - fair and transparent" width={400} height={800} className="w-full h-auto" priority />
               </div>
             </motion.div>
           </div>
@@ -145,7 +145,7 @@ export default function CouplesPage() {
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed mb-6">
                 Maybe one of you earns more. Maybe you take turns. Whatever works for your relationship,
-                Hisaab supports it with flexible splitting — equal, percentage, or custom amounts.
+                The Hisaab supports it with flexible splitting — equal, percentage, or custom amounts.
               </p>
               <ul className="space-y-3">
                 {[
@@ -164,7 +164,7 @@ export default function CouplesPage() {
 
             <motion.div variants={fadeUp} className="flex justify-center">
               <div className="screenshot-phone w-64 rounded-2xl overflow-hidden">
-                <Image src="/ss/add-exp.webp" alt="Custom expense splitting for couples in Hisaab" width={260} height={520} className="w-full h-auto" />
+                <Image src="/ss/add-exp.webp" alt="Custom expense splitting for couples in The Hisaab" width={260} height={520} className="w-full h-auto" />
               </div>
             </motion.div>
           </motion.div>
@@ -197,7 +197,7 @@ export default function CouplesPage() {
         </div>
       </section>
 
-      <SeoPageFooter heading="Money talk, simplified." subheading="Download Hisaab and share expenses with your partner the easy way." />
+      <SeoPageFooter heading="Money talk, simplified." subheading="Download The Hisaab and share expenses with your partner the easy way." />
     </div>
   );
 }

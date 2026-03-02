@@ -1,7 +1,7 @@
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'Hisaab',
+  name: 'The Hisaab',
   url: 'https://thehisaab.com',
   logo: 'https://thehisaab.com/logo.webp',
   contactPoint: {
@@ -18,8 +18,8 @@ export const organizationSchema = {
 export const softwareApplicationSchema = {
   '@context': 'https://schema.org',
   '@type': 'SoftwareApplication',
-  name: 'Hisaab',
-  alternateName: 'The Hisaab',
+  name: 'The Hisaab',
+  alternateName: 'Hisaab',
   applicationCategory: 'FinanceApplication',
   operatingSystem: 'Android, iOS',
   offers: {
