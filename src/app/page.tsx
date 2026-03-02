@@ -7,6 +7,7 @@ import { createFaqSchema } from '@/lib/schema';
 import Link from 'next/link';
 import Image from 'next/image';
 import DownloadButtons from '@/components/DownloadButtons';
+import HeroReel from '@/components/HeroReel';
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -217,16 +218,7 @@ export default function Home() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="relative flex justify-center"
             >
-              <div className="screenshot-phone animate-float-slow w-full max-w-xs mx-auto">
-                <Image
-                  src="/ss/grouplist.webp"
-                  alt="Hisaab - Track all your groups at a glance"
-                  width={400}
-                  height={800}
-                  className="w-full h-auto"
-                  priority
-                />
-              </div>
+              <HeroReel />
             </motion.div>
           </div>
         </div>
