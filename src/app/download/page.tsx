@@ -62,7 +62,7 @@ export default function DownloadPage() {
               repeat: Infinity,
             }}
           >
-            <Image src="/logo.png" alt="The Hisaab" width={80} height={80} className="rounded-2xl mx-auto" />
+            <Image src="/logo.webp" alt="The Hisaab" width={80} height={80} className="rounded-2xl mx-auto" />
           </motion.div>
 
           {/* Title */}

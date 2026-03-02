@@ -2,93 +2,79 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Heart, Shield, Zap, Coffee, Star, Mail, Menu, X } from 'lucide-react';
+import { Menu, X, Mail, ArrowRight, Check, X as XIcon, Smartphone, WifiOff, Users, Clock, Shield, IndianRupee } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import DownloadButtons from '@/components/DownloadButtons';
 
+const fadeUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+};
+
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.12, delayChildren: 0.1 } },
+};
+
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  return (
-    <div className="min-h-screen bg-[#0B0B0B] text-white">
-      {/* Header */}
-      <header className="fixed w-full top-0 z-50 bg-[#0B0B0B]/80 backdrop-blur-lg border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="flex items-center space-x-3"
-            >
-              <Image src="/logo.png" alt="The Hisaab" width={40} height={40} className="rounded-xl" />
-              <span className="text-2xl font-bold text-white">
-                The Hisaab
-              </span>
-            </motion.div>
 
-            <nav className="hidden md:flex space-x-8">
-              <Link href="#features" className="text-gray-400 hover:text-white transition-colors">Features</Link>
-              <Link href="#why-hisaab" className="text-gray-400 hover:text-white transition-colors">Why The Hisaab</Link>
-              <Link href="/privacy" className="text-gray-400 hover:text-white transition-colors">Privacy</Link>
-              <Link href="#contact" className="text-gray-400 hover:text-white transition-colors">Contact</Link>
+  return (
+    <div className="min-h-screen bg-[#0B0B0B] text-white overflow-x-hidden">
+      {/* ===== HEADER ===== */}
+      <header className="fixed w-full top-0 z-50 bg-[#0B0B0B]/80 backdrop-blur-xl border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-3.5">
+            <Link href="/" className="flex items-center space-x-2.5">
+              <Image src="/logo.webp" alt="Hisaab" width={36} height={36} className="rounded-xl" />
+              <span className="text-xl font-bold text-white tracking-tight">Hisaab</span>
+            </Link>
+
+            <nav className="hidden md:flex items-center space-x-8">
+              <Link href="#how-it-works" className="text-sm text-gray-400 hover:text-white transition-colors">How it works</Link>
+              <Link href="#features" className="text-sm text-gray-400 hover:text-white transition-colors">Features</Link>
+              <Link href="#compare" className="text-sm text-gray-400 hover:text-white transition-colors">Why Hisaab</Link>
+              <Link href="/privacy" className="text-sm text-gray-400 hover:text-white transition-colors">Privacy</Link>
             </nav>
 
-            {/* Mobile menu button */}
-            <button
-              className="md:hidden p-2 text-gray-400"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label="Toggle menu"
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              className="hidden md:block"
-            >
-              <DownloadButtons variant="compact" />
-            </motion.div>
+            <div className="flex items-center gap-3">
+              <div className="hidden md:block">
+                <DownloadButtons variant="compact" />
+              </div>
+              <button
+                className="md:hidden p-2 text-gray-400 hover:text-white transition-colors"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label="Toggle menu"
+              >
+                {isMenuOpen ? <X size={22} /> : <Menu size={22} />}
+              </button>
+            </div>
           </div>
 
-          {/* Mobile menu */}
           {isMenuOpen && (
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
+              initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              className="md:hidden bg-[#121212] border-t border-gray-800 py-4 rounded-b-2xl"
+              className="md:hidden bg-[#121212] border-t border-white/5 py-4 rounded-b-2xl -mx-4 px-4"
             >
-              <nav className="flex flex-col space-y-4 px-4">
-                <Link
-                  href="#features"
-                  className="text-gray-400 hover:text-white transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Features
-                </Link>
-                <Link
-                  href="#why-hisaab"
-                  className="text-gray-400 hover:text-white transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Why The Hisaab
-                </Link>
-                <Link
-                  href="/privacy"
-                  className="text-gray-400 hover:text-white transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Privacy
-                </Link>
-                <Link
-                  href="#contact"
-                  className="text-gray-400 hover:text-white transition-colors py-2"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Contact
-                </Link>
-                <div onClick={() => setIsMenuOpen(false)}>
+              <nav className="flex flex-col space-y-1">
+                {[
+                  { href: '#how-it-works', label: 'How it works' },
+                  { href: '#features', label: 'Features' },
+                  { href: '#compare', label: 'Why Hisaab' },
+                  { href: '/privacy', label: 'Privacy' },
+                ].map(({ href, label }) => (
+                  <Link
+                    key={href}
+                    href={href}
+                    className="text-gray-400 hover:text-white transition-colors py-2.5 px-3 rounded-lg hover:bg-white/5"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {label}
+                  </Link>
+                ))}
+                <div className="pt-2" onClick={() => setIsMenuOpen(false)}>
                   <DownloadButtons variant="compact" className="w-full justify-center" />
                 </div>
               </nav>
@@ -97,293 +83,468 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8">
+      {/* ===== HERO ===== */}
+      <section className="pt-28 sm:pt-32 pb-8 sm:pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center lg:text-left"
-          >
-            <div className="inline-flex items-center bg-white/5 border border-white/10 rounded-full px-6 py-2 mb-6">
-              <Star className="w-5 h-5 text-[#2563EB] mr-2" />
-              <span className="text-sm font-semibold text-gray-300">Made in India • Made for India</span>
-            </div>
-
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Split expenses,
-              <br />
-              <span className="text-[#2563EB]">
-                stay friends
-              </span>
-            </h1>
-
-            <p className="text-xl text-gray-400 mb-8 leading-relaxed">
-              The simple, beautiful expense tracker that keeps your relationships intact.
-              Track shared expenses, settle debts, and never argue about money again.
-            </p>
-
-            <DownloadButtons variant="hero" />
-
-            <div className="mt-6 flex items-center justify-center lg:justify-start space-x-6 text-sm text-gray-500">
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                <span>100% Free Forever</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                <span>No Ads</span>
-              </div>
-              <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-emerald-400 rounded-full"></div>
-                <span>Privacy First</span>
-              </div>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative flex justify-center"
-          >
-            <Image
-              src="/devices.png"
-              alt="The Hisaab app on devices"
-              width={500}
-              height={600}
-              className="w-full max-w-md h-auto"
-              priority
-            />
-          </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose The Hisaab Section */}
-      <section id="why-hisaab" className="py-16 bg-[#121212]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Why thousands choose The Hisaab
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              When other apps started charging fees, we decided to build something better.
-              Simple, beautiful, and free forever.
-            </p>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="text-center p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10"
+              initial="hidden"
+              animate="visible"
+              variants={stagger}
+              className="text-center lg:text-left"
             >
-              <div className="w-16 h-16 bg-emerald-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Heart className="w-8 h-8 text-emerald-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-white">100% Free Forever</h3>
-              <p className="text-gray-400">
-                No subscription fees, no premium plans, no hidden costs.
-                While others charge ₹200+ per month, The Hisaab remains completely free.
-              </p>
+              <motion.p variants={fadeUp} className="text-sm font-medium text-[#2563EB] mb-4 tracking-wide uppercase">
+                Free forever &bull; No ads &bull; Works offline
+              </motion.p>
+
+              <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl lg:text-[3.5rem] font-bold text-white leading-[1.1] tracking-tight mb-5">
+                Your friends owe you money.
+                <br />
+                <span className="gradient-text">Now they know it too.</span>
+              </motion.h1>
+
+              <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                Hisaab tracks every shared expense, splits bills fairly, and
+                shows who owes whom &mdash; so you never have to ask.
+              </motion.p>
+
+              <motion.div variants={fadeUp}>
+                <DownloadButtons variant="hero" />
+              </motion.div>
+
+              <motion.div variants={fadeUp} className="mt-6 flex items-center justify-center lg:justify-start gap-6 text-sm text-gray-500">
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                  100% Free
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                  No signup wall
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full" />
+                  Made in India
+                </span>
+              </motion.div>
             </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-center p-6 rounded-2xl bg-[#2563EB]/5 border border-[#2563EB]/10"
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="relative flex justify-center"
             >
-              <div className="w-16 h-16 bg-[#2563EB]/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Zap className="w-8 h-8 text-[#2563EB]" />
+              <div className="screenshot-phone animate-float-slow w-full max-w-xs mx-auto">
+                <Image
+                  src="/ss/grouplist.webp"
+                  alt="Hisaab - Track all your groups at a glance"
+                  width={400}
+                  height={800}
+                  className="w-full h-auto"
+                  priority
+                />
               </div>
-              <h3 className="text-xl font-semibold mb-4 text-white">Simple & Fast</h3>
-              <p className="text-gray-400">
-                Clean, intuitive design that works offline. Add expenses in seconds,
-                not minutes. No complex menus or confusing features.
-              </p>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="text-center p-6 rounded-2xl bg-orange-500/5 border border-orange-500/10"
-            >
-              <div className="w-16 h-16 bg-orange-500/10 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                <Shield className="w-8 h-8 text-orange-400" />
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-white">Privacy First</h3>
-              <p className="text-gray-400">
-                Your data stays yours. No tracking, no ads, no selling your information.
-                Built with privacy at the core.
-              </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-16 bg-[#0B0B0B]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ===== PROBLEM ===== */}
+      <section className="py-16 sm:py-24 bg-[#121212]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="grid md:grid-cols-2 gap-10 items-center"
+          >
+            <motion.div variants={fadeUp} className="order-2 md:order-1">
+              <div className="wa-chat-container max-w-sm mx-auto">
+                <div className="wa-header">
+                  <div className="wa-avatar">G</div>
+                  <div>
+                    <div className="text-sm font-semibold text-[#e9edef]">Goa Trip 2024</div>
+                    <div className="text-[11px] text-[#8696a0]">Ravi, Priya, Arjun, +4 others</div>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-1.5 p-3">
+                  <div className="wa-msg wa-msg-received">
+                    <div className="wa-name">Ravi</div>
+                    Bro maine dinner ke 2400 diye the
+                    <div className="wa-time">11:42 PM</div>
+                  </div>
+                  <div className="wa-msg wa-msg-received">
+                    <div className="wa-name">Priya</div>
+                    Maine toh Arjun ko de diye??
+                    <div className="wa-time">11:44 PM</div>
+                  </div>
+                  <div className="wa-msg wa-msg-sent">
+                    Airbnb kisne pay kiya??
+                    <div className="wa-time">11:45 PM</div>
+                  </div>
+                  <div className="wa-msg wa-msg-received">
+                    <div className="wa-name">Arjun</div>
+                    Excel bhejo koi pls
+                    <div className="wa-time">11:46 PM</div>
+                  </div>
+                  <div className="wa-msg wa-msg-received">
+                    <div className="wa-name">Sneha</div>
+                    Koi baat nhi, main adjust kar lungi
+                    <div className="wa-time">11:48 PM</div>
+                  </div>
+                  <div className="wa-msg wa-msg-sent">
+                    ...
+                    <div className="wa-time">11:49 PM</div>
+                  </div>
+                  <div className="wa-unread mt-1">147 unread messages</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="order-1 md:order-2">
+              <p className="text-sm font-medium text-red-400 mb-3 tracking-wide uppercase">Sound familiar?</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
+                You <span className="italic">know</span> your friend owes you.
+                <br />
+                <span className="text-gray-500">You just can&apos;t say it.</span>
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed mb-6">
+                Group trips, shared dinners, splitting rent &mdash; the money
+                conversations always get awkward. WhatsApp threads turn into chaos.
+                Excel sheets never get updated. Someone always &quot;adjusts.&quot;
+              </p>
+              <div className="flex items-center gap-2 text-[#2563EB] font-medium">
+                <ArrowRight size={18} />
+                <span>There&apos;s a better way</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== HOW IT WORKS ===== */}
+      <section id="how-it-works" className="py-16 sm:py-24 bg-[#0B0B0B]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">Everything you need</h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              All the features to manage shared expenses, without the complexity
-            </p>
+            <motion.p variants={fadeUp} className="text-sm font-medium text-[#2563EB] mb-3 tracking-wide uppercase">
+              3 taps. That&apos;s it.
+            </motion.p>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Splitting expenses shouldn&apos;t be hard
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-gray-400 max-w-2xl mx-auto">
+              Create a group, add an expense, and Hisaab instantly calculates who owes whom. No spreadsheets required.
+            </motion.p>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
             {[
-              {
-                icon: Users,
-                title: "Smart Expense Splitting",
-                description: "Split equally or set custom amounts. Perfect for trips, dinners, and shared living.",
-                color: "bg-[#2563EB]/10 text-[#2563EB] border-[#2563EB]/10"
-              },
-              {
-                icon: Coffee,
-                title: "Friend Network",
-                description: "Sync contacts to find friends already using The Hisaab. Build your expense-sharing network.",
-                color: "bg-purple-500/10 text-purple-400 border-purple-500/10"
-              },
-              {
-                icon: Heart,
-                title: "Auto Settlements",
-                description: "See who owes what at a glance. One-tap settlements to clear debts instantly.",
-                color: "bg-emerald-500/10 text-emerald-400 border-emerald-500/10"
-              },
-              {
-                icon: Zap,
-                title: "Works Offline",
-                description: "Add expenses anywhere, anytime. Syncs automatically when you're back online.",
-                color: "bg-yellow-500/10 text-yellow-400 border-yellow-500/10"
-              },
-              {
-                icon: Shield,
-                title: "Group Management",
-                description: "Create groups for trips, home, couples, or any shared expense scenario.",
-                color: "bg-red-500/10 text-red-400 border-red-500/10"
-              },
-              {
-                icon: Star,
-                title: "Activity Feed",
-                description: "Real-time updates on all group activities. Never miss an expense or settlement.",
-                color: "bg-indigo-500/10 text-indigo-400 border-indigo-500/10"
-              }
-            ].map((feature, index) => {
-              const colorParts = feature.color.split(' ');
+              { step: 1, img: '/ss/grouplist.webp', alt: 'Create groups', title: 'Create a group', desc: 'Trip, home, couple \u2014 any scenario. Add friends from your contacts instantly.' },
+              { step: 2, img: '/ss/add-exp.webp', alt: 'Add expenses', title: 'Add expenses', desc: 'Split equally or set custom amounts. Single or multiple payers. Takes 5 seconds.' },
+              { step: 3, img: '/ss/group-details.webp', alt: 'Settle up', title: 'Settle up', desc: 'See every balance at a glance. One-tap settlements with smart recommendations.' },
+            ].map((item) => (
+              <motion.div
+                key={item.step}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeUp}
+                className="text-center"
+              >
+                <div className="relative mb-6 mx-auto w-fit">
+                  <div className="absolute -top-3 -left-3 w-8 h-8 bg-[#2563EB] rounded-full flex items-center justify-center text-sm font-bold z-10">
+                    {item.step}
+                  </div>
+                  <div className="screenshot-phone w-52 mx-auto rounded-2xl overflow-hidden">
+                    <Image src={item.img} alt={item.alt} width={220} height={440} className="w-full h-auto" />
+                  </div>
+                </div>
+                <h3 className="text-xl font-semibold text-white mb-2">{item.title}</h3>
+                <p className="text-gray-400 text-sm">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== FEATURES ===== */}
+      <section id="features" className="py-16 sm:py-24 bg-[#121212]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="text-center mb-16"
+          >
+            <motion.p variants={fadeUp} className="text-sm font-medium text-[#2563EB] mb-3 tracking-wide uppercase">
+              Everything you need
+            </motion.p>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              Built for how Indians actually split money
+            </motion.h2>
+          </motion.div>
+
+          <div className="grid lg:grid-cols-2 gap-8 mb-12">
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="bg-[#0B0B0B] rounded-2xl border border-white/5 p-6 sm:p-8"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-[#2563EB]/10 rounded-xl flex items-center justify-center">
+                  <Users size={20} className="text-[#2563EB]" />
+                </div>
+                <h3 className="text-lg font-semibold text-white">Smart groups</h3>
+              </div>
+              <p className="text-gray-400 text-sm mb-6">
+                Trips, flatmates, couples, or anything. See who owes what across all your groups at a glance.
+                Settled groups auto-hide so you focus on what matters.
+              </p>
+              <div className="screenshot-phone rounded-xl overflow-hidden max-w-[260px] mx-auto">
+                <Image src="/ss/grouplist.webp" alt="Groups list" width={260} height={520} className="w-full h-auto" />
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              variants={fadeUp}
+              className="bg-[#0B0B0B] rounded-2xl border border-white/5 p-6 sm:p-8"
+            >
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-emerald-500/10 rounded-xl flex items-center justify-center">
+                  <Clock size={20} className="text-emerald-400" />
+                </div>
+                <h3 className="text-lg font-semibold text-white">Real-time activity</h3>
+              </div>
+              <p className="text-gray-400 text-sm mb-6">
+                Every expense, every settlement, every update &mdash; in one clean feed.
+                Filter by group, type, or date. Never miss a transaction.
+              </p>
+              <div className="screenshot-phone rounded-xl overflow-hidden max-w-[260px] mx-auto">
+                <Image src="/ss/activities.webp" alt="Activity feed" width={260} height={520} className="w-full h-auto" />
+              </div>
+            </motion.div>
+          </div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4"
+          >
+            {[
+              { icon: IndianRupee, title: 'Precise math', description: 'Every paisa accounted for. No rounding errors.', color: 'text-[#2563EB] bg-[#2563EB]/10' },
+              { icon: WifiOff, title: 'Works offline', description: "Add expenses anywhere. Syncs when you're back online.", color: 'text-yellow-400 bg-yellow-500/10' },
+              { icon: Smartphone, title: 'Instant sync', description: 'Everyone sees updates in real-time across devices.', color: 'text-purple-400 bg-purple-500/10' },
+              { icon: Shield, title: 'Privacy first', description: 'Your data stays yours. No tracking, no selling.', color: 'text-emerald-400 bg-emerald-500/10' },
+            ].map((feature) => {
+              const [textColor, bgColor] = feature.color.split(' ');
               return (
                 <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`bg-[#121212] p-6 rounded-2xl border border-gray-800 hover:border-gray-700 transition-all duration-300`}
+                  key={feature.title}
+                  variants={fadeUp}
+                  className="bg-[#0B0B0B] rounded-xl border border-white/5 p-5"
                 >
-                  <div className={`w-12 h-12 ${colorParts[0]} rounded-xl flex items-center justify-center mb-4 border ${colorParts[2]}`}>
-                    <feature.icon className={`w-6 h-6 ${colorParts[1]}`} />
+                  <div className={`w-9 h-9 ${bgColor} rounded-lg flex items-center justify-center mb-3`}>
+                    <feature.icon size={18} className={textColor} />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
-                  <p className="text-gray-400">{feature.description}</p>
+                  <h4 className="font-semibold text-white text-sm mb-1">{feature.title}</h4>
+                  <p className="text-gray-500 text-sm">{feature.description}</p>
                 </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Made in India Section */}
-      <section className="py-16 bg-[#121212] border-y border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* ===== EXPENSE DETAIL SHOWCASE ===== */}
+      <section className="py-16 sm:py-24 bg-[#0B0B0B]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="grid md:grid-cols-2 gap-10 items-center"
           >
-            <h2 className="text-4xl font-bold mb-4 text-white">
-              Proudly Made in India
-            </h2>
-            <p className="text-xl mb-8 text-gray-400 max-w-3xl mx-auto">
-              Built by Indians, for Indians. Supporting local innovation and keeping your money
-              in your pocket where it belongs.
-            </p>
-            <div className="grid grid-cols-3 gap-4 md:gap-8 text-center">
-              <div>
-                <div className="text-3xl font-bold mb-2 text-[#2563EB]">100%</div>
-                <div className="text-lg text-gray-400">Free Forever</div>
+            <motion.div variants={fadeUp}>
+              <p className="text-sm font-medium text-emerald-400 mb-3 tracking-wide uppercase">Full transparency</p>
+              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
+                Know exactly who owes you.
+                <br />
+                <span className="text-gray-500">Down to the last rupee.</span>
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed mb-6">
+                Every expense shows who paid, how it was split, and your exact
+                balance. No more guessing, no more awkward
+                &quot;I think you owe me...&quot; conversations.
+              </p>
+              <ul className="space-y-3">
+                {[
+                  'See paid-by and split-with for every expense',
+                  'Track your exact balance in each group',
+                  'Smart settlement suggestions to minimize transfers',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2.5 text-gray-300 text-sm">
+                    <Check size={16} className="text-emerald-400 mt-0.5 flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="flex justify-center">
+              <div className="screenshot-phone w-64 rounded-2xl overflow-hidden animate-float-slow">
+                <Image src="/ss/expense-detail.webp" alt="Expense details" width={260} height={520} className="w-full h-auto" />
               </div>
-              <div>
-                <div className="text-3xl font-bold mb-2 text-emerald-400">0</div>
-                <div className="text-lg text-gray-400">Monthly Fees</div>
-              </div>
-              <div>
-                <div className="text-3xl font-bold mb-2 text-orange-400">∞</div>
-                <div className="text-lg text-gray-400">Expenses Tracked</div>
-              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== COMPARISON ===== */}
+      <section id="compare" className="py-16 sm:py-24 bg-[#121212]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+            variants={stagger}
+            className="text-center mb-12"
+          >
+            <motion.p variants={fadeUp} className="text-sm font-medium text-[#2563EB] mb-3 tracking-wide uppercase">
+              Why switch?
+            </motion.p>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">
+              The alternative that doesn&apos;t charge you
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-2xl mx-auto">
+              Other apps started free, then locked features behind paywalls.
+              Hisaab is built different &mdash; free forever, no catch.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            className="bg-[#0B0B0B] rounded-2xl border border-white/5 overflow-hidden"
+          >
+            <div className="grid grid-cols-3 text-center text-sm font-semibold border-b border-white/5">
+              <div className="p-4 text-gray-400"></div>
+              <div className="p-4 text-gray-400">Other apps</div>
+              <div className="p-4 text-[#2563EB] bg-[#2563EB]/5">Hisaab</div>
             </div>
+            {[
+              { feature: 'Price', others: 'Free trial \u2192 \u20b9200+/mo', hisaab: 'Free forever', highlight: true },
+              { feature: 'Ads', others: 'Yes, on free tier', hisaab: 'No ads ever', highlight: false },
+              { feature: 'Offline mode', others: 'Limited / No', hisaab: 'Full offline', highlight: false },
+              { feature: 'Unlimited groups', others: 'Paid feature', hisaab: 'Unlimited', highlight: true },
+              { feature: 'Multiple payers', others: 'Paid feature', hisaab: 'Built-in', highlight: false },
+              { feature: 'Unequal splits', others: 'Paid feature', hisaab: 'Built-in', highlight: false },
+              { feature: 'Data privacy', others: 'Tracks & sells data', hisaab: 'No tracking', highlight: false },
+              { feature: 'Made for India', others: 'Global, not localized', hisaab: 'INR first, desi UX', highlight: true },
+            ].map((row) => (
+              <div key={row.feature} className="comparison-row grid grid-cols-3 text-center text-sm border-b border-white/5 last:border-0">
+                <div className="p-4 text-gray-300 text-left font-medium">{row.feature}</div>
+                <div className="p-4 text-gray-500 flex items-center justify-center gap-1.5">
+                  <XIcon size={14} className="text-red-400/60" />
+                  <span className="hidden sm:inline">{row.others}</span>
+                </div>
+                <div className={`p-4 flex items-center justify-center gap-1.5 ${row.highlight ? 'text-emerald-400' : 'text-gray-300'} bg-[#2563EB]/5`}>
+                  <Check size={14} className="text-emerald-400" />
+                  <span className="hidden sm:inline">{row.hisaab}</span>
+                </div>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Download CTA */}
-      <section className="py-16 bg-[#0B0B0B]">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* ===== STATS ===== */}
+      <section className="py-16 bg-[#0B0B0B] border-y border-white/5">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
+            variants={stagger}
+            className="grid grid-cols-3 gap-4 text-center"
           >
-            <h2 className="text-4xl font-bold text-white mb-4">
-              Ready to split smarter?
-            </h2>
-            <p className="text-xl text-gray-400 mb-8">
-              Join thousands using The Hisaab to track expenses without breaking friendships
-            </p>
-            <DownloadButtons variant="cta" />
-            <p className="text-sm text-gray-600 mt-4">
-              Free download • No registration required • Works offline
-            </p>
+            {[
+              { value: '100%', label: 'Free forever', color: 'text-[#2563EB]' },
+              { value: '0', label: 'Hidden fees', color: 'text-emerald-400' },
+              { value: '\u221e', label: 'Groups & expenses', color: 'text-white' },
+            ].map((stat) => (
+              <motion.div key={stat.label} variants={fadeUp}>
+                <div className={`text-3xl sm:text-4xl font-bold mb-1.5 ${stat.color}`}>{stat.value}</div>
+                <div className="text-sm text-gray-500">{stat.label}</div>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer id="contact" className="bg-[#121212] border-t border-gray-800 text-white py-12">
+      {/* ===== FINAL CTA ===== */}
+      <section className="py-20 sm:py-28 bg-[#0B0B0B]">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-5 leading-tight">
+              Stop adjusting.
+              <br />
+              <span className="gradient-text">Start splitting.</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 max-w-xl mx-auto">
+              Join thousands of Indians who stopped fighting over money
+              and started using Hisaab.
+            </motion.p>
+            <motion.div variants={fadeUp}>
+              <DownloadButtons variant="cta" />
+            </motion.div>
+            <motion.p variants={fadeUp} className="text-sm text-gray-600 mt-5">
+              Free download &bull; Works on Android &amp; iOS &bull; No credit card needed
+            </motion.p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ===== FOOTER ===== */}
+      <footer id="contact" className="bg-[#121212] border-t border-white/5 text-white py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <Image src="/logo.png" alt="The Hisaab" width={32} height={32} className="rounded-lg" />
-                <span className="text-xl font-bold">The Hisaab</span>
+              <div className="flex items-center space-x-2.5 mb-4">
+                <Image src="/logo.webp" alt="Hisaab" width={28} height={28} className="rounded-lg" />
+                <span className="text-lg font-bold">Hisaab</span>
               </div>
-              <p className="text-gray-400">
-                Split bills, not friendships. The simple way to track shared expenses.
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Split bills, not friendships. The free expense tracker made for India.
               </p>
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Product</h4>
-              <ul className="space-y-2 text-gray-400">
+              <h4 className="font-semibold text-sm mb-4 text-gray-300">Product</h4>
+              <ul className="space-y-2.5 text-sm text-gray-500">
+                <li><Link href="#how-it-works" className="hover:text-white transition-colors">How it works</Link></li>
                 <li><Link href="#features" className="hover:text-white transition-colors">Features</Link></li>
                 <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-white transition-colors">Terms of Service</Link></li>
@@ -391,27 +552,29 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Download</h4>
+              <h4 className="font-semibold text-sm mb-4 text-gray-300">Download</h4>
               <DownloadButtons variant="footer-links" />
             </div>
 
             <div>
-              <h4 className="font-semibold mb-4">Connect</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="mailto:admin@thehisaab.com" className="hover:text-white transition-colors flex items-center space-x-2">
-                  <Mail size={16} />
-                  <span>admin@thehisaab.com</span>
-                </a></li>
+              <h4 className="font-semibold text-sm mb-4 text-gray-300">Contact</h4>
+              <ul className="space-y-2.5 text-sm text-gray-500">
+                <li>
+                  <a href="mailto:admin@thehisaab.com" className="hover:text-white transition-colors flex items-center gap-2">
+                    <Mail size={14} />
+                    admin@thehisaab.com
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-500">
-              © 2025 The Hisaab. Made with love in India. All rights reserved.
+          <div className="border-t border-white/5 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center gap-2">
+            <p className="text-gray-600 text-sm">
+              &copy; 2026 Hisaab. Made with love in India.
             </p>
-            <p className="text-gray-500 text-sm mt-2 md:mt-0">
-              Free forever • No ads • Privacy first
+            <p className="text-gray-600 text-sm">
+              Free forever &bull; No ads &bull; Privacy first
             </p>
           </div>
         </div>

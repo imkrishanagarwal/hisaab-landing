@@ -18,7 +18,7 @@ export default function Privacy() {
             </Link>
 
             <div className="flex items-center space-x-3">
-              <Image src="/logo.png" alt="The Hisaab" width={32} height={32} className="rounded-lg" />
+              <Image src="/logo.webp" alt="The Hisaab" width={32} height={32} className="rounded-lg" />
               <span className="text-xl font-bold text-white">The Hisaab</span>
             </div>
           </div>

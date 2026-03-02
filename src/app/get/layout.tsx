@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     siteName: "The Hisaab",
     images: [
       {
-        url: "/image.png",
+        url: "/image.jpg",
         width: 1200,
         height: 630,
         alt: "The Hisaab - Rent. Groceries. Swiggy. Sorted. Made for Indian flatmates.",
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     title: "Download The Hisaab - Split bills, not friendships",
     description:
       "Rent. Groceries. Swiggy. Sorted. Download the free expense tracker made for Indian flatmates.",
-    images: ["/image.png"],
+    images: ["/image.jpg"],
   },
 };
 
