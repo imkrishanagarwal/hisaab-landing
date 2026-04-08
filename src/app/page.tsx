@@ -93,12 +93,19 @@ export default function Home() {
                   Use Cases <ChevronDown size={14} />
                 </button>
                 <div className="absolute top-full left-0 pt-2 hidden group-hover:block">
-                  <div className="bg-[#121212] border border-white/10 rounded-xl p-2 min-w-[180px] shadow-xl">
+                  <div className="bg-[#121212] border border-white/10 rounded-xl p-2 min-w-[200px] shadow-xl">
+                    <p className="px-3 pt-1 pb-2 text-xs text-gray-600 font-semibold uppercase tracking-wide">Use Cases</p>
                     <Link href="/for/trips" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Trip Expenses</Link>
                     <Link href="/for/roommates" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Roommate Bills</Link>
                     <Link href="/for/couples" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Couples</Link>
+                    <Link href="/for/office" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Office & Teams</Link>
                     <div className="border-t border-white/5 my-1" />
-                    <Link href="/compare/splitwise" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">The Hisaab vs Splitwise</Link>
+                    <p className="px-3 pt-1 pb-2 text-xs text-gray-600 font-semibold uppercase tracking-wide">Compare</p>
+                    <Link href="/compare/splitwise" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">vs Splitwise</Link>
+                    <Link href="/compare/settle-up" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">vs Settle Up</Link>
+                    <Link href="/compare/tricount" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">vs Tricount</Link>
+                    <div className="border-t border-white/5 my-1" />
+                    <Link href="/blog" className="block px-3 py-2 text-sm text-gray-400 hover:text-white hover:bg-white/5 rounded-lg transition-colors">Blog & Guides</Link>
                   </div>
                 </div>
               </div>
