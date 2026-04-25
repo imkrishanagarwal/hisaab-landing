@@ -29,19 +29,26 @@ const faqs = [
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="border border-white/5 rounded-xl overflow-hidden">
-      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors">
-        <span className="text-white font-medium pr-4">{question}</span>
-        <ChevronDown size={18} className={`text-gray-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+    <div className="border border-border rounded-xl overflow-hidden">
+      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between p-5 text-left hover:bg-surface2 transition-colors">
+        <span className="text-text1 font-medium pr-4">{question}</span>
+        <ChevronDown size={18} className={`text-text3 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
-      {isOpen && <div className="px-5 pb-5 text-gray-400 text-sm leading-relaxed">{answer}</div>}
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+        aria-hidden={!isOpen}
+      >
+        <div className="overflow-hidden">
+          <div className="px-5 pb-5 text-text2 text-sm leading-relaxed">{answer}</div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default function CouplesPage() {
   return (
-    <div className="min-h-screen bg-[#0B0B0B] text-white">
+    <div className="min-h-screen bg-bg text-text1">
       <SeoPageHeader />
 
       {/* ===== HERO ===== */}
@@ -49,16 +56,16 @@ export default function CouplesPage() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
             <motion.div initial="hidden" animate="visible" variants={stagger} className="text-center lg:text-left">
-              <motion.p variants={fadeUp} className="text-sm font-medium text-[#2563EB] mb-4 tracking-wide uppercase">
-                For Couples
+              <motion.p variants={fadeUp} className="text-sm font-medium text-accent mb-4 tracking-wide uppercase">
+                For couples
               </motion.p>
-              <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight mb-5">
-                Share expenses,
+              <motion.h1 variants={fadeUp} className="text-5xl sm:text-6xl font-bold text-text1 leading-[1.02] tracking-tight mb-6">
+                Share expenses.
                 <br />
-                <span className="bg-gradient-to-r from-[#2563EB] to-[#60a5fa] bg-clip-text text-transparent">not arguments.</span>
+                <span className="text-accent">Not arguments.</span>
               </motion.h1>
-              <motion.p variants={fadeUp} className="text-lg text-gray-400 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Track shared expenses with your partner without awkward money conversations. The Hisaab keeps things fair, transparent, and private.
+              <motion.p variants={fadeUp} className="text-lg sm:text-xl text-text2 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                Date splits, household budgets, big purchases. Track who paid what without keeping mental tabs. Private, fair, and yours alone.
               </motion.p>
               <motion.div variants={fadeUp}>
                 <DownloadButtons variant="hero" />
@@ -75,32 +82,32 @@ export default function CouplesPage() {
       </section>
 
       {/* ===== SCENARIOS ===== */}
-      <section className="py-16 sm:py-24 bg-[#121212]">
+      <section className="py-16 sm:py-24 bg-surface">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} variants={stagger} className="text-center mb-14">
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Every couple shares expenses
+            <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-bold text-text1 mb-4 tracking-tight leading-[1.05]">
+              Money shouldn&apos;t feel <span className="text-accent">awkward.</span>
             </motion.h2>
-            <motion.p variants={fadeUp} className="text-gray-400 text-lg max-w-2xl mx-auto">
-              Whether you&apos;re dating, living together, or married — money shouldn&apos;t be awkward.
+            <motion.p variants={fadeUp} className="text-text2 text-lg max-w-2xl mx-auto">
+              Whether you&apos;re dating, living together, or married — keep things fair without the relationship math.
             </motion.p>
           </motion.div>
 
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {[
-              { icon: Heart, title: 'Dinners & dates', desc: 'Who paid last time? Track it without keeping mental tabs.', color: 'text-red-400 bg-red-500/10' },
-              { icon: IndianRupee, title: 'Rent & bills', desc: 'Split rent, electricity, WiFi fairly each month.', color: 'text-[#2563EB] bg-[#2563EB]/10' },
-              { icon: Eye, title: 'Full transparency', desc: 'Both partners see every expense and the running balance.', color: 'text-emerald-400 bg-emerald-500/10' },
-              { icon: Shield, title: 'Completely private', desc: 'Only you two see the data. We never share it.', color: 'text-purple-400 bg-purple-500/10' },
+              { icon: Heart, title: 'Dinners & dates', desc: 'Who paid last time? Track it without keeping mental tabs.', color: 'text-accent bg-accentSoft' },
+              { icon: IndianRupee, title: 'Rent & bills', desc: 'Split rent, electricity, WiFi fairly each month.', color: 'text-accent bg-accent/10' },
+              { icon: Eye, title: 'Full transparency', desc: 'Both partners see every expense and the running balance.', color: 'text-brand bg-brandSoft' },
+              { icon: Shield, title: 'Completely private', desc: 'Only you two see the data. We never share it.', color: 'text-brand bg-brandSoft' },
             ].map((item) => {
               const [textColor, bgColor] = item.color.split(' ');
               return (
-                <motion.div key={item.title} variants={fadeUp} className="bg-[#0B0B0B] rounded-xl border border-white/5 p-5">
+                <motion.div key={item.title} variants={fadeUp} className="bg-bg rounded-xl border border-border p-5">
                   <div className={`w-9 h-9 ${bgColor} rounded-lg flex items-center justify-center mb-3`}>
                     <item.icon size={18} className={textColor} />
                   </div>
-                  <h3 className="font-semibold text-white text-sm mb-1">{item.title}</h3>
-                  <p className="text-gray-500 text-sm">{item.desc}</p>
+                  <h3 className="font-semibold text-text1 text-sm mb-1">{item.title}</h3>
+                  <p className="text-text3 text-sm">{item.desc}</p>
                 </motion.div>
               );
             })}
@@ -109,11 +116,11 @@ export default function CouplesPage() {
       </section>
 
       {/* ===== HOW IT WORKS ===== */}
-      <section className="py-16 sm:py-24 bg-[#0B0B0B]">
+      <section className="py-16 sm:py-24 bg-bg">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} variants={stagger} className="text-center mb-14">
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Keep it simple
+            <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-bold text-text1 mb-4 tracking-tight leading-[1.05]">
+              Three steps. <span className="text-accent">Zero drama.</span>
             </motion.h2>
           </motion.div>
 
@@ -124,11 +131,11 @@ export default function CouplesPage() {
               { step: '3', title: 'Stay balanced', desc: 'See your running balance. Settle up when it feels right.' },
             ].map((item) => (
               <motion.div key={item.step} variants={fadeUp} className="text-center">
-                <div className="w-12 h-12 bg-[#2563EB] rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4">
+                <div className="w-12 h-12 bg-accent text-surface rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-4 shadow-md">
                   {item.step}
                 </div>
-                <h3 className="text-white font-semibold mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm">{item.desc}</p>
+                <h3 className="text-text1 font-semibold mb-2">{item.title}</h3>
+                <p className="text-text3 text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -136,14 +143,14 @@ export default function CouplesPage() {
       </section>
 
       {/* ===== FAIRNESS ===== */}
-      <section className="py-16 sm:py-24 bg-[#121212]">
+      <section className="py-16 sm:py-24 bg-surface">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} variants={stagger} className="grid md:grid-cols-2 gap-10 items-center">
             <motion.div variants={fadeUp}>
-              <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 leading-tight">
-                Fair doesn&apos;t mean 50/50
+              <h2 className="text-4xl sm:text-5xl font-bold text-text1 mb-5 leading-[1.05] tracking-tight">
+                Fair doesn&apos;t mean <span className="text-accent">50/50.</span>
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed mb-6">
+              <p className="text-text2 text-lg leading-relaxed mb-6">
                 Maybe one of you earns more. Maybe you take turns. Whatever works for your relationship,
                 The Hisaab supports it with flexible splitting — equal, percentage, or custom amounts.
               </p>
@@ -154,8 +161,8 @@ export default function CouplesPage() {
                   'Settle up however often you want',
                   'No judgment, just math',
                 ].map((item) => (
-                  <li key={item} className="flex items-start gap-2.5 text-gray-300 text-sm">
-                    <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full mt-1.5 flex-shrink-0" />
+                  <li key={item} className="flex items-start gap-2.5 text-text2 text-sm">
+                    <span className="w-1.5 h-1.5 bg-brand rounded-full mt-1.5 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -163,8 +170,8 @@ export default function CouplesPage() {
             </motion.div>
 
             <motion.div variants={fadeUp} className="flex justify-center">
-              <div className="screenshot-phone w-64 rounded-2xl overflow-hidden">
-                <Image src="/ss/add-exp.webp" alt="Custom expense splitting for couples in The Hisaab" width={260} height={520} className="w-full h-auto" />
+              <div className="w-64 rounded-2xl overflow-hidden border border-border bg-bg shadow-xl" style={{ height: '380px' }}>
+                <Image src="/ss/add-exp.webp" alt="Custom expense splitting for couples" width={800} height={1600} className="w-full h-auto block" />
               </div>
             </motion.div>
           </motion.div>
@@ -172,11 +179,11 @@ export default function CouplesPage() {
       </section>
 
       {/* ===== FAQ ===== */}
-      <section className="py-16 sm:py-24 bg-[#0B0B0B]">
+      <section className="py-16 sm:py-24 bg-bg">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-50px' }} variants={stagger} className="text-center mb-12">
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">
-              Frequently Asked Questions
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-text1 mb-4">
+              <>The <span className="text-accent">honest</span> FAQ.</>
             </motion.h2>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="space-y-3">
@@ -186,13 +193,13 @@ export default function CouplesPage() {
       </section>
 
       {/* ===== RELATED ===== */}
-      <section className="py-10 bg-[#121212] border-t border-white/5">
+      <section className="py-10 bg-surface border-t border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-gray-500 mb-4">Also check out:</p>
+          <p className="text-sm text-text3 mb-4">Also check out:</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/splitwise-alternative" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">Splitwise Alternative</Link>
-            <Link href="/for/trips" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">Trip Expenses</Link>
-            <Link href="/for/roommates" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">Roommate Bills</Link>
+            <Link href="/splitwise-alternative" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Splitwise Alternative</Link>
+            <Link href="/for/trips" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Trip Expenses</Link>
+            <Link href="/for/roommates" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Roommate Bills</Link>
           </div>
         </div>
       </section>

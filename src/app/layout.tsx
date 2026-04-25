@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import MixpanelProvider from "@/components/MixpanelProvider";
 import JsonLd from "@/components/JsonLd";
 import { organizationSchema, softwareApplicationSchema } from "@/lib/schema";
 
-const inter = Inter({
-  variable: "--font-inter",
+// Satoshi is loaded via <link> in <head> below (Fontshare CDN — no Google Fonts).
+const jakarta = Plus_Jakarta_Sans({
+  variable: "--font-jakarta",
   subsets: ["latin"],
   display: 'swap',
 });
 
-const jakarta = Plus_Jakarta_Sans({
-  variable: "--font-jakarta",
-  subsets: ["latin"],
+const instrumentSerif = Instrument_Serif({
+  weight: '400',
+  style: ['italic'],
+  variable: '--font-instrument-serif',
+  subsets: ['latin'],
   display: 'swap',
 });
 
@@ -72,8 +75,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="" />
+        <link
+          rel="stylesheet"
+          href="https://api.fontshare.com/v2/css?f[]=satoshi@500,600,700&display=swap"
+        />
+        <meta name="theme-color" content="#F5EFE6" />
+      </head>
       <body
-        className={`${inter.variable} ${jakarta.variable} font-sans antialiased`}
+        className={`${jakarta.variable} ${instrumentSerif.variable} font-sans antialiased`}
+        style={{ fontFamily: "Satoshi, system-ui, sans-serif" }}
       >
         <JsonLd data={organizationSchema} />
         <JsonLd data={softwareApplicationSchema} />

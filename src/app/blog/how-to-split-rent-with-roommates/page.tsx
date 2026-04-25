@@ -47,24 +47,24 @@ const methods = [
 
 export default function SplitRentArticle() {
   return (
-    <div className="min-h-screen bg-[#0B0B0B] text-white">
+    <div className="min-h-screen bg-bg text-text1">
       <SeoPageHeader />
 
       {/* HEADER */}
       <section className="pt-16 sm:pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-3 mb-5">
-            <Link href="/blog" className="text-sm text-gray-500 hover:text-gray-300 transition-colors">Blog</Link>
-            <span className="text-gray-700">/</span>
-            <span className="text-sm text-[#2563EB] font-medium">Guide</span>
+            <Link href="/blog" className="text-sm text-text3 hover:text-text2 transition-colors">Blog</Link>
+            <span className="text-text3">/</span>
+            <span className="text-sm text-accent font-medium">Guide</span>
           </div>
-          <h1 className="text-3xl sm:text-4xl font-bold text-white leading-tight mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-text1 leading-tight mb-4">
             How to Split Rent Fairly with Roommates (3 Methods)
           </h1>
-          <p className="text-gray-400 text-lg leading-relaxed mb-6">
+          <p className="text-text2 text-lg leading-relaxed mb-6">
             Splitting rent is one of the most common sources of tension between roommates. Here are three fair methods, when to use each one, and how to track everything automatically so there&apos;s no monthly drama.
           </p>
-          <div className="flex items-center gap-4 text-sm text-gray-600 pb-8 border-b border-white/5">
+          <div className="flex items-center gap-4 text-sm text-text3 pb-8 border-b border-border">
             <span>April 2025</span>
             <span>·</span>
             <span>5 min read</span>
@@ -76,30 +76,30 @@ export default function SplitRentArticle() {
       <section className="pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto space-y-8">
           {methods.map((method) => (
-            <div key={method.number} className="bg-[#121212] border border-white/5 rounded-2xl p-6 sm:p-8">
+            <div key={method.number} className="bg-surface border border-border rounded-2xl p-6 sm:p-8">
               <div className="flex items-start gap-4 mb-4">
-                <span className="text-4xl font-black text-white/10 leading-none flex-shrink-0">{method.number}</span>
+                <span className="text-4xl font-black text-text1/10 leading-none flex-shrink-0">{method.number}</span>
                 <div>
-                  <h2 className="text-xl font-bold text-white mb-1">{method.title}</h2>
-                  <p className="text-sm text-[#2563EB]">{method.subtitle}</p>
+                  <h2 className="text-xl font-bold text-text1 mb-1">{method.title}</h2>
+                  <p className="text-sm text-accent">{method.subtitle}</p>
                 </div>
               </div>
 
-              <p className="text-gray-300 text-sm leading-relaxed mb-4">{method.description}</p>
+              <p className="text-text2 text-sm leading-relaxed mb-4">{method.description}</p>
 
-              <div className="bg-[#0B0B0B] rounded-xl border border-white/5 p-4 mb-4">
-                <p className="text-xs text-gray-600 uppercase tracking-wide mb-1">Example</p>
-                <p className="text-sm text-gray-300 font-mono">{method.example}</p>
+              <div className="bg-bg rounded-xl border border-border p-4 mb-4">
+                <p className="text-xs text-text3 uppercase tracking-wide mb-1">Example</p>
+                <p className="text-sm text-text2 font-mono">{method.example}</p>
               </div>
 
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <p className="text-xs text-emerald-400 font-semibold uppercase tracking-wide mb-2">When to use it</p>
-                  <p className="text-sm text-gray-400 leading-relaxed">{method.when}</p>
+                  <p className="text-xs text-brand font-semibold uppercase tracking-wide mb-2">When to use it</p>
+                  <p className="text-sm text-text2 leading-relaxed">{method.when}</p>
                 </div>
                 <div>
-                  <p className="text-xs text-red-400 font-semibold uppercase tracking-wide mb-2">Potential drawback</p>
-                  <p className="text-sm text-gray-400 leading-relaxed">{method.drawback}</p>
+                  <p className="text-xs text-accent font-semibold uppercase tracking-wide mb-2">Potential drawback</p>
+                  <p className="text-sm text-text2 leading-relaxed">{method.drawback}</p>
                 </div>
               </div>
             </div>
@@ -108,18 +108,18 @@ export default function SplitRentArticle() {
       </section>
 
       {/* BEYOND RENT */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#121212]">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-surface">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-white mb-4">Beyond rent: tracking shared bills</h2>
-          <p className="text-gray-400 leading-relaxed mb-4">
+          <h2 className="text-2xl font-bold text-text1 mb-4">Beyond rent: tracking shared bills</h2>
+          <p className="text-text2 leading-relaxed mb-4">
             Rent is just the start. Most roommate flat-shares also involve splitting electricity, water, internet, maid salary, cooking gas, and groceries. These vary every month, which makes them harder to track than a fixed rent.
           </p>
-          <p className="text-gray-400 leading-relaxed mb-6">
+          <p className="text-text2 leading-relaxed mb-6">
             The common approaches — rotating who pays, maintaining a shared notebook, or keeping a WhatsApp thread — all break down eventually. Someone forgets, the thread gets too long, or the notebook gets lost.
           </p>
 
-          <h3 className="text-lg font-semibold text-white mb-3">The better approach: use an expense-tracking app</h3>
-          <p className="text-gray-400 leading-relaxed mb-4">
+          <h3 className="text-lg font-semibold text-text1 mb-3">The better approach: use an expense-tracking app</h3>
+          <p className="text-text2 leading-relaxed mb-4">
             Create a group in The Hisaab called &quot;Flat Expenses&quot; or &quot;[Your Building Name] Flatmates.&quot; Every time someone pays the electricity bill, the maid, or picks up groceries, they add it to the group in seconds. The app tracks running balances and tells everyone what they owe — in real time.
           </p>
 
@@ -130,25 +130,25 @@ export default function SplitRentArticle() {
               { label: 'Maid salary', detail: 'Track who pays each month and balance out quarterly' },
               { label: 'Groceries', detail: 'Log each shop with unequal splits if people eat differently' },
             ].map((item) => (
-              <div key={item.label} className="bg-[#0B0B0B] rounded-xl border border-white/5 p-4">
-                <p className="text-white font-semibold text-sm mb-1">{item.label}</p>
-                <p className="text-gray-500 text-xs">{item.detail}</p>
+              <div key={item.label} className="bg-bg rounded-xl border border-border p-4">
+                <p className="text-text1 font-semibold text-sm mb-1">{item.label}</p>
+                <p className="text-text3 text-xs">{item.detail}</p>
               </div>
             ))}
           </div>
 
-          <div className="p-6 bg-[#0B0B0B] rounded-2xl border border-[#2563EB]/20">
-            <p className="text-white font-semibold mb-1">Track everything automatically with The Hisaab</p>
-            <p className="text-gray-500 text-sm mb-4">Free forever. Works offline. Real-time sync across all flatmates&apos; phones.</p>
+          <div className="p-6 bg-bg rounded-2xl border border-accent/20">
+            <p className="text-text1 font-semibold mb-1">Track everything automatically with The Hisaab</p>
+            <p className="text-text3 text-sm mb-4">Free forever. Works offline. Real-time sync across all flatmates&apos; phones.</p>
             <DownloadButtons variant="compact" />
           </div>
         </div>
       </section>
 
       {/* TIPS */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[#0B0B0B]">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-bg">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl font-bold text-white mb-6">5 rules to avoid roommate money drama</h2>
+          <h2 className="text-2xl font-bold text-text1 mb-6">5 rules to avoid roommate money drama</h2>
           <div className="space-y-4">
             {[
               { tip: 'Decide the split method before anyone moves in', detail: 'Have the conversation upfront, not when tensions are already high.' },
@@ -158,10 +158,10 @@ export default function SplitRentArticle() {
               { tip: 'Adjust splits when circumstances change', detail: 'If a flatmate starts working from home and their electricity usage increases, it\'s fair to revisit the bill split.' },
             ].map((item, i) => (
               <div key={i} className="flex gap-4">
-                <span className="text-[#2563EB] font-bold text-sm flex-shrink-0 mt-0.5">{i + 1}.</span>
+                <span className="text-accent font-bold text-sm flex-shrink-0 mt-0.5">{i + 1}.</span>
                 <div>
-                  <p className="text-white font-medium text-sm mb-1">{item.tip}</p>
-                  <p className="text-gray-500 text-sm">{item.detail}</p>
+                  <p className="text-text1 font-medium text-sm mb-1">{item.tip}</p>
+                  <p className="text-text3 text-sm">{item.detail}</p>
                 </div>
               </div>
             ))}
@@ -170,13 +170,13 @@ export default function SplitRentArticle() {
       </section>
 
       {/* RELATED */}
-      <section className="py-10 bg-[#121212] border-t border-white/5">
+      <section className="py-10 bg-surface border-t border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-gray-500 mb-4">Related:</p>
+          <p className="text-sm text-text3 mb-4">Related:</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/for/roommates" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">Roommate Expense Tracker</Link>
-            <Link href="/blog/best-expense-splitting-apps-india-2025" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">Best Apps in India 2025</Link>
-            <Link href="/for/office" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">Office Expense Tracker</Link>
+            <Link href="/for/roommates" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Roommate Expense Tracker</Link>
+            <Link href="/blog/best-expense-splitting-apps-india-2025" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Best Apps in India 2025</Link>
+            <Link href="/for/office" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Office Expense Tracker</Link>
           </div>
         </div>
       </section>

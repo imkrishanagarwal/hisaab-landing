@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:splitkaro.com)",
+      "WebFetch(domain:play.google.com)",
+      "WebFetch(domain:medium.com)",
+      "Bash(npm run *)",
+      "Bash(npm install *)",
+      "Bash(curl *)",
+      "Bash(grep -E \"FeatureTheatre|ImportBanner|lib/motion|lib\\\\\\\\\\\\\\\\motion\")"
+    ]
+  }
+}

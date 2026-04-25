@@ -54,32 +54,39 @@ const faqs = [
 function FaqItem({ question, answer }: { question: string; answer: string }) {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="border border-white/5 rounded-xl overflow-hidden">
-      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between p-5 text-left hover:bg-white/[0.02] transition-colors">
-        <span className="text-white font-medium pr-4">{question}</span>
-        <ChevronDown size={18} className={`text-gray-500 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
+    <div className="border border-border rounded-xl overflow-hidden">
+      <button onClick={() => setIsOpen(!isOpen)} className="w-full flex items-center justify-between p-5 text-left hover:bg-surface2 transition-colors">
+        <span className="text-text1 font-medium pr-4">{question}</span>
+        <ChevronDown size={18} className={`text-text3 flex-shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180' : ''}`} />
       </button>
-      {isOpen && <div className="px-5 pb-5 text-gray-400 text-sm leading-relaxed">{answer}</div>}
+      <div
+        className={`grid transition-[grid-template-rows] duration-300 ease-out ${isOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
+        aria-hidden={!isOpen}
+      >
+        <div className="overflow-hidden">
+          <div className="px-5 pb-5 text-text2 text-sm leading-relaxed">{answer}</div>
+        </div>
+      </div>
     </div>
   );
 }
 
 export default function CompareSettleUpPage() {
   return (
-    <div className="min-h-screen bg-[#0B0B0B] text-white">
+    <div className="min-h-screen bg-bg text-text1">
       <SeoPageHeader />
 
       {/* HERO */}
       <section className="pt-16 sm:pt-24 pb-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial="hidden" animate="visible" variants={stagger}>
-            <motion.p variants={fadeUp} className="text-sm font-medium text-[#2563EB] mb-4 tracking-wide uppercase">
+            <motion.p variants={fadeUp} className="text-sm font-medium text-accent mb-4 tracking-wide uppercase">
               Detailed Comparison
             </motion.p>
-            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl font-bold text-white leading-[1.1] tracking-tight mb-5">
+            <motion.h1 variants={fadeUp} className="text-4xl sm:text-5xl font-bold text-text1 leading-[1.1] tracking-tight mb-5">
               The Hisaab vs Settle Up
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            <motion.p variants={fadeUp} className="text-lg text-text2 max-w-2xl mx-auto leading-relaxed">
               Looking for a Settle Up alternative in India? Here&apos;s an honest comparison of every feature that matters.
             </motion.p>
           </motion.div>
@@ -90,32 +97,32 @@ export default function CompareSettleUpPage() {
       <section className="pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="grid sm:grid-cols-2 gap-5">
-            <motion.div variants={fadeUp} className="bg-[#121212] rounded-2xl border border-white/5 p-6 sm:p-8">
-              <h3 className="text-lg font-semibold text-gray-400 mb-2">Settle Up</h3>
+            <motion.div variants={fadeUp} className="bg-surface rounded-2xl border border-border p-6 sm:p-8">
+              <h3 className="text-lg font-semibold text-text2 mb-2">Settle Up</h3>
               <div className="flex items-baseline gap-1 mb-4">
-                <span className="text-3xl font-bold text-white">~₹250</span>
-                <span className="text-gray-500">/month Pro</span>
+                <span className="text-3xl font-bold text-text1">~₹250</span>
+                <span className="text-text3">/month Pro</span>
               </div>
-              <ul className="space-y-2.5 text-sm text-gray-500">
-                <li className="flex items-start gap-2"><XIcon size={14} className="text-red-400/60 mt-0.5 flex-shrink-0" /> Limited free plan</li>
-                <li className="flex items-start gap-2"><XIcon size={14} className="text-red-400/60 mt-0.5 flex-shrink-0" /> No India-specific features</li>
-                <li className="flex items-start gap-2"><XIcon size={14} className="text-red-400/60 mt-0.5 flex-shrink-0" /> No UPI support</li>
-                <li className="flex items-start gap-2"><Check size={14} className="text-gray-600 mt-0.5 flex-shrink-0" /> Basic expense tracking</li>
+              <ul className="space-y-2.5 text-sm text-text3">
+                <li className="flex items-start gap-2"><XIcon size={14} className="text-accent/60 mt-0.5 flex-shrink-0" /> Limited free plan</li>
+                <li className="flex items-start gap-2"><XIcon size={14} className="text-accent/60 mt-0.5 flex-shrink-0" /> No India-specific features</li>
+                <li className="flex items-start gap-2"><XIcon size={14} className="text-accent/60 mt-0.5 flex-shrink-0" /> No UPI support</li>
+                <li className="flex items-start gap-2"><Check size={14} className="text-text3 mt-0.5 flex-shrink-0" /> Basic expense tracking</li>
               </ul>
             </motion.div>
 
-            <motion.div variants={fadeUp} className="bg-[#2563EB]/5 rounded-2xl border border-[#2563EB]/20 p-6 sm:p-8 relative">
-              <div className="absolute top-4 right-4 bg-emerald-500 text-white text-xs font-bold px-2.5 py-1 rounded-full">RECOMMENDED</div>
-              <h3 className="text-lg font-semibold text-[#2563EB] mb-2">The Hisaab</h3>
+            <motion.div variants={fadeUp} className="bg-accent/5 rounded-2xl border border-accent/20 p-6 sm:p-8 relative">
+              <div className="absolute top-4 right-4 bg-brand text-text1 text-xs font-bold px-2.5 py-1 rounded-full">RECOMMENDED</div>
+              <h3 className="text-lg font-semibold text-accent mb-2">The Hisaab</h3>
               <div className="flex items-baseline gap-1 mb-4">
-                <span className="text-3xl font-bold text-white">₹0</span>
-                <span className="text-gray-500">/forever</span>
+                <span className="text-3xl font-bold text-text1">₹0</span>
+                <span className="text-text3">/forever</span>
               </div>
-              <ul className="space-y-2.5 text-sm text-gray-400">
-                <li className="flex items-start gap-2"><Check size={14} className="text-emerald-400 mt-0.5 flex-shrink-0" /> All features, always free</li>
-                <li className="flex items-start gap-2"><Check size={14} className="text-emerald-400 mt-0.5 flex-shrink-0" /> INR-first, built for India</li>
-                <li className="flex items-start gap-2"><Check size={14} className="text-emerald-400 mt-0.5 flex-shrink-0" /> UPI payment links</li>
-                <li className="flex items-start gap-2"><Check size={14} className="text-emerald-400 mt-0.5 flex-shrink-0" /> Full offline mode</li>
+              <ul className="space-y-2.5 text-sm text-text2">
+                <li className="flex items-start gap-2"><Check size={14} className="text-brand mt-0.5 flex-shrink-0" /> All features, always free</li>
+                <li className="flex items-start gap-2"><Check size={14} className="text-brand mt-0.5 flex-shrink-0" /> INR-first, built for India</li>
+                <li className="flex items-start gap-2"><Check size={14} className="text-brand mt-0.5 flex-shrink-0" /> UPI payment links</li>
+                <li className="flex items-start gap-2"><Check size={14} className="text-brand mt-0.5 flex-shrink-0" /> Full offline mode</li>
               </ul>
               <div className="mt-6"><DownloadButtons variant="compact" /></div>
             </motion.div>
@@ -124,30 +131,30 @@ export default function CompareSettleUpPage() {
       </section>
 
       {/* COMPARISON TABLE */}
-      <section className="py-16 sm:py-24 bg-[#121212]">
+      <section className="py-16 sm:py-24 bg-surface">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-12">
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">Feature-by-Feature Breakdown</motion.h2>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-text1 mb-4">Feature-by-Feature Breakdown</motion.h2>
           </motion.div>
           <div className="space-y-8">
             {comparisonData.map((section) => (
               <motion.div key={section.category} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}>
-                <h3 className="text-sm font-semibold text-[#2563EB] uppercase tracking-wide mb-4">{section.category}</h3>
-                <div className="bg-[#0B0B0B] rounded-xl border border-white/5 overflow-hidden">
-                  <div className="grid grid-cols-3 text-center text-xs font-semibold border-b border-white/5 text-gray-500">
+                <h3 className="text-sm font-semibold text-accent uppercase tracking-wide mb-4">{section.category}</h3>
+                <div className="bg-bg rounded-xl border border-border overflow-hidden">
+                  <div className="grid grid-cols-3 text-center text-xs font-semibold border-b border-border text-text3">
                     <div className="p-3 text-left">Feature</div>
                     <div className="p-3">Settle Up</div>
-                    <div className="p-3 bg-[#2563EB]/5 text-[#2563EB]">The Hisaab</div>
+                    <div className="p-3 bg-accent/5 text-accent">The Hisaab</div>
                   </div>
                   {section.features.map((row) => (
-                    <div key={row.feature} className="grid grid-cols-3 text-center text-sm border-b border-white/5 last:border-0">
-                      <div className="p-3.5 text-gray-300 text-left text-xs sm:text-sm">{row.feature}</div>
-                      <div className="p-3.5 text-gray-500 text-xs sm:text-sm flex items-center justify-center gap-1">
-                        {row.hisaabWins ? <XIcon size={12} className="text-red-400/60 flex-shrink-0" /> : <Check size={12} className="text-gray-600 flex-shrink-0" />}
+                    <div key={row.feature} className="grid grid-cols-3 text-center text-sm border-b border-border last:border-0">
+                      <div className="p-3.5 text-text2 text-left text-xs sm:text-sm">{row.feature}</div>
+                      <div className="p-3.5 text-text3 text-xs sm:text-sm flex items-center justify-center gap-1">
+                        {row.hisaabWins ? <XIcon size={12} className="text-accent/60 flex-shrink-0" /> : <Check size={12} className="text-text3 flex-shrink-0" />}
                         <span className="hidden sm:inline">{row.settleUp}</span>
                       </div>
-                      <div className={`p-3.5 text-xs sm:text-sm flex items-center justify-center gap-1 bg-[#2563EB]/5 ${row.hisaabWins ? 'text-emerald-400' : 'text-gray-300'}`}>
-                        <Check size={12} className="text-emerald-400 flex-shrink-0" />
+                      <div className={`p-3.5 text-xs sm:text-sm flex items-center justify-center gap-1 bg-accent/5 ${row.hisaabWins ? 'text-brand' : 'text-text2'}`}>
+                        <Check size={12} className="text-brand flex-shrink-0" />
                         <span className="hidden sm:inline">{row.hisaab}</span>
                       </div>
                     </div>
@@ -160,10 +167,10 @@ export default function CompareSettleUpPage() {
       </section>
 
       {/* FAQ */}
-      <section className="py-16 sm:py-24 bg-[#0B0B0B]">
+      <section className="py-16 sm:py-24 bg-bg">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-12">
-            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-white mb-4">Frequently Asked Questions</motion.h2>
+            <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-text1 mb-4">Frequently Asked Questions</motion.h2>
           </motion.div>
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="space-y-3">
             {faqs.map((faq, i) => <FaqItem key={i} question={faq.question} answer={faq.answer} />)}
@@ -172,14 +179,14 @@ export default function CompareSettleUpPage() {
       </section>
 
       {/* RELATED */}
-      <section className="py-12 bg-[#121212] border-t border-white/5">
+      <section className="py-12 bg-surface border-t border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-gray-500 mb-4">Also check out:</p>
+          <p className="text-sm text-text3 mb-4">Also check out:</p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/splitwise-alternative" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">Splitwise Alternative</Link>
-            <Link href="/compare/splitwise" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">vs Splitwise</Link>
-            <Link href="/compare/tricount" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">vs Tricount</Link>
-            <Link href="/for/trips" className="text-sm text-[#2563EB] hover:text-[#60a5fa] transition-colors bg-[#2563EB]/5 px-4 py-2 rounded-lg">Trip Expenses</Link>
+            <Link href="/splitwise-alternative" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Splitwise Alternative</Link>
+            <Link href="/compare/splitwise" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">vs Splitwise</Link>
+            <Link href="/compare/tricount" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">vs Tricount</Link>
+            <Link href="/for/trips" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Trip Expenses</Link>
           </div>
         </div>
       </section>

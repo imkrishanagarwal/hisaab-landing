@@ -1,5 +1,9 @@
 import type { Config } from 'tailwindcss'
 
+/**
+ * Hisaab landing page — Warm Ledger palette.
+ * Mirrors the v3 app design (see hisaab-v2/constants/tokens.ts).
+ */
 const config: Config = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,37 +13,59 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['var(--font-inter)', 'Inter', 'system-ui', 'sans-serif'],
+        sans: ['Satoshi', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-instrument-serif)', 'Instrument Serif', 'Georgia', 'serif'],
         jakarta: ['var(--font-jakarta)', 'Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        // Warm Ledger palette
+        bg: '#F5EFE6',
+        surface: '#FBF7F0',
+        surface2: '#EDE5D6',
+        border: '#E0D6C3',
+
+        text1: '#1C1A17',
+        text2: '#4E4A42',
+        text3: '#6B655B',
+
+        brand: '#0F3D2E',
+        brandSoft: '#E5EFE8',
+
+        accent: '#B84A2E',
+        accentSoft: '#F2DDD3',
+
+        pos: '#0F3D2E',
+        neg: '#B84A2E',
+
+        // Legacy aliases — kept so any class scattered through the codebase
+        // remaps cleanly without a rewrite of every file.
+        background: '#F5EFE6',
+        foreground: '#1C1A17',
         primary: {
-          50: '#fff7ed',
-          100: '#ffedd5',
-          200: '#fed7aa',
-          300: '#fdba74',
-          400: '#fb923c',
-          500: '#f97316',
-          600: '#ea580c',
-          700: '#c2410c',
-          800: '#9a3412',
-          900: '#7c2d12',
-          950: '#431407',
+          50:  '#F2DDD3',
+          100: '#EAC4B5',
+          200: '#E0A491',
+          300: '#D58571',
+          400: '#CB6952',
+          500: '#B84A2E', // accent
+          600: '#9F3F26',
+          700: '#82331E',
+          800: '#642718',
+          900: '#491B11',
+          950: '#2B1009',
         },
         secondary: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          300: '#86efac',
-          400: '#4ade80',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
-          900: '#14532d',
-          950: '#052e16',
+          50:  '#E5EFE8',
+          100: '#C6DCCD',
+          200: '#9DC2A9',
+          300: '#73A685',
+          400: '#4E8A66',
+          500: '#2E6E4D',
+          600: '#1F583C',
+          700: '#154932',
+          800: '#0F3D2E', // brand
+          900: '#0A2C21',
+          950: '#051A14',
         },
       },
       animation: {
