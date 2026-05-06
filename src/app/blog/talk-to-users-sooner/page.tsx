@@ -32,6 +32,7 @@ export default function Article() {
         { label: 'About The Hisaab', href: '/about' },
         { label: 'UAC Ads Killed My ASO', href: '/blog/uac-ads-killed-my-aso' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/talk-to-users-sooner"
     >
       <h2 className="text-2xl font-bold text-text1 mb-4 mt-2">Why founders skip user interviews</h2>
       <p className="text-text2 leading-relaxed mb-4">

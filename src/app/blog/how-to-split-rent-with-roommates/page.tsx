@@ -3,6 +3,43 @@ import Link from 'next/link';
 import SeoPageHeader from '@/components/SeoPageHeader';
 import SeoPageFooter from '@/components/SeoPageFooter';
 import DownloadButtons from '@/components/DownloadButtons';
+import JsonLd from '@/components/JsonLd';
+import { createArticleSchema, createHowToSchema } from '@/lib/schema';
+
+const articleSchema = createArticleSchema({
+  url: 'https://thehisaab.com/blog/how-to-split-rent-with-roommates',
+  headline: 'How to Split Rent Fairly with Roommates (3 Methods)',
+  description:
+    'Equal split, proportional split, or by room size — which method is fairest? And how to track it automatically without the monthly drama.',
+  datePublished: '2026-05-01',
+  section: 'Guide',
+});
+
+const howToSchema = createHowToSchema({
+  name: 'How to Split Rent Fairly with Roommates',
+  description:
+    'Three methods for splitting rent with roommates in India: equal split, by room size, or negotiated. Choose the right one and track running balances in The Hisaab.',
+  steps: [
+    {
+      name: 'Decide on a splitting method',
+      text: 'Equal split if rooms are similar; split by room size if rooms differ; negotiated if there are unique perks like private bathroom or balcony access. Have an open conversation with all roommates upfront.',
+    },
+    {
+      name: 'Calculate each roommate\'s share',
+      text: 'Use the Rent Split Calculator at thehisaab.com/tools/rent-split-calculator to compute exact amounts. For 3 roommates with ₹30,000 rent split equally, each pays ₹10,000.',
+      url: 'https://thehisaab.com/tools/rent-split-calculator',
+    },
+    {
+      name: 'Create a flat group in The Hisaab',
+      text: 'Add all roommates to a group in The Hisaab. Log rent as a recurring expense each month, plus utilities (WiFi, electricity, groceries) as they come up.',
+      url: 'https://thehisaab.com/for/roommates',
+    },
+    {
+      name: 'Settle running balances monthly',
+      text: 'At month-end, open settle-up. The Hisaab suggests UPI transfers that minimize the number of payments. One tap opens GPay, PhonePe, or Paytm with the amount pre-filled.',
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: 'How to Split Rent Fairly with Roommates (3 Methods) | The Hisaab',
@@ -48,6 +85,8 @@ const methods = [
 export default function SplitRentArticle() {
   return (
     <div className="min-h-screen bg-bg text-text1">
+      <JsonLd data={articleSchema} />
+      <JsonLd data={howToSchema} />
       <SeoPageHeader />
 
       {/* HEADER */}

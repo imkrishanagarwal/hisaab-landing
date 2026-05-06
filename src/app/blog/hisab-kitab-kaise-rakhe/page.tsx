@@ -32,6 +32,7 @@ export default function Article() {
         { label: 'For Roommates', href: '/for/roommates' },
         { label: 'Kharcha Split Karne ka App', href: '/blog/kharcha-split-karne-ka-app' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/hisab-kitab-kaise-rakhe"
     >
       <h2 className="text-2xl font-bold text-text1 mb-4 mt-2">Pehle samjhe — kya nahi karna chahiye</h2>
       <p className="text-text2 leading-relaxed mb-4">

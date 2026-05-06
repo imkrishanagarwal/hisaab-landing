@@ -32,6 +32,7 @@ export default function Article() {
         { label: 'Talk to Users Sooner', href: '/blog/talk-to-users-sooner' },
         { label: 'About The Hisaab', href: '/about' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/build-what-users-do-not-what-they-say"
     >
       <h2 className="text-2xl font-bold text-text1 mb-4 mt-2">The features users asked for</h2>
       <p className="text-text2 leading-relaxed mb-4">

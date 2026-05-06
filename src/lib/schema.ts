@@ -122,6 +122,77 @@ export function createFaqSchema(faqs: { question: string; answer: string }[]) {
   };
 }
 
+export function createArticleSchema({
+  url,
+  headline,
+  description,
+  datePublished,
+  dateModified,
+  image,
+  section,
+}: {
+  url: string;
+  headline: string;
+  description: string;
+  datePublished: string; // ISO date e.g. "2026-05-01"
+  dateModified?: string;
+  image?: string;
+  section?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline,
+    description,
+    image: [image || 'https://thehisaab.com/image.jpg'],
+    datePublished,
+    dateModified: dateModified || datePublished,
+    author: {
+      '@type': 'Organization',
+      name: 'The Hisaab',
+      url: 'https://thehisaab.com',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Hisaab',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://thehisaab.com/logo.webp',
+      },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+    ...(section ? { articleSection: section } : {}),
+    inLanguage: 'en-IN',
+  };
+}
+
+export function createHowToSchema({
+  name,
+  description,
+  totalTimeISO,
+  steps,
+}: {
+  name: string;
+  description: string;
+  totalTimeISO?: string;
+  steps: { name: string; text: string; url?: string }[];
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name,
+    description,
+    ...(totalTimeISO ? { totalTime: totalTimeISO } : {}),
+    step: steps.map((s, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: s.name,
+      text: s.text,
+      ...(s.url ? { url: s.url } : {}),
+    })),
+  };
+}
+
 export function createBreadcrumbSchema(
   items: { name: string; url: string }[]
 ) {

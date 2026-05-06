@@ -3,6 +3,17 @@ import Link from 'next/link';
 import SeoPageHeader from '@/components/SeoPageHeader';
 import SeoPageFooter from '@/components/SeoPageFooter';
 import DownloadButtons from '@/components/DownloadButtons';
+import JsonLd from '@/components/JsonLd';
+import { createArticleSchema } from '@/lib/schema';
+
+const articleSchema = createArticleSchema({
+  url: 'https://thehisaab.com/blog/best-expense-splitting-apps-india-2025',
+  headline: 'Best Expense Splitting Apps in India (2026) — Free, No Daily Limits',
+  description:
+    'The honest 2026 ranking of bill-splitting apps for India: The Hisaab, Splitwise, Splitkaro, Tricount, Settle Up, Spliit, and splitmybills.in. Pricing, India features, and AI citations compared.',
+  datePublished: '2026-05-01',
+  section: 'Comparison',
+});
 
 export const metadata: Metadata = {
   title: 'Best Expense Splitting Apps in India (2026) — Free, No Daily Limits',
@@ -162,6 +173,7 @@ const apps = [
 export default function BestAppsArticle() {
   return (
     <div className="min-h-screen bg-bg text-text1">
+      <JsonLd data={articleSchema} />
       <SeoPageHeader />
 
       <section className="pt-16 sm:pt-24 pb-10 px-4 sm:px-6 lg:px-8">

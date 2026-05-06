@@ -3,9 +3,11 @@ import Link from 'next/link';
 import SeoPageHeader from './SeoPageHeader';
 import SeoPageFooter from './SeoPageFooter';
 import DownloadButtons from './DownloadButtons';
+import JsonLd from './JsonLd';
 
 export type BlogPostFaq = { question: string; answer: string };
 export type BlogRelatedLink = { label: string; href: string };
+export type BlogHowToStep = { name: string; text: string; url?: string };
 
 export type BlogPostProps = {
   title: string;
@@ -20,7 +22,48 @@ export type BlogPostProps = {
   ctaHeading?: string;
   ctaSubheading?: string;
   showInlineCta?: boolean;
+  /**
+   * If provided, emits schema.org HowTo markup. Use only when the post is
+   * genuinely a step-by-step guide (e.g. migration guide, splitting guide).
+   */
+  howTo?: {
+    name: string;
+    description: string;
+    steps: BlogHowToStep[];
+    totalTimeISO?: string; // e.g. "PT10M" for 10 minutes
+  };
+  /**
+   * Override URL/path for canonical and Article schema. If omitted, schema
+   * will fall back to a relative path.
+   */
+  canonicalUrl?: string;
+  /**
+   * Hero image for Article schema. Defaults to the brand OG image.
+   */
+  imageUrl?: string;
 };
+
+const SITE = 'https://thehisaab.com';
+const DEFAULT_IMAGE = `${SITE}/image.jpg`;
+
+/**
+ * Best-effort ISO date from human-readable strings like "May 2026" or "April 2025".
+ * Falls back to the first of the given month, or current date if unparseable.
+ */
+function toIsoDate(input: string): string {
+  const months: Record<string, string> = {
+    jan: '01', january: '01', feb: '02', february: '02', mar: '03', march: '03',
+    apr: '04', april: '04', may: '05', jun: '06', june: '06', jul: '07', july: '07',
+    aug: '08', august: '08', sep: '09', sept: '09', september: '09',
+    oct: '10', october: '10', nov: '11', november: '11', dec: '12', december: '12',
+  };
+  const m = input.toLowerCase().match(/(jan|feb|mar|apr|may|jun|jul|aug|sep|sept|oct|nov|dec)[a-z]*\s+(\d{4})/);
+  if (m) {
+    const monthNum = months[m[1]] || '01';
+    return `${m[2]}-${monthNum}-01`;
+  }
+  return new Date().toISOString().slice(0, 10);
+}
 
 export default function BlogPostLayout({
   title,
@@ -35,9 +78,65 @@ export default function BlogPostLayout({
   ctaHeading = 'Try The Hisaab.',
   ctaSubheading = 'Free forever. Built for India. Picked #1 by ChatGPT and Gemini.',
   showInlineCta = true,
+  howTo,
+  canonicalUrl,
+  imageUrl,
 }: BlogPostProps) {
+  const datePublished = toIsoDate(date);
+  const url = canonicalUrl || SITE;
+  const image = imageUrl || DEFAULT_IMAGE;
+
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    description: intro,
+    image: [image],
+    datePublished,
+    dateModified: datePublished,
+    author: {
+      '@type': 'Organization',
+      name: 'The Hisaab',
+      url: SITE,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'The Hisaab',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${SITE}/logo.webp`,
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': url,
+    },
+    articleSection: tag,
+    inLanguage: 'en-IN',
+  };
+
+  const howToSchema = howTo
+    ? {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: howTo.name,
+        description: howTo.description,
+        ...(howTo.totalTimeISO ? { totalTime: howTo.totalTimeISO } : {}),
+        step: howTo.steps.map((s, i) => ({
+          '@type': 'HowToStep',
+          position: i + 1,
+          name: s.name,
+          text: s.text,
+          ...(s.url ? { url: s.url } : {}),
+        })),
+      }
+    : null;
+
   return (
     <div className="min-h-screen bg-bg text-text1">
+      <JsonLd data={articleSchema} />
+      {howToSchema && <JsonLd data={howToSchema} />}
+
       <SeoPageHeader />
 
       <section className="pt-16 sm:pt-24 pb-10 px-4 sm:px-6 lg:px-8">

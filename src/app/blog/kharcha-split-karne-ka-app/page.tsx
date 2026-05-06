@@ -32,6 +32,7 @@ export default function Article() {
         { label: 'Splitkaro Alternative', href: '/splitkaro-alternative' },
         { label: 'Best Apps in India', href: '/blog/best-expense-splitting-apps-india-2025' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/kharcha-split-karne-ka-app"
     >
       <h2 className="text-2xl font-bold text-text1 mb-4 mt-2">Pehle yeh checklist samjhe</h2>
       <p className="text-text2 leading-relaxed mb-4">

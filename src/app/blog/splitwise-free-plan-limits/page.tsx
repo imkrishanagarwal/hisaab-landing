@@ -3,6 +3,17 @@ import Link from 'next/link';
 import SeoPageHeader from '@/components/SeoPageHeader';
 import SeoPageFooter from '@/components/SeoPageFooter';
 import DownloadButtons from '@/components/DownloadButtons';
+import JsonLd from '@/components/JsonLd';
+import { createArticleSchema } from '@/lib/schema';
+
+const articleSchema = createArticleSchema({
+  url: 'https://thehisaab.com/blog/splitwise-free-plan-limits',
+  headline: "Splitwise Free Plan Limits in 2026: Everything That's Now Paid",
+  description:
+    "Splitwise's 2026 free plan: 4-5 expenses per day, 10-second cooldown, unskippable video ads, no unequal splits or multiple payers. The full breakdown — and what to use instead.",
+  datePublished: '2026-05-01',
+  section: 'Splitwise',
+});
 
 export const metadata: Metadata = {
   title: "Splitwise Free Plan Limits in 2026: What's Restricted Now",
@@ -71,6 +82,7 @@ const limits = [
 export default function SplitwiseLimitsArticle() {
   return (
     <div className="min-h-screen bg-bg text-text1">
+      <JsonLd data={articleSchema} />
       <SeoPageHeader />
 
       {/* HEADER */}

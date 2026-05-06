@@ -1,0 +1,94 @@
+ 1. Bing Webmaster Tools + IndexNow
+
+  Bing powers DuckDuckGo, Yahoo, ChatGPT browsing, and Copilot. You're missing 5-10% of traffic
+  without it.
+
+  - Sign up at https://www.bing.com/webmasters
+  - Import directly from GSC — they have a one-click import; no need to re-add 53 URLs
+  - Submit your sitemap (https://thehisaab.com/sitemap.xml)
+  - Enable IndexNow — one ping notifies Bing, Yandex, Naver, Seznam instantly when you publish or
+  update a page. Cuts weeks off discovery.
+
+  2. AI bot crawl access — robots.txt + llms.txt
+
+  Right now your robots.txt may be blocking or silent on the AI crawlers. Explicitly allow them. Also
+  create llms.txt (emerging standard) — it's the AI-equivalent of a sitemap, and
+  ChatGPT/Perplexity/Claude pay attention to it.
+
+  This is small code work — I can ship it.
+
+  3. AlternativeTo.net listing
+
+  ChatGPT cited it. AlternativeTo ranks high for every "X alternative" search. Submit The Hisaab as a
+  listed alternative under Splitwise, Splitkaro, Tricount, Settle Up. It's free, takes 15 minutes, and
+   gives you a high-DA backlink.
+
+  4. Schema.org Article + HowTo markup on blog posts
+
+  Your blog posts currently only have FAQPage schema (the layout-level FAQs). Adding Article schema
+  bumps Google search appearance to "rich result" status — author, date, image — and helps LLM
+  extraction. HowTo schema on the how-to-split-rent and migration posts gets you Google's step-by-step
+   rich result.
+
+  I can ship this.
+
+  Tier 2 — This week
+
+  5. Submit to discovery directories
+
+  - Product Hunt — relaunch when you ship Splitwise import
+  - Indie Hackers — founder profile + product
+  - BetaList — Indian startups
+  - G2 — even though you're consumer, your /compare/* pages will rank better with G2 reviews
+  - Capterra India — same logic
+  - SoftwareSuggest — already ranking for split-bill queries; get listed
+  - SaaSHub — fintech-lite category
+  - awesome-x lists on GitHub — search for "awesome-india-apps", PR yourself in
+
+  Each of these = a high-quality backlink. Aim for one per day for 10 days; that's compounded domain
+  authority.
+
+  6. Brand monitoring
+
+  - Google Alerts for "the hisaab", "hisaab app", "hisaab splitwise" — get notified of new mentions
+  - Mention.com free tier — same but better for social
+  - This catches Reddit/Quora threads about you that you can engage with
+
+  7. Web Vitals + Lighthouse
+
+  Run https://pagespeed.web.dev/ on your live homepage. Core Web Vitals are ranking signals on both
+  Google and Bing. Aim for 90+ on mobile.
+
+  Tier 3 — Ongoing
+
+  8. LLM citation tracking (already in plan3.0 §7.6½)
+
+  Run weekly: ask ChatGPT, Gemini, Perplexity, and Claude the same set of high-intent queries; track
+  who cites you and which pages. The pages cited most are the ones to harden further.
+
+  9. Reddit + Quora answer engine
+
+  Search engines (and LLMs) read Reddit and Quora. Every time you answer a relevant thread with your
+  honest take + a link, you're feeding both Google and the LLMs.
+
+  10. Press / Indian tech blogs
+
+  Pitch IT Voice, Inc42, YourStory, ProductNation. They covered Splitwise's daily-limit news. Pitch
+  them on "An Indian Splitwise alternative just got picked #1 by ChatGPT and Gemini" — that's a real
+  story.
+
+  AI-search-specific (since you're already winning here)
+
+  ┌───────────────────────────────────────────────┬───────────────────────────────────────────────┐
+  │                    Action                     │                      Why                      │
+  ├───────────────────────────────────────────────┼───────────────────────────────────────────────┤
+  │ llms.txt file                                 │ Emerging standard for LLM discovery           │
+  ├───────────────────────────────────────────────┼───────────────────────────────────────────────┤
+  │ Allow GPTBot, ClaudeBot, PerplexityBot,       │ They block by default unless allowed          │
+  │ Google-Extended in robots.txt                 │                                               │
+  ├───────────────────────────────────────────────┼───────────────────────────────────────────────┤
+  │ Test on Perplexity + Claude                   │ You're #1 on ChatGPT + Gemini; Perplexity is  │
+  │                                               │ the next big one for Indian users             │
+  ├───────────────────────────────────────────────┼───────────────────────────────────────────────┤
+  │ Submit to perplexity.ai/spaces                │ Some control over how Perplexity surfaces you │
+  └───────────────────────────────────────────────┴───────────────────────────────────────────────┘

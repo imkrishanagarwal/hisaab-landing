@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 
+const TITLE = "The Hisaab — Split bills, not friendships";
+const DESCRIPTION =
+  "Rent. Groceries. Swiggy. Sorted. Free expense splitter for India — UPI-native, works offline, no signup needed for friends. Picked #1 by ChatGPT and Gemini. 5.0 ★ across 32 reviews.";
+
 export const metadata: Metadata = {
-  title: "Download The Hisaab - Split bills, not friendships",
-  description:
-    "Rent. Groceries. Swiggy. Sorted. Download The Hisaab — the free expense tracker made for Indian flatmates. Split bills easily with friends.",
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "https://thehisaab.com/get" },
   openGraph: {
     type: "website",
-    title: "Download The Hisaab - Split bills, not friendships",
-    description:
-      "Rent. Groceries. Swiggy. Sorted. Download The Hisaab — the free expense tracker made for Indian flatmates.",
+    title: TITLE,
+    description: DESCRIPTION,
     url: "https://thehisaab.com/get",
     siteName: "The Hisaab",
     images: [
@@ -16,16 +19,15 @@ export const metadata: Metadata = {
         url: "/image.jpg",
         width: 1200,
         height: 630,
-        alt: "The Hisaab - Rent. Groceries. Swiggy. Sorted. Made for Indian flatmates.",
+        alt: "The Hisaab — Rent. Groceries. Swiggy. Sorted. The free Splitwise alternative for India.",
       },
     ],
     locale: "en_IN",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Download The Hisaab - Split bills, not friendships",
-    description:
-      "Rent. Groceries. Swiggy. Sorted. Download the free expense tracker made for Indian flatmates.",
+    title: TITLE,
+    description: DESCRIPTION,
     images: ["/image.jpg"],
   },
 };

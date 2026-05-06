@@ -34,6 +34,7 @@ export default function Article() {
         { label: 'ASO Without Discovery', href: '/blog/aso-without-discovery' },
         { label: 'Talk to Users Sooner', href: '/blog/talk-to-users-sooner' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/6-months-competing-with-splitwise"
     >
       <p className="text-text2 leading-relaxed mb-6">
         Started building Hisaab six months ago thinking &quot;Splitwise has bad UPI integration, this should be easy.&quot; Six months later, here&apos;s everything I underestimated. Posting in case it helps another indie founder avoid the same mistakes.

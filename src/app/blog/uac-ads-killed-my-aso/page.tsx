@@ -32,6 +32,7 @@ export default function Article() {
         { label: 'Why UPI Isn\'t the Moat', href: '/blog/why-upi-isnt-the-moat' },
         { label: 'About The Hisaab', href: '/about' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/uac-ads-killed-my-aso"
     >
       <h2 className="text-2xl font-bold text-text1 mb-4 mt-2">What UAC promised</h2>
       <p className="text-text2 leading-relaxed mb-4">

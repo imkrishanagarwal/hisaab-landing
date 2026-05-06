@@ -38,6 +38,7 @@ export default function Article() {
         { label: 'Migrate from Splitwise', href: '/blog/migrate-from-splitwise-to-the-hisaab' },
         { label: 'vs Splitwise', href: '/compare/splitwise' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/splitwise-pro-worth-it-india"
     >
       <h2 className="text-2xl font-bold text-text1 mb-4 mt-2">What you pay ₹999/year for</h2>
       <p className="text-text2 leading-relaxed mb-4">

@@ -39,6 +39,35 @@ export default function Article() {
         { label: 'Splitwise Alternative', href: '/splitwise-alternative' },
         { label: 'For Couples', href: '/for/couples' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/how-to-split-trip-expenses-friends"
+      howTo={{
+        name: 'How to Split Trip Expenses with Friends Fairly',
+        description:
+          'A step-by-step process for fairly splitting trip expenses with a group of 4–10 friends. Agree on rules upfront, log every expense as it happens, settle via UPI at the end.',
+        steps: [
+          {
+            name: 'Agree on the splitting rule before the trip',
+            text: 'Decide as a group whether you will use equal split, equal-by-default-with-exceptions, pay-as-you-go, or one-payer-settle-later. Equal-by-default-with-exceptions works for most groups of 4–10 with mixed preferences.',
+          },
+          {
+            name: 'Create the trip group in The Hisaab',
+            text: 'Open The Hisaab, tap "New group", name it (e.g., "Goa 2026"), and add all members. Takes about 30 seconds. Friends do not need to sign up.',
+            url: 'https://thehisaab.com/for/trips',
+          },
+          {
+            name: 'Log every expense the moment it happens',
+            text: 'Whoever paid logs the expense in 10 seconds: amount, payer, who shared it. Pick "equal" or "custom" based on the rule. The Hisaab works offline, so add expenses anywhere — including beaches, mountains, and metros with no signal.',
+          },
+          {
+            name: 'Ignore the running balance during the trip',
+            text: 'Do not argue mid-trip about who owes whom. The app is doing the math. Trust the system; settle at the end.',
+          },
+          {
+            name: 'Settle via UPI on the way back',
+            text: 'Open The Hisaab and tap "settle up". The app suggests UPI transfers that minimize the number of payments — usually 2–3 transfers settle the whole trip. Tap settle, GPay/PhonePe/Paytm opens with the amount pre-filled, and the trip is closed out.',
+          },
+        ],
+      }}
     >
       <h2 className="text-2xl font-bold text-text1 mb-4 mt-2">The four methods Indian friend groups use</h2>
       <p className="text-text2 leading-relaxed mb-4">

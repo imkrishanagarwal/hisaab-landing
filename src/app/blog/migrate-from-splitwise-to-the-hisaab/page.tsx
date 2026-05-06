@@ -39,6 +39,32 @@ export default function Article() {
         { label: 'Splitwise Free Plan Limits', href: '/blog/splitwise-free-plan-limits' },
         { label: 'Splitwise Pro Worth It?', href: '/blog/splitwise-pro-worth-it-india' },
       ]}
+      canonicalUrl="https://thehisaab.com/blog/migrate-from-splitwise-to-the-hisaab"
+      howTo={{
+        name: 'How to Migrate from Splitwise to The Hisaab',
+        description:
+          'Step-by-step guide to switching from Splitwise to The Hisaab in under 10 minutes. Settle outstanding balances, install The Hisaab, recreate active groups, stop adding to Splitwise.',
+        totalTimeISO: 'PT10M',
+        steps: [
+          {
+            name: 'Settle outstanding balances on Splitwise',
+            text: 'Open each active Splitwise group and look at the suggested settle-up amounts. Pay or receive via UPI (GPay, PhonePe, or Paytm) and mark each settlement in Splitwise so the balance shows zero. Typically takes 5 minutes.',
+          },
+          {
+            name: 'Install The Hisaab',
+            text: 'Download The Hisaab from Google Play or the Apple App Store. Sign up takes about 30 seconds. The primary user signs up so expenses sync across devices.',
+            url: 'https://thehisaab.com/download',
+          },
+          {
+            name: 'Recreate your active groups',
+            text: 'Tap "New group", name it (e.g., "Goa Trip 2026", "Flat 4B"), and add members by name or phone. Friends do not need to sign up — they view shared groups via a link. Most users have 3–5 active groups; recreating each takes about 30 seconds.',
+          },
+          {
+            name: 'Stop adding to Splitwise',
+            text: 'From the next expense onward, log it in The Hisaab. Within a week, your group adjusts to the new flow. After about 30 days of full Hisaab use, most users uninstall Splitwise.',
+          },
+        ],
+      }}
     >
       <h2 className="text-2xl font-bold text-text1 mb-4 mt-2">Why people migrate</h2>
       <p className="text-text2 leading-relaxed mb-4">
