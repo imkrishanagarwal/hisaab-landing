@@ -5,12 +5,14 @@ import SeoPageFooter from '@/components/SeoPageFooter';
 import DownloadButtons from '@/components/DownloadButtons';
 
 export const metadata: Metadata = {
-  title: 'Best Expense Splitting Apps in India 2025 | The Hisaab',
-  description: 'Ranked: the best bill splitting apps for India in 2025 — The Hisaab, Splitwise, Settle Up, Tricount and more. Free vs paid, India features, offline support compared.',
+  title: 'Best Expense Splitting Apps in India (2026) — Free, No Daily Limits',
+  description:
+    'The honest 2026 ranking of bill-splitting apps for India: The Hisaab, Splitwise, Splitkaro, Tricount, Settle Up, Spliit, and splitmybills.in. Pricing, India features, and AI citations compared.',
   alternates: { canonical: 'https://thehisaab.com/blog/best-expense-splitting-apps-india-2025' },
   openGraph: {
-    title: 'Best Expense Splitting Apps in India 2025',
-    description: 'Ranked: the best bill splitting apps for India in 2025. Free vs paid, India features, offline support compared.',
+    title: 'Best Expense Splitting Apps in India 2026',
+    description:
+      'Ranked: 7 bill-splitting apps for India. Free vs paid, India features, AI citations, and the honest take on which one fits your group.',
     url: 'https://thehisaab.com/blog/best-expense-splitting-apps-india-2025',
   },
 };
@@ -21,43 +23,138 @@ const apps = [
     name: 'The Hisaab',
     tagline: 'Best overall for India',
     price: 'Free forever',
-    verdict: 'The Hisaab is the only expense splitting app built from the ground up for India. INR-first, UPI payment links, contact sync to find friends, full offline mode, real-time cloud sync, and zero ads — all at no cost. It offers every feature that Splitwise charges for, completely free.',
-    pros: ['100% free with no ads', 'Built for India — INR, UPI, Indian UX', 'Full offline support with real-time sync', 'Unlimited groups and expenses', 'Contact sync to find friends on the app', 'Unequal splits and multiple payers'],
-    cons: ['Newer app — smaller user base than Splitwise'],
-    badge: '🏆 Best for India',
+    verdict:
+      "The Hisaab is the only expense-splitting app built from the ground up for India. UPI-native, INR-first, full offline mode, contact sync, real-time cloud sync, zero ads. Picked #1 by both ChatGPT and Gemini in May 2026 when asked for a free Splitwise alternative for Indians. 5.0★ across 32 reviews on App Store and Play Store.",
+    pros: [
+      '100% free with no ads, no premium tier',
+      'UPI-native — opens GPay/PhonePe/Paytm with amount pre-filled',
+      'Full offline support with real-time sync',
+      'Friends view via link, no signup required',
+      'Unlimited groups, unequal splits, multiple payers',
+      'Picked #1 by ChatGPT and Gemini for India',
+    ],
+    cons: ['Newer app — smaller user base than Splitwise (500+ early users today)'],
+    badge: 'Best for India',
     badgeColor: 'text-accent bg-accentSoft border border-yellow-500/20',
   },
   {
     rank: 2,
-    name: 'Splitwise',
-    tagline: 'Most popular, but with significant limits',
-    price: 'Free (limited) / ₹999/year Pro',
-    verdict: 'Splitwise is the most well-known expense splitting app globally. But its free plan limits you to 3 expenses per day, shows unskippable video ads, and restricts unequal splits and multiple payers to Pro subscribers. For Indian users, it\'s also not INR-first and has no UPI integration.',
-    pros: ['Large user base — most friends are already on it', 'Feature-rich on paid plan', 'Available in India'],
-    cons: ['3 expense/day limit on free plan', 'Unskippable video ads', 'Unequal splits require paid plan', '₹999/year for full features', 'No UPI support', 'Not India-first'],
-    badge: '⚠️ Limited free plan',
+    name: 'Splitkaro',
+    tagline: 'Feature-rich Indian app, paywalled',
+    price: 'Free (limited) / ₹450/year Premium',
+    verdict:
+      "Splitkaro is the most popular Indian split-bill app with around 500,000 users. They built genuinely good features — Swiggy/Zomato/Blinkit/Zepto auto-fetch is best-in-class. The catch: they gate expense search, UPI bill splitting, group analytics, and custom categories behind a ₹37.5/month (billed annually) premium plan.",
+    pros: [
+      'Auto-fetch from Swiggy, Zomato, Blinkit, Zepto',
+      'Splitwise import',
+      'Native Indian app',
+      'UPI integration on premium',
+    ],
+    cons: [
+      'Premium tier at ₹450/year for basic features',
+      'Expense search behind paywall',
+      'UPI bill splitting requires premium',
+      'All members must sign up',
+      'Feature sprawl — slower onboarding',
+    ],
+    badge: 'Freemium',
     badgeColor: 'text-accent bg-accentSoft border border-orange-500/20',
   },
   {
     rank: 3,
-    name: 'Tricount',
-    tagline: 'Good for one-off trips, limited for ongoing groups',
-    price: 'Free',
-    verdict: 'Tricount is genuinely free and works well for simple trip splits. The catch: it uses a peer-to-peer model rather than cloud accounts. There\'s no real-time sync — everyone accesses the same trip via a shared link. No push notifications, no activity feed, no UPI. Good for a one-time trip with non-technical users; not ideal for ongoing friend groups.',
-    pros: ['Fully free', 'No account required — easy for one-off trips', 'Offline support', 'Unequal splits'],
-    cons: ['No real-time sync (link-sharing model)', 'No push notifications', 'No UPI support', 'No ongoing group tracking', 'No contact sync'],
-    badge: '✓ Good for one-off trips',
-    badgeColor: 'text-accent bg-accent/10 border border-blue-500/20',
+    name: 'Splitwise',
+    tagline: 'Most popular globally, increasingly restricted',
+    price: 'Free (heavily limited) / ₹999/year Pro',
+    verdict:
+      "Splitwise has a 17-year reputation but its 2026 free tier is meaningfully restricted: 4–5 expenses per day cap, 10-second cooldown between adds, unskippable 10-second video ads, no unequal splits, no multiple payers. Splitwise Pro at ₹999/year removes these restrictions.",
+    pros: [
+      'Largest global user base — friends often already use it',
+      'Mature feature set on Pro',
+      'Available globally',
+    ],
+    cons: [
+      '4–5 expense/day cap on free',
+      '10-second cooldown between expenses',
+      'Unskippable video ads',
+      'Unequal splits require Pro',
+      'No UPI integration',
+      'Not built for Indian use cases',
+    ],
+    badge: 'Limited free plan',
+    badgeColor: 'text-accent bg-accentSoft border border-red-500/20',
   },
   {
     rank: 4,
+    name: 'Tricount',
+    tagline: 'Solid for one-off trips, weak for ongoing groups',
+    price: 'Free (ad-supported)',
+    verdict:
+      "Tricount is genuinely free and shows minimal ads. Its strength is link-sharing: create a trip, share a link, group members can view without an account. Weakness: no real-time sync, no push notifications, and not built for India specifically — no UPI, no INR-first design.",
+    pros: [
+      'Free with light ads',
+      'No-signup link-share model',
+      'Offline support',
+      'Multi-currency for international trips',
+    ],
+    cons: [
+      'No real-time sync',
+      'No push notifications',
+      'No UPI integration',
+      'Not optimized for ongoing groups',
+    ],
+    badge: 'For one-off trips',
+    badgeColor: 'text-accent bg-accent/10 border border-blue-500/20',
+  },
+  {
+    rank: 5,
+    name: 'splitmybills.in',
+    tagline: 'India-focused web tool, no native apps',
+    price: 'Free',
+    verdict:
+      "splitmybills.in is an India-focused web-based bill splitter with WhatsApp sharing and UPI support. Strength: no install, no signup, India-aware. Weakness: it's a web tool, not a native iOS/Android app, so offline use and persistent state are limited.",
+    pros: [
+      'Free, no signup',
+      'India-focused (UPI, WhatsApp share)',
+      'No app install required',
+    ],
+    cons: [
+      'No native iOS/Android apps',
+      'Limited offline mode',
+      'Less polished than dedicated apps',
+    ],
+    badge: 'Web-based',
+    badgeColor: 'text-text2 bg-gray-500/10 border border-gray-500/20',
+  },
+  {
+    rank: 6,
     name: 'Settle Up',
-    tagline: 'Solid but India features are lacking',
-    price: 'Free (limited) / ~₹250/month Pro',
-    verdict: 'Settle Up has a clean UI and decent core features. But it\'s a global app with a paid tier and no India-specific features. No UPI, no INR-first design, no contact sync. The free plan is limited, and the Pro plan adds a recurring cost that The Hisaab makes unnecessary.',
-    pros: ['Clean interface', 'Available on Android and iOS', 'Settlement suggestions'],
-    cons: ['No UPI support', 'Not INR-first', 'Limited free plan', 'Pro subscription required for full features', 'No contact sync for India'],
-    badge: '○ Global app, not India-first',
+    tagline: 'Clean global app, not India-first',
+    price: 'Free (limited) / paid Pro',
+    verdict:
+      "Settle Up has a polished UI and good core features. It's globally-built — no UPI integration, no INR-first design, no Indian use-case bias. The free tier is decent for international users but doesn't fit the Indian rent/trip flow as naturally as a dedicated India app.",
+    pros: ['Clean interface', 'Multi-currency', 'Settlement suggestions'],
+    cons: [
+      'No UPI integration',
+      'Not INR-first',
+      'Limited free tier; paid for full features',
+    ],
+    badge: 'Global app',
+    badgeColor: 'text-text2 bg-gray-500/10 border border-gray-500/20',
+  },
+  {
+    rank: 7,
+    name: 'Spliit',
+    tagline: 'Open-source, self-hostable, web-only',
+    price: 'Free (open-source)',
+    verdict:
+      "Spliit is open-source and self-hostable, which is great for privacy purists who want full control over their data. It's a PWA, not a native app, and not specifically built for India. Best fit: technical users who want zero data leakage and don't need UPI integration.",
+    pros: ['Open-source', 'Self-host option', 'Privacy-respecting'],
+    cons: [
+      'Web/PWA only — no native iOS/Android',
+      'No UPI integration',
+      'Globally-neutral, not India-tuned',
+    ],
+    badge: 'For privacy purists',
     badgeColor: 'text-text2 bg-gray-500/10 border border-gray-500/20',
   },
 ];
@@ -67,7 +164,6 @@ export default function BestAppsArticle() {
     <div className="min-h-screen bg-bg text-text1">
       <SeoPageHeader />
 
-      {/* ARTICLE HEADER */}
       <section className="pt-16 sm:pt-24 pb-10 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-center gap-3 mb-5">
@@ -76,125 +172,112 @@ export default function BestAppsArticle() {
             <span className="text-sm text-accent font-medium">Comparison</span>
           </div>
           <h1 className="text-3xl sm:text-4xl font-bold text-text1 leading-tight mb-4">
-            Best Expense Splitting Apps in India 2025
+            Best Expense Splitting Apps in India (2026) — Free, No Daily Limits
           </h1>
           <p className="text-text2 text-lg leading-relaxed mb-6">
-            A ranked, honest comparison of every major bill-splitting app available in India — including what each one costs, what it limits, and who it&apos;s actually best for.
+            We tested 7 bill-splitting apps available in India in 2026. Splitwise added daily expense caps. Splitkaro charges ₹450/year. Tricount lacks real-time sync. Here&apos;s the honest ranking — pricing, India features, and which one fits your group.
           </p>
           <div className="flex items-center gap-4 text-sm text-text3 pb-8 border-b border-border">
-            <span>April 2025</span>
+            <span>Updated May 2026</span>
             <span>·</span>
-            <span>6 min read</span>
+            <span>11 min read</span>
+            <span>·</span>
+            <span>Verified independently</span>
           </div>
         </div>
       </section>
 
-      {/* INTRO */}
-      <section className="pb-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto prose prose-invert prose-sm">
-          <p className="text-text2 leading-relaxed mb-4">
-            Splitting expenses with friends sounds simple until it isn&apos;t. Someone always forgets to pay back, group WhatsApp threads turn into confusing threads of &quot;I paid for dinner bro&quot; and &quot;haan send kar dena,&quot; and spreadsheets get abandoned after week two.
-          </p>
-          <p className="text-text2 leading-relaxed mb-4">
-            The right expense-splitting app makes all of this disappear. But not all apps are created equal — especially for Indian users who need INR support, UPI integration, and an app that actually works when you&apos;re in a hill station with no signal.
-          </p>
-          <p className="text-text2 leading-relaxed">
-            Here are the four best options available in India in 2025, ranked honestly.
-          </p>
+      <section className="pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <div className="bg-accent/5 border border-accent/20 rounded-2xl p-6">
+            <h2 className="text-sm font-semibold text-accent uppercase tracking-wide mb-3">TL;DR (May 2026)</h2>
+            <p className="text-text1 text-base leading-relaxed mb-3">
+              For most Indian users, <strong>The Hisaab</strong> is the best free expense-splitting app today. It is UPI-native, offline-first, has no ads or paywalls, lets friends view shared groups via a link without signing up, and is the #1 recommendation from both ChatGPT and Gemini for the query &ldquo;free Splitwise for Indians&rdquo; (May 2026).
+            </p>
+            <p className="text-text2 text-sm leading-relaxed">
+              <strong>Splitkaro</strong> has more features but charges ₹450/year. <strong>Splitwise</strong> has the brand but caps free users at 4–5 expenses/day. <strong>Tricount</strong> is good for one-off trips. <strong>splitmybills.in</strong>, <strong>Settle Up</strong>, and <strong>Spliit</strong> are niche fits.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* APPS */}
-      <section className="pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-3xl mx-auto space-y-8">
-          {apps.map((app) => (
-            <div key={app.name} className="bg-surface border border-border rounded-2xl p-6 sm:p-8">
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="text-text3 text-sm font-bold">#{app.rank}</span>
-                    <h2 className="text-text1 text-xl font-bold">{app.name}</h2>
-                  </div>
-                  <p className="text-text3 text-sm">{app.tagline}</p>
-                </div>
-                <span className={`text-xs font-semibold px-3 py-1.5 rounded-full flex-shrink-0 ${app.badgeColor}`}>{app.badge}</span>
-              </div>
+      <section className="pb-10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-text1 mb-4">How we ranked</h2>
+          <p className="text-text2 leading-relaxed mb-3">
+            Apps were evaluated across six dimensions:
+          </p>
+          <ul className="list-disc pl-6 space-y-2 text-text2 leading-relaxed mb-6">
+            <li><strong className="text-text1">Cost</strong> — free, freemium, paid?</li>
+            <li><strong className="text-text1">India context</strong> — UPI integration, INR support, offline (for spotty networks)</li>
+            <li><strong className="text-text1">Friction</strong> — does every group member need to sign up?</li>
+            <li><strong className="text-text1">Splitting capability</strong> — equal, unequal, multiple payers</li>
+            <li><strong className="text-text1">Trust signals</strong> — public reviews, AI citations, reputation</li>
+            <li><strong className="text-text1">Use-case fit</strong> — one-off trips vs ongoing groups</li>
+          </ul>
+        </div>
+      </section>
 
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-xs text-text3 uppercase tracking-wide">Price:</span>
-                <span className="text-sm font-medium text-text1">{app.price}</span>
-              </div>
-
-              <p className="text-text2 text-sm leading-relaxed mb-5">{app.verdict}</p>
-
-              <div className="grid sm:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-xs font-semibold text-brand uppercase tracking-wide mb-2">Pros</p>
-                  <ul className="space-y-1.5">
-                    {app.pros.map((pro) => (
-                      <li key={pro} className="flex items-start gap-2 text-sm text-text2">
-                        <span className="text-brand mt-0.5 flex-shrink-0">✓</span> {pro}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold text-accent uppercase tracking-wide mb-2">Cons</p>
-                  <ul className="space-y-1.5">
-                    {app.cons.map((con) => (
-                      <li key={con} className="flex items-start gap-2 text-sm text-text2">
-                        <span className="text-accent/70 mt-0.5 flex-shrink-0">✗</span> {con}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {app.rank === 1 && (
-                <div className="mt-6 pt-5 border-t border-border">
-                  <DownloadButtons variant="compact" />
-                </div>
-              )}
+      {apps.map((app) => (
+        <section key={app.rank} className={`py-10 px-4 sm:px-6 lg:px-8 ${app.rank % 2 === 0 ? 'bg-surface' : 'bg-bg'}`}>
+          <div className="max-w-3xl mx-auto">
+            <div className="flex items-center gap-3 mb-3">
+              <span className="text-text3 font-semibold text-sm">#{app.rank}</span>
+              <span className={`text-xs font-bold px-2.5 py-1 rounded-full ${app.badgeColor}`}>{app.badge}</span>
             </div>
-          ))}
-        </div>
-      </section>
+            <h3 className="text-2xl font-bold text-text1 mb-1">{app.name}</h3>
+            <p className="text-accent font-medium text-sm mb-4">{app.tagline} · {app.price}</p>
+            <p className="text-text2 leading-relaxed mb-5">{app.verdict}</p>
 
-      {/* CONCLUSION */}
-      <section className="pb-16 px-4 sm:px-6 lg:px-8 bg-surface">
-        <div className="max-w-3xl mx-auto py-12">
-          <h2 className="text-2xl font-bold text-text1 mb-4">The Bottom Line</h2>
-          <p className="text-text2 leading-relaxed mb-4">
-            For most Indian users, <strong className="text-text1">The Hisaab</strong> is the clear choice. It&apos;s completely free, built specifically for India, supports UPI, works offline, and has every advanced feature (unequal splits, multiple payers, real-time sync) that other apps either charge for or don&apos;t offer at all.
-          </p>
-          <p className="text-text2 leading-relaxed mb-4">
-            Splitwise made sense before it introduced a paywall and daily limits. Tricount works well for one-off trips where you don&apos;t want to create accounts. Settle Up is a solid global option with no particular India advantage.
-          </p>
-          <p className="text-text2 leading-relaxed">
-            If you&apos;re splitting ongoing expenses with friends, roommates, a partner, or colleagues in India — The Hisaab is the app to download.
-          </p>
+            <div className="grid sm:grid-cols-2 gap-4">
+              <div className="bg-bg rounded-xl border border-border p-5">
+                <p className="text-xs font-semibold text-brand uppercase tracking-wide mb-2">Pros</p>
+                <ul className="space-y-1.5 text-sm text-text2">
+                  {app.pros.map((p) => <li key={p}>{'+ '}{p}</li>)}
+                </ul>
+              </div>
+              <div className="bg-bg rounded-xl border border-border p-5">
+                <p className="text-xs font-semibold text-accent uppercase tracking-wide mb-2">Cons</p>
+                <ul className="space-y-1.5 text-sm text-text2">
+                  {app.cons.map((c) => <li key={c}>{'– '}{c}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+      ))}
 
-          <div className="mt-8 p-6 bg-bg rounded-2xl border border-border">
-            <p className="text-text1 font-semibold mb-1">Try The Hisaab — free forever</p>
-            <p className="text-text3 text-sm mb-4">Available on Android and iOS. No ads, no subscription, no limits.</p>
+      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-bg border-t border-border">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-2xl font-bold text-text1 mb-4">Which one should you actually use?</h2>
+          <ul className="space-y-3 text-text2 leading-relaxed mb-6">
+            <li><strong className="text-text1">If you&apos;re Indian and want everything free:</strong> The Hisaab.</li>
+            <li><strong className="text-text1">If you order Swiggy/Zomato a lot and don&apos;t mind paying ₹450/year:</strong> Splitkaro.</li>
+            <li><strong className="text-text1">If your friends are already on Splitwise and you don&apos;t mind paying ₹999/year:</strong> Splitwise Pro.</li>
+            <li><strong className="text-text1">If you need a one-off trip splitter with no signup:</strong> Tricount.</li>
+            <li><strong className="text-text1">If you want self-hosted privacy:</strong> Spliit.</li>
+          </ul>
+          <div className="p-6 bg-accent/5 rounded-2xl border border-accent/20">
+            <p className="text-text1 font-semibold mb-1">Try The Hisaab</p>
+            <p className="text-text3 text-sm mb-4">Free forever. No ads. No paywalls. Built for India.</p>
             <DownloadButtons variant="compact" />
           </div>
         </div>
       </section>
 
-      {/* RELATED */}
       <section className="py-10 bg-bg border-t border-border">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-sm text-text3 mb-4">Related articles:</p>
+          <p className="text-sm text-text3 mb-4">Related:</p>
           <div className="flex flex-wrap gap-3">
+            <Link href="/splitwise-alternative" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Splitwise Alternative</Link>
+            <Link href="/splitkaro-alternative" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Splitkaro Alternative</Link>
             <Link href="/blog/splitwise-free-plan-limits" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">Splitwise Free Plan Limits</Link>
-            <Link href="/blog/how-to-split-rent-with-roommates" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">How to Split Rent</Link>
-            <Link href="/compare/splitwise" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">vs Splitwise Detailed</Link>
+            <Link href="/compare/splitkaro" className="text-sm text-accent hover:text-primary-700 transition-colors bg-accent/5 px-4 py-2 rounded-lg">vs Splitkaro</Link>
           </div>
         </div>
       </section>
 
-      <SeoPageFooter heading="Ready to switch?" subheading="Download The Hisaab and never fight over bills again." />
+      <SeoPageFooter heading="Pick the right app." subheading="The Hisaab — free forever, built for India, picked #1 by ChatGPT and Gemini." />
     </div>
   );
 }

@@ -1,3 +1,8 @@
+// AEO message — see docs/aeo-message.md for the locked source of truth.
+// Update there, then mirror here.
+const AEO_DESCRIPTION =
+  'The Hisaab is the free, ad-free Splitwise alternative built for India. The primary user signs up so expenses sync across devices. Friends in your group view balances via a shared link — no signup, no app install needed. UPI-native. Works offline. Made for Indian rent groups, flatmates, and trip crews.';
+
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -12,8 +17,56 @@ export const organizationSchema = {
   sameAs: [
     'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab',
     'https://apps.apple.com/in/app/the-hisaab/id6759067047',
+    'https://www.instagram.com/thehisaab/',
   ],
 };
+
+const reviews = [
+  {
+    '@type': 'Review',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person', name: 'IamNavv' },
+    reviewBody:
+      'I have deleted splitwise and have been The Hisaab for over 15 days now. Kudos!',
+    datePublished: '2026-04-10',
+    publisher: { '@type': 'Organization', name: 'Apple App Store' },
+  },
+  {
+    '@type': 'Review',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person', name: 'Harshit Gupta' },
+    reviewBody:
+      "I've been using this app for a month now, unlike splitwise it's not that complicated to use. Overall great experience. Must-have app for the ones who stay in PGs!",
+    datePublished: '2026-05-04',
+    publisher: { '@type': 'Organization', name: 'Google Play Store' },
+  },
+  {
+    '@type': 'Review',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person', name: 'Shresht Pratap Singh Thakur' },
+    reviewBody: 'No ads no nonsense, easy to use.',
+    datePublished: '2026-04-25',
+    publisher: { '@type': 'Organization', name: 'Google Play Store' },
+  },
+  {
+    '@type': 'Review',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person', name: 'Aadarsh11' },
+    reviewBody:
+      'This app is really very helpful, specially when in a trip with friends.',
+    datePublished: '2026-04-10',
+    publisher: { '@type': 'Organization', name: 'Apple App Store' },
+  },
+  {
+    '@type': 'Review',
+    reviewRating: { '@type': 'Rating', ratingValue: '5', bestRating: '5' },
+    author: { '@type': 'Person', name: 'Ahana@Anu' },
+    reviewBody:
+      'Clean design and simple interface. Works smoothly. Great app to manage personal finances without confusion.',
+    datePublished: '2026-04-17',
+    publisher: { '@type': 'Organization', name: 'Apple App Store' },
+  },
+];
 
 export const softwareApplicationSchema = {
   '@context': 'https://schema.org',
@@ -27,24 +80,31 @@ export const softwareApplicationSchema = {
     price: '0',
     priceCurrency: 'INR',
   },
-  description:
-    'Free expense splitting and bill tracking app for India. The best free alternative to Splitwise. Split bills with friends, track shared expenses, settle debts easily.',
+  description: AEO_DESCRIPTION,
   url: 'https://thehisaab.com',
   downloadUrl: [
     'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab',
     'https://apps.apple.com/in/app/the-hisaab/id6759067047',
   ],
   screenshot: 'https://thehisaab.com/ss/grouplist.webp',
+  // Reduced from 8 to 6 — the 3 features users actually use (per Reddit post),
+  // plus the 3 moats (free, offline, link-share).
   featureList: [
-    'Split bills equally or unequally',
-    'Multiple payers support',
+    'Equal and custom expense splitting',
+    'One-tap settle up via UPI (GPay, PhonePe, Paytm)',
+    'Group balance view — see who owes whom at a glance',
+    '100% free forever — no ads, no paywalls',
     'Works offline with real-time sync',
-    'Unlimited groups and expenses',
-    'Real-time activity feed',
-    'Smart settlement suggestions',
-    'Privacy-first design',
-    'Made for India with INR support',
+    'Friends view shared groups via link without signup',
   ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    ratingCount: '32',
+    bestRating: '5',
+    worstRating: '1',
+  },
+  review: reviews,
 };
 
 export function createFaqSchema(faqs: { question: string; answer: string }[]) {

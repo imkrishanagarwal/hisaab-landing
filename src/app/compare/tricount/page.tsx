@@ -133,6 +133,9 @@ export default function CompareTricountPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger} className="text-center mb-12">
             <motion.h2 variants={fadeUp} className="text-3xl sm:text-4xl font-bold text-text1 mb-4">Feature-by-Feature Breakdown</motion.h2>
+            <motion.p variants={fadeUp} className="text-text2 text-base max-w-2xl mx-auto">
+              Rated 5★ by 32 Indian users on App Store + Play Store. Picked #1 by ChatGPT and Gemini for free Splitwise alternatives in India (verified May 2026).
+            </motion.p>
           </motion.div>
           <div className="space-y-8">
             {comparisonData.map((section) => (

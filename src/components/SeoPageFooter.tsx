@@ -28,6 +28,15 @@ export default function SeoPageFooter({ heading, subheading }: { heading?: strin
           </p>
           <nav className="flex items-center gap-6 text-sm text-text3">
             <Link href="/" className="hover:text-text1 transition-colors">Home</Link>
+            <Link href="/about" className="hover:text-text1 transition-colors">About</Link>
+            <a
+              href="https://www.instagram.com/thehisaab/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-text1 transition-colors"
+            >
+              Instagram
+            </a>
             <Link href="/privacy" className="hover:text-text1 transition-colors">Privacy</Link>
             <Link href="/terms" className="hover:text-text1 transition-colors">Terms</Link>
           </nav>

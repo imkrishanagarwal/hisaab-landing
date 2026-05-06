@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     default: "The Hisaab - Free Splitwise Alternative | Split Bills & Track Expenses in India",
     template: "%s | The Hisaab",
   },
-  description: "The best free Splitwise alternative made for India. Split bills with friends, track shared expenses, settle debts. Works offline, no ads, free forever. Download on Android & iOS.",
+  description: "Free Splitwise alternative for India. UPI-native, works offline, no ads. Friends view shared groups via link — no signup needed. For rent, flatmates, trips.",
   keywords: ["splitwise alternative", "splitwise alternative free", "expense tracker", "bill splitting app", "split expenses", "shared expenses", "expense splitter", "group expenses india", "free expense tracker", "hisaab", "roommate expense tracker", "trip expense splitter", "bill splitting", "money tracker", "group expenses", "india", "free app", "expense sharing"],
   authors: [{ name: "The Hisaab Team" }],
   creator: "The Hisaab",

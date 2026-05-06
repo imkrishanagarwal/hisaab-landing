@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Mail, ArrowRight, Check, X as XIcon, Smartphone, WifiOff, Users, Clock, Shield, IndianRupee, ChevronDown } from 'lucide-react';
+import { Menu, X, Mail, ArrowRight, Check, X as XIcon, WifiOff, Users, Clock, Shield, IndianRupee, ChevronDown, Link2 } from 'lucide-react';
 import { createFaqSchema } from '@/lib/schema';
 import { fadeUp, stagger as staggerFn } from '@/lib/motion';
 import Link from 'next/link';
@@ -11,6 +11,7 @@ import DownloadButtons from '@/components/DownloadButtons';
 import HeroReel from '@/components/HeroReel';
 import FeatureTheatre from '@/components/FeatureTheatre';
 import ImportBanner from '@/components/ImportBanner';
+import TestimonialMarquee from '@/components/TestimonialMarquee';
 
 const stagger = staggerFn(0.1, 0.12);
 
@@ -105,8 +106,11 @@ export default function Home() {
                     <div className="border-t border-border my-1" />
                     <p className="px-3 pt-1 pb-2 text-xs text-text3 font-semibold uppercase tracking-wide">Compare</p>
                     <Link href="/compare/splitwise" className="block px-3 py-2 text-sm text-text2 hover:text-text1 hover:bg-surface2 rounded-lg transition-colors">vs Splitwise</Link>
-                    <Link href="/compare/settle-up" className="block px-3 py-2 text-sm text-text2 hover:text-text1 hover:bg-surface2 rounded-lg transition-colors">vs Settle Up</Link>
+                    <Link href="/compare/splitkaro" className="block px-3 py-2 text-sm text-text2 hover:text-text1 hover:bg-surface2 rounded-lg transition-colors">vs Splitkaro</Link>
+                    <Link href="/compare/google-pay" className="block px-3 py-2 text-sm text-text2 hover:text-text1 hover:bg-surface2 rounded-lg transition-colors">vs Google Pay</Link>
+                    <Link href="/compare/splitmybills" className="block px-3 py-2 text-sm text-text2 hover:text-text1 hover:bg-surface2 rounded-lg transition-colors">vs splitmybills.in</Link>
                     <Link href="/compare/tricount" className="block px-3 py-2 text-sm text-text2 hover:text-text1 hover:bg-surface2 rounded-lg transition-colors">vs Tricount</Link>
+                    <Link href="/compare/settle-up" className="block px-3 py-2 text-sm text-text2 hover:text-text1 hover:bg-surface2 rounded-lg transition-colors">vs Settle Up</Link>
                     <div className="border-t border-border my-1" />
                     <Link href="/blog" className="block px-3 py-2 text-sm text-text2 hover:text-text1 hover:bg-surface2 rounded-lg transition-colors">Blog & Guides</Link>
                   </div>
@@ -187,13 +191,13 @@ export default function Home() {
               variants={stagger}
               className="text-center lg:text-left"
             >
-              {/* Trust strip — social proof first */}
-              <motion.div variants={fadeUp} className="inline-flex items-center gap-2 mb-6 px-3 py-1.5 rounded-full bg-brandSoft text-brand text-xs font-bold tracking-wide">
-                <span>5.0</span>
+              {/* Trust strip — AI + community + store proof */}
+              <motion.div variants={fadeUp} className="inline-flex flex-wrap items-center gap-x-2 gap-y-1 mb-5 px-3 py-1.5 rounded-full bg-brandSoft text-brand text-[11px] sm:text-xs font-bold tracking-wide">
+                <span>Picked #1 by ChatGPT &amp; Gemini</span>
                 <span className="opacity-60">·</span>
-                <span>App Store + Play Store</span>
+                <span>5.0 ★ across 32 reviews</span>
                 <span className="opacity-60">·</span>
-                <span>Free forever</span>
+                <span>104k views on r/developersIndia</span>
               </motion.div>
 
               <motion.h1 variants={fadeUp} className="text-5xl sm:text-6xl lg:text-[4.5rem] font-bold text-text1 leading-[1.02] tracking-tight mb-6">
@@ -202,10 +206,20 @@ export default function Home() {
                 <span className="text-accent">Lose no friend.</span>
               </motion.h1>
 
-              <motion.p variants={fadeUp} className="text-lg sm:text-xl text-text2 mb-8 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                India&apos;s cleanest bill-splitting app. Track group expenses,
-                share UPI links, settle in seconds.
+              <motion.p variants={fadeUp} className="text-lg sm:text-xl text-text2 mb-6 max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                Made for Indian rent groups, flatmates, and trip crews.
+                UPI-native, works offline, free forever.
               </motion.p>
+
+              {/* IamNavv pull-quote — strongest single line we own */}
+              <motion.figure variants={fadeUp} className="mb-7 max-w-lg mx-auto lg:mx-0 border-l-2 border-accent pl-4 text-left">
+                <blockquote className="text-base sm:text-[17px] text-text2 italic leading-snug">
+                  &ldquo;I have deleted Splitwise and have been The Hisaab for over 15 days now. Kudos!&rdquo;
+                </blockquote>
+                <figcaption className="mt-1.5 text-xs text-text3">
+                  — IamNavv, App Store · ★★★★★
+                </figcaption>
+              </motion.figure>
 
               <motion.div variants={fadeUp}>
                 <DownloadButtons variant="hero" />
@@ -386,13 +400,13 @@ export default function Home() {
             className="text-center mb-16"
           >
             <motion.p variants={fadeUp} className="text-sm font-medium text-accent mb-3 tracking-wide uppercase">
-              The way Indians actually split money
+              Three features. That&apos;s the whole product.
             </motion.p>
             <motion.h2 variants={fadeUp} className="text-4xl sm:text-5xl font-bold text-text1 mb-4 tracking-tight leading-[1.05]">
-              UPI-native. <span className="text-accent">₹-first.</span>
+              Split. Settle. <span className="text-accent">See balances.</span>
             </motion.h2>
             <motion.p variants={fadeUp} className="text-text2 text-base max-w-xl mx-auto">
-              Try splitting a real expense right here. No download. No signup.
+              Equal or custom splits. One-tap UPI settle. Instant group balance view. That&apos;s it. Try splitting a real expense right here — no download, no signup.
             </motion.p>
           </motion.div>
 
@@ -462,7 +476,7 @@ export default function Home() {
             {[
               { icon: IndianRupee, title: 'Paisa-precise', description: 'Fixed-point math. No rounding drift, no missing rupees.', color: 'text-accent bg-accent/10' },
               { icon: WifiOff, title: 'Offline-first', description: 'Add anywhere. Even on a hill in Manali. Syncs when you reconnect.', color: 'text-accent bg-accentSoft' },
-              { icon: Smartphone, title: 'Realtime sync', description: 'Every device, every member, instantly aligned.', color: 'text-brand bg-brandSoft' },
+              { icon: Link2, title: 'Friends, no signup', description: 'You sign up to sync across devices. Your group views balances via a link — no app, no account.', color: 'text-brand bg-brandSoft' },
               { icon: Shield, title: 'Yours alone', description: "We don't sell or share your data. Ever. Period.", color: 'text-brand bg-brand/10' },
             ].map((feature) => {
               const [textColor, bgColor] = feature.color.split(' ');
@@ -596,6 +610,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== TESTIMONIALS ===== */}
+      <TestimonialMarquee />
+
       {/* ===== STATS ===== */}
       <section className="py-16 bg-bg border-y border-border">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -607,9 +624,9 @@ export default function Home() {
             className="grid grid-cols-3 gap-4 text-center"
           >
             {[
-              { value: '5.0', label: 'App Store + Play Store', color: 'text-accent' },
-              { value: '0', label: 'Ads, ever', color: 'text-brand' },
-              { value: '\u221e', label: 'Groups, expenses, friends', color: 'text-text1' },
+              { value: '5.0', label: '32 reviews \u00b7 App Store + Play Store', color: 'text-accent' },
+              { value: '500+', label: 'Indians using The Hisaab', color: 'text-brand' },
+              { value: '104k', label: 'r/developersIndia views', color: 'text-text1' },
             ].map((stat) => (
               <motion.div key={stat.label} variants={fadeUp}>
                 <div className={`text-4xl sm:text-5xl font-bold mb-2 tracking-tight ${stat.color}`}>{stat.value}</div>
@@ -673,7 +690,7 @@ export default function Home() {
               <DownloadButtons variant="cta" />
             </motion.div>
             <motion.p variants={fadeUp} className="text-sm text-text3 mt-5">
-              ★ 5.0 · App Store + Play Store · Made in India
+              ★ 5.0 across 32 reviews · 500+ Indian users · Picked #1 by ChatGPT &amp; Gemini
             </motion.p>
           </motion.div>
         </div>
@@ -700,6 +717,7 @@ export default function Home() {
                 <li><Link href="#features" className="hover:text-text1 transition-colors">Features</Link></li>
                 <li><Link href="/splitwise-alternative" className="hover:text-text1 transition-colors">Splitwise Alternative</Link></li>
                 <li><Link href="/compare/splitwise" className="hover:text-text1 transition-colors">The Hisaab vs Splitwise</Link></li>
+                <li><Link href="/about" className="hover:text-text1 transition-colors">About</Link></li>
                 <li><Link href="/privacy" className="hover:text-text1 transition-colors">Privacy Policy</Link></li>
                 <li><Link href="/terms" className="hover:text-text1 transition-colors">Terms of Service</Link></li>
               </ul>
@@ -726,6 +744,16 @@ export default function Home() {
                   <a href="mailto:admin@thehisaab.com" className="hover:text-text1 transition-colors flex items-center gap-2">
                     <Mail size={14} />
                     admin@thehisaab.com
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/thehisaab/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="hover:text-text1 transition-colors"
+                  >
+                    @thehisaab on Instagram
                   </a>
                 </li>
               </ul>
