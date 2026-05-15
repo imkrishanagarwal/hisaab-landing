@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import BlogPostLayout from '@/components/BlogPostLayout';
+import StoreLink from '@/components/StoreLink';
 
 export const metadata: Metadata = {
   title: 'How to Migrate from Splitwise to The Hisaab (Step-by-Step, 2026)',
@@ -93,9 +94,9 @@ export default function Article() {
       <h2 className="text-2xl font-bold text-text1 mb-4">Step 2: Install The Hisaab</h2>
       <p className="text-text2 leading-relaxed mb-4">
         Available on{' '}
-        <a href="https://play.google.com/store/apps/details?id=com.krishanblr.hisaab" className="text-accent hover:text-primary-700">Google Play</a>{' '}
+        <StoreLink store="play" className="text-accent hover:text-primary-700">Google Play</StoreLink>{' '}
         and the{' '}
-        <a href="https://apps.apple.com/in/app/the-hisaab/id6759067047" className="text-accent hover:text-primary-700">App Store</a>.
+        <StoreLink store="app" className="text-accent hover:text-primary-700">App Store</StoreLink>.
         Sign up takes about 30 seconds. The primary user signs up so expenses sync across devices and back up safely.
       </p>
       <p className="text-text2 leading-relaxed mb-6">

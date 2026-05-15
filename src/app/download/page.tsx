@@ -1,25 +1,31 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { initMixpanel, trackEvent } from '@/lib/mixpanel'
 import Head from 'next/head'
 import { motion } from 'framer-motion'
 import { Download, ArrowRight } from 'lucide-react'
 import Image from 'next/image'
-
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab'
+import { buildPlayStoreUrl, getUtmParams, PLAY_STORE_URL } from '@/lib/storeUrls'
 
 export default function DownloadPage() {
+  const [playStoreUrl, setPlayStoreUrl] = useState(PLAY_STORE_URL)
+
   useEffect(() => {
+    const utm = getUtmParams()
+    const url = buildPlayStoreUrl(utm)
+    setPlayStoreUrl(url)
+
     initMixpanel()
     trackEvent('store_redirect', {
       store: 'play_store',
       platform: 'android',
       page: '/download',
+      ...utm,
     })
 
     const timer = setTimeout(() => {
-      window.location.href = PLAY_STORE_URL
+      window.location.href = url
     }, 2000)
 
     return () => clearTimeout(timer)
@@ -122,7 +128,7 @@ export default function DownloadPage() {
               Download not starting automatically?
             </p>
             <a
-              href={PLAY_STORE_URL}
+              href={playStoreUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#2563EB] text-white px-6 py-3 rounded-xl font-semibold hover:bg-[#1D4ED8] transition-colors"

@@ -3,10 +3,9 @@
 import { useEffect, useState, useCallback } from 'react';
 import { Download } from 'lucide-react';
 import { trackEvent } from '@/lib/mixpanel';
+import { buildAppStoreUrl, buildPlayStoreUrl, getUtmParams } from '@/lib/storeUrls';
 
 const DEEP_LINK_SCHEME = 'hisaab';
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab';
-const APP_STORE_URL = 'https://apps.apple.com/in/app/the-hisaab/id6759067047';
 
 function getPlatform(): 'android' | 'ios' | 'other' {
   if (typeof navigator === 'undefined') return 'other';
@@ -32,19 +31,25 @@ export default function DownloadButton({ variant = 'hero', className = '' }: Dow
   }, []);
 
   const handleDownload = useCallback(() => {
+    const utm = getUtmParams();
+    const playStoreUrl = buildPlayStoreUrl(utm);
+    const appStoreUrl = buildAppStoreUrl(utm);
+
     trackEvent('store_redirect', {
       store: platform === 'ios' ? 'app_store' : 'play_store',
       platform,
       page: window.location.pathname,
+      ...utm,
     });
 
     if (platform === 'android') {
-      // Android Intent URL — opens app or falls back to Play Store
+      // Android Intent URL — opens app or falls back to Play Store.
+      // Play Store referrer is forwarded to the app via Install Referrer API.
       const intentUrl =
         `intent://#Intent;` +
         `scheme=${DEEP_LINK_SCHEME};` +
         `package=com.krishanblr.hisaab;` +
-        `S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};` +
+        `S.browser_fallback_url=${encodeURIComponent(playStoreUrl)};` +
         `end`;
       window.location.assign(intentUrl);
     } else if (platform === 'ios') {
@@ -55,7 +60,7 @@ export default function DownloadButton({ variant = 'hero', className = '' }: Dow
       const timer = setTimeout(() => {
         if (!document.hidden) {
           // App not installed — redirect to App Store
-          window.location.assign(APP_STORE_URL);
+          window.location.assign(appStoreUrl);
           setTrying(false);
         }
       }, 1500);
@@ -73,7 +78,7 @@ export default function DownloadButton({ variant = 'hero', className = '' }: Dow
       }, 5000);
     } else {
       // Desktop — open Play Store
-      window.open(PLAY_STORE_URL, '_blank', 'noopener,noreferrer');
+      window.open(playStoreUrl, '_blank', 'noopener,noreferrer');
     }
   }, [platform]);
 

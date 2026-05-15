@@ -3,6 +3,7 @@ import Link from 'next/link';
 import SeoPageHeader from '@/components/SeoPageHeader';
 import SeoPageFooter from '@/components/SeoPageFooter';
 import DownloadButtons from '@/components/DownloadButtons';
+import StoreLink from '@/components/StoreLink';
 import JsonLd from '@/components/JsonLd';
 import { createArticleSchema } from '@/lib/schema';
 
@@ -336,19 +337,13 @@ export default function SplitwiseLimitsArticle() {
             <li>
               <strong className="text-text1">Download The Hisaab</strong> from
               the{' '}
-              <a
-                href="https://play.google.com/store/apps/details?id=com.krishanblr.hisaab"
-                className="text-accent hover:text-primary-700"
-              >
+              <StoreLink store="play" className="text-accent hover:text-primary-700">
                 Play Store
-              </a>{' '}
+              </StoreLink>{' '}
               or{' '}
-              <a
-                href="https://apps.apple.com/in/app/the-hisaab/id6759067047"
-                className="text-accent hover:text-primary-700"
-              >
+              <StoreLink store="app" className="text-accent hover:text-primary-700">
                 App Store
-              </a>
+              </StoreLink>
               .
             </li>
             <li>

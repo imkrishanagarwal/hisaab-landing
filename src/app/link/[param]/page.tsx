@@ -3,10 +3,14 @@
 import { useParams } from 'next/navigation'
 import { useEffect, useState, useCallback } from 'react'
 import DownloadButtons from '@/components/DownloadButtons'
+import {
+  APP_STORE_URL,
+  buildAppStoreUrl,
+  buildPlayStoreUrl,
+  getUtmParams,
+} from '@/lib/storeUrls'
 
 const DEEP_LINK_SCHEME = 'hisaab'
-const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.krishanblr.hisaab'
-const APP_STORE_URL = 'https://apps.apple.com/in/app/the-hisaab/id6759067047'
 
 type VisitorInfo = {
   ip: string
@@ -92,20 +96,23 @@ export default function LinkPage() {
   const [loading, setLoading] = useState(true)
   const [status, setStatus] = useState<'idle' | 'trying' | 'fallback'>('idle')
   const [platform, setPlatform] = useState<'android' | 'ios' | 'other'>('other')
+  const [appStoreUrl, setAppStoreUrl] = useState(APP_STORE_URL)
 
   useEffect(() => {
     const ua = navigator.userAgent
     setPlatform(getPlatform(ua))
+    setAppStoreUrl(buildAppStoreUrl(getUtmParams()))
     collectInfo()
   }, [])
 
   const openApp = useCallback(() => {
+    const utm = getUtmParams()
     if (platform === 'android') {
       const intentUrl =
         `intent://#Intent;` +
         `scheme=${DEEP_LINK_SCHEME};` +
         `package=com.krishanblr.hisaab;` +
-        `S.browser_fallback_url=${encodeURIComponent(PLAY_STORE_URL)};` +
+        `S.browser_fallback_url=${encodeURIComponent(buildPlayStoreUrl(utm))};` +
         `end`
       window.location.assign(intentUrl)
     } else if (platform === 'ios') {
@@ -191,7 +198,7 @@ export default function LinkPage() {
           <div className="bg-[#121212] rounded-2xl p-6 border border-gray-800 mb-4 text-center">
             <p className="text-gray-400 text-sm mb-4">App not installed? Get it here:</p>
             <a
-              href={APP_STORE_URL}
+              href={appStoreUrl}
               className="inline-block bg-[#2563EB] text-white py-3 px-8 rounded-xl font-bold text-sm no-underline active:opacity-90"
             >
               Download on App Store
