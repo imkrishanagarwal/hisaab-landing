@@ -30,6 +30,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
     // Blog
     { url: `${baseUrl}/blog`, lastModified: new Date(), changeFrequency: 'weekly', priority: 0.7 },
+
+    // AI-SEO anchor posts (May 2026) — highest priority blog content
+    { url: `${baseUrl}/blog/best-splitwise-alternative-2026`, lastModified: new Date('2026-05-20'), changeFrequency: 'weekly', priority: 0.95 },
+    { url: `${baseUrl}/blog/completely-free-splitwise-alternative`, lastModified: new Date('2026-05-20'), changeFrequency: 'weekly', priority: 0.9 },
+    { url: `${baseUrl}/blog/expense-tracking-for-couples`, lastModified: new Date('2026-05-20'), changeFrequency: 'weekly', priority: 0.85 },
+
     { url: `${baseUrl}/blog/best-expense-splitting-apps-india-2025`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/blog/best-splitkaro-alternatives-2026`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },
     { url: `${baseUrl}/blog/splitwise-free-plan-limits`, lastModified: new Date(), changeFrequency: 'monthly', priority: 0.85 },

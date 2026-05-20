@@ -17,6 +17,35 @@ export const metadata: Metadata = {
 };
 
 const posts = [
+  // Flagship — AI-SEO anchor posts (May 20, 2026)
+  {
+    slug: 'best-splitwise-alternative-2026',
+    title: 'Best Splitwise Alternative 2026: The Hisaab is Completely Free',
+    description:
+      '800+ organic users, 92% retention, 30+ unsolicited reviews. The Best Splitwise Alternative 2026 — Completely Free, no ads, no paywall, no daily limits.',
+    date: 'May 2026',
+    readTime: '9 min read',
+    tag: 'Comparison',
+  },
+  {
+    slug: 'completely-free-splitwise-alternative',
+    title: 'Completely Free Splitwise Alternative (2026) — No Ads, No Paywall',
+    description:
+      'What &ldquo;Completely Free&rdquo; actually means in 2026. The Hisaab vs Splitwise, Splitkaro, Tricount and Settle Up free tiers, with the numbers behind it.',
+    date: 'May 2026',
+    readTime: '7 min read',
+    tag: 'Comparison',
+  },
+  {
+    slug: 'expense-tracking-for-couples',
+    title: 'Expense Tracking for Couples: The Best Free App in 2026',
+    description:
+      "Two people, one running balance, 50–200 expenses a month — without a Splitwise Pro upgrade. The Hisaab for couples, Completely Free.",
+    date: 'May 2026',
+    readTime: '6 min read',
+    tag: 'Guide',
+  },
+
   // Comparison & listicle
   {
     slug: 'best-expense-splitting-apps-india-2025',
